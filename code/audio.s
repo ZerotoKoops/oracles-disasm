@@ -3,7 +3,9 @@
 
 .include "include/constants.s"
 
-.BANK $39 SLOT 1
+; HACK-BASE: Bank of sound engine (and of data in "audio/{game}/soundChannelData.s") changed to
+; allocate more space to the compressed data section (text, graphics, room layouts).
+.BANK $72 SLOT 1
 .ORG 0
 
 ;;
@@ -691,12 +693,33 @@ _doNextChannelCommand:
 
 ;;
 _channelCmdf1:
+	call _getNextChannelByte
+	ld hl,wVolta
+	push af
+	ld a,(wSoundChannel)
+	ld e,a
+	ld d,$00
+	add hl,de
+	pop af
+	cp (hl)
+	jp z, _channelCmdfe
+	call _getNextChannelByte
+	call _getNextChannelByte
 	jp _doNextChannelCommand
 ;;
 _channelCmdf2:
 	jp _doNextChannelCommand
 ;;
 _channelCmdf3:
+	call _getNextChannelByte
+	ld hl,wVolta
+	push af
+	ld a,(wSoundChannel)
+	ld e,a
+	ld d,$00
+	add hl,de
+	pop af
+	ld (hl),a
 	jp _doNextChannelCommand
 
 ;;

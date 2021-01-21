@@ -221,11 +221,11 @@
 
 ; 60/61: set wait counters.
 
-.macro rest
+.macro wait1
 	.db $60 \1
 .endm
 
-.macro rest2 ; Unused?
+.macro wait2
 	.db $61 \1
 .endm
 
@@ -255,14 +255,17 @@
 .endm
 
 ; f1-f3: does nothing
-.macro cmdf1
+.macro gotoCond
 	.db $f1
+	.db \1
+	.dw \2
 .endm
 .macro cmdf2
 	.db $f2
 .endm
-.macro cmdf3
+.macro setCoda
 	.db $f3
+	.db \1
 .endm
 
 ; f4-f5: duplicates of ff?
