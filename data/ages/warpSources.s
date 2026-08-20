@@ -805,12 +805,10 @@ group4WarpSources:
 	m_StandardWarp $0 $7a $81 $0 $2
 	m_StandardWarp $0 $76 $4a $2 $2
 	m_StandardWarp $0 $72 $4d $2 $2
-	m_StandardWarp $0 $58 $34 $1 $2
 	m_StandardWarp $4 $68 $3c $1 $3
 	m_StandardWarp $4 $7d $0f $0 $3
 	m_StandardWarp $4 $7e $82 $0 $3
 	m_StandardWarp $0 $39 $83 $0 $2
-	m_StandardWarp $0 $4f $1a $3 $2
 	m_StandardWarp $0 $61 $40 $1 $2
 	m_StandardWarp $4 $5a $4b $1 $3
 	m_StandardWarp $0 $14 $04 $6 $2
@@ -825,7 +823,6 @@ group4WarpSources:
 
 warpSource5119:
 	m_PositionWarp $51 $2f $1 $2
-	m_PositionWarp $7b $31 $1 $2
 	m_WarpListEndWithDefault
 
 warpSource5121:
