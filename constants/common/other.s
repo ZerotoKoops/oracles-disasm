@@ -15,12 +15,12 @@
 
 ; Overworld size
 .ifdef ROM_AGES
-	.define OVERWORLD_WIDTH		14
-	.define OVERWORLD_HEIGHT	14
+	.define OVERWORLD_WIDTH		16;14
+	.define OVERWORLD_HEIGHT	16;14
 
 	; The starting X/Y positions of the tile grid on the map screen
-	.define OVERWORLD_MAP_START_X	3
-	.define OVERWORLD_MAP_START_Y	2
+	.define OVERWORLD_MAP_START_X	2;3
+	.define OVERWORLD_MAP_START_Y	1;2
 
 	; The first index at which to move popups on the map screen to the opposite side
 	; of the screen. Ie. when cursor X is from 0-7 it's on the right; from 8-15 it's
@@ -30,6 +30,15 @@
 
 	.define NUM_DUNGEONS		$10
 	.define NUM_DUNGEONS_DIV_8	2 ; Above value divided by 8, rounded up
+
+	.define SECOND_REGION_WIDTH 12
+	.define SECOND_REGION_HEIGHT 14
+
+	.define SECOND_REGION_MAP_START_X	3
+	.define SECOND_REGION_MAP_START_Y	2
+
+	.define SECOND_REGION_MAP_POPUP_SHIFT_INDEX_X 6
+	.define SECOND_REGION_MAP_POPUP_SHIFT_INDEX_Y 7
 
 .else; ROM_SEASONS
 	.define OVERWORLD_WIDTH		16

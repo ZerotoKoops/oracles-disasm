@@ -312,11 +312,20 @@ screenTransitionState2:
 	and TILESETFLAG_OUTDOORS
 	jr z,@doneBoundaryChecks
 
+
+	ld b,OVERWORLD_WIDTH-1
+	ld d,(OVERWORLD_HEIGHT-1)*16
+	ld a,(wActiveGroup)
+	and $01
+	jr z,+
+	ld b,SECOND_REGION_WIDTH-1
+	ld d,(OVERWORLD_HEIGHT-1)*16
++
 	; Check rightmost map boundary
 	ld a,(wActiveRoom)
 	ld e,a
 	and $0f
-	cp OVERWORLD_WIDTH-1
+	cp b;OVERWORLD_WIDTH-1
 	jr nz,+
 	ld a,c
 	cp DIR_RIGHT
@@ -324,7 +333,7 @@ screenTransitionState2:
 +
 	; Check bottom-most map boundary
 	ld a,e
-	cp (OVERWORLD_HEIGHT-1)*16
+	cp d;(OVERWORLD_HEIGHT-1)*16
 	jr c,+
 	ld a,c
 	cp DIR_DOWN

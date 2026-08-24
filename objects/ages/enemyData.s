@@ -553,24 +553,16 @@ group0MapaaEnemyObjectData:
 group0MapabEnemyObjectData:
 	obj_ItemDrop $00 $05 $67
 	obj_ItemDrop     $01 $68
-group0MapbcEnemyObjectData:
-group0MapcaEnemyObjectData:
-group0MapccEnemyObjectData:
 	obj_RandomEnemy $20 $09 $00
 	obj_EndPointer
 
 group0MapbbEnemyObjectData:
 	obj_EndPointer
 
-group0MapcbEnemyObjectData:
-	obj_SpecificEnemyA $00 $1a $00 $28 $38
 group0MapdaEnemyObjectData:
-group0MapdbEnemyObjectData:
-	obj_RandomEnemy $20 $09 $00
 	obj_EndPointer
 
 group0Mapb9EnemyObjectData:
-group0Mapc9EnemyObjectData:
 	obj_RandomEnemy $40 $1a $00
 	obj_EndPointer
 
@@ -1463,7 +1455,7 @@ group4Map81EnemyObjectData:
 
 group4Map82EnemyObjectData:
 	obj_SpecificEnemyA $00 $34 $01 $28 $68
-	obj_SpecificEnemyA $00 $49 $00 $68 $78
+	obj_SpecificEnemyA     $49 $00 $68 $78
 	obj_EndPointer
 
 group4Map83EnemyObjectData:
@@ -2543,3 +2535,22 @@ group4MapcfEnemyObjectData:
 	obj_SpecificEnemyA     $31 $02 $18 $78
 	obj_EndPointer
 
+
+
+group0MapdbEnemyObjectData:
+	obj_EndPointer
+
+group0MapccEnemyObjectData:
+	obj_EndPointer
+
+group0MapbcEnemyObjectData:
+	obj_EndPointer
+
+group0MapcbEnemyObjectData:
+	obj_EndPointer
+
+group0MapcaEnemyObjectData:
+	obj_EndPointer
+
+group0Mapc9EnemyObjectData:
+	obj_EndPointer

@@ -1711,7 +1711,7 @@ paletteData49f0:
 	m_RGB16 $00 $00 $00
 
 paletteData4a30:
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $10 $1c $02
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
@@ -1721,14 +1721,14 @@ paletteData4a30:
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $19 $11 $01
 	m_RGB16 $10 $0a $00
 	m_RGB16 $00 $00 $00
 
 	m_RGB16 $1a $17 $14
-	m_RGB16 $0f $12 $14
-	m_RGB16 $08 $09 $0c
+	m_RGB16 $11 $0b $14
+	m_RGB16 $0a $05 $0c
 	m_RGB16 $04 $02 $00
 
 	m_RGB16 $1f $1f $18
@@ -1866,7 +1866,7 @@ paletteData4af0:
 	m_RGB16 $04 $02 $00
 
 paletteData4b20:
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $10 $1c $02
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
@@ -1876,7 +1876,7 @@ paletteData4b20:
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $19 $11 $01
 	m_RGB16 $10 $0a $00
 	m_RGB16 $00 $00 $00
@@ -2021,7 +2021,7 @@ paletteData4be0:
 	m_RGB16 $00 $05 $05
 
 paletteData4c10:
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $10 $1c $02
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
@@ -2031,7 +2031,7 @@ paletteData4c10:
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $19 $11 $01
 	m_RGB16 $10 $0a $00
 	m_RGB16 $00 $00 $00
@@ -2238,7 +2238,7 @@ paletteData4d30:
 	m_RGB16 $00 $00 $00
 
 paletteData4d60:
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $10 $1c $02
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
@@ -2248,7 +2248,7 @@ paletteData4d60:
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $19 $11 $01
 	m_RGB16 $10 $0a $00
 	m_RGB16 $00 $00 $00
@@ -2263,7 +2263,7 @@ paletteData4d60:
 	m_RGB16 $00 $0a $16
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $0b $14 $08
 	m_RGB16 $00 $15 $1f
 	m_RGB16 $00 $00 $00
@@ -2331,7 +2331,7 @@ paletteData4dc0:
 	m_RGB16 $00 $00 $00
 
 paletteData4df0:
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $10 $1c $02
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
@@ -2341,7 +2341,7 @@ paletteData4df0:
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
+	m_RGB16 $1f $1f $10
 	m_RGB16 $19 $11 $01
 	m_RGB16 $10 $0a $00
 	m_RGB16 $00 $00 $00
