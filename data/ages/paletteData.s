@@ -1969,9 +1969,9 @@ paletteData4bb0:
 	m_RGB16 $06 $11 $00
 	m_RGB16 $00 $00 $00
 
-	m_RGB16 $1f $1c $02
-	m_RGB16 $19 $11 $01
-	m_RGB16 $10 $0a $00
+	m_RGB16 $1f $1f $18
+	m_RGB16 $13 $01 $19
+	m_RGB16 $0b $00 $10
 	m_RGB16 $00 $00 $00
 
 	m_RGB16 $1f $1c $02
