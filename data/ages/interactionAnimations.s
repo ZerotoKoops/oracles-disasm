@@ -1027,6 +1027,11 @@ interaction80Animations:
 	.dw interactionAnimation5a3df
 	.dw interactionAnimation5aaa9
 	.dw interactionAnimation5aab7
+; pirate ship
+	.dw interactionAnimationPirateFlag
+	.dw interactionAnimation5a411 ; pirate bow - mast
+	.dw interactionAnimation5a416 ; pirate bow 2 - middle
+	.dw interactionAnimation5a9be ; pirate bow 3 - edge
 interactione1Animations:
 	.dw interactionAnimation5aa7c
 interaction72Animations:
@@ -3073,6 +3078,13 @@ interactionAnimation5adf0:
 	.db $7f $22 $ff
 
 
+interactionAnimationPirateFlag:
+	.db $08 $20 $00
+	.db $08 $22 $00
+	.db $08 $24 $00
+	m_AnimationLoop interactionAnimationPirateFlag
+
+
 
 interaction00OamDataPointers: ; 0x5adfc
 interaction0dOamDataPointers: ; 0x5adfc
@@ -4028,22 +4040,29 @@ interaction6fOamDataPointers: ; 0x5b360
 	.dw interactionOamData513b8
 
 interaction80OamDataPointers: ; 0x5b366
-	.dw interactionOamData501bd
-	.dw interactionOamData502cb
-	.dw interactionOamData502dd
-	.dw interactionOamData50337
-	.dw interactionOamData500c2
-	.dw interactionOamData504de
-	.dw interactionOamData504e7
-	.dw interactionOamData50205
-	.dw interactionOamData5020e
-	.dw interactionOamData5009f
-	.dw interactionOamData51043
-	.dw interactionOamData51050
-	.dw interactionOamData5105d
-	.dw interactionOamData5106a
-	.dw interactionOamData5009a
-	.dw interactionOamData500a9
+	.dw interactionOamData501bd ; $00
+	.dw interactionOamData502cb ; $02
+	.dw interactionOamData502dd ; $04
+	.dw interactionOamData50337 ; $06
+	.dw interactionOamData500c2 ; $08
+	.dw interactionOamData504de ; $0a
+	.dw interactionOamData504e7 ; $0c
+	.dw interactionOamData50205 ; $0e
+	.dw interactionOamData5020e ; $10
+	.dw interactionOamData5009f ; $12
+	.dw interactionOamData51043 ; $14
+	.dw interactionOamData51050 ; $16
+	.dw interactionOamData5105d ; $18
+	.dw interactionOamData5106a ; $1a
+	.dw interactionOamData5009a ; $1c
+	.dw interactionOamData500a9 ; $1e
+; Pirate Ship
+	.dw interactionOamPirateShip00 ; $20
+	.dw interactionOamPirateShip01 ; $22
+	.dw interactionOamPirateShip02 ; $24
+	.dw interactionOamPirateShip03 ; $26
+	.dw interactionOamPirateShip04 ; $28
+	.dw interactionOamPirateShip05 ; $2a
 
 interaction83OamDataPointers: ; 0x5b386
 	.dw interactionOamData50205

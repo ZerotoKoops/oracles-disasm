@@ -109,6 +109,7 @@ group0WarpSources:
 	m_StandardWarp $0 $a0 $33 $5 $4
 	m_StandardWarp $0 $a5 $3e $5 $4
 	m_PointerWarp  $e8 group0Roome8WarpSources
+	m_StandardWarp $0 $eb $03 $5 TRANSITION_SRC_FADEOUT
 	m_WarpListEndNoDefault
 group0Roome8WarpSources:
 	m_PositionWarp $53 $08 $0 $4
@@ -677,7 +678,7 @@ group5WarpSources:
 	m_StandardWarp $0 $e3 $0a $3 $2
 	m_StandardWarp $4 $e5 $0d $1 $3
 	m_StandardWarp $8 $e6 $0e $1 $3
-	m_StandardWarp $0 $e8 $21 $3 $2
+	m_StandardWarp $0 $e8 $50 $0 $2
 	m_StandardWarp $4 $e9 $43 $1 $3
 	m_StandardWarp $0 $ea $16 $2 $2
 	m_StandardWarp $4 $ea $21 $1 $3

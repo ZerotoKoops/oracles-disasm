@@ -427,6 +427,10 @@ interaction80SubidData:
 	m_InteractionSubidData $7a $16 $04
 	m_InteractionSubidData $6f $00 $66
 	m_InteractionSubidData $6f $10 $67
+	m_InteractionSubidData $67 $00 $68 ; pirate flag
+	m_InteractionSubidData $67 $00 $69 ; pirate bow 1
+	m_InteractionSubidData $67 $00 $6a ; pirate bow 2
+	m_InteractionSubidData $67 $00 $6b ; pirate bow 3
 	m_InteractionSubidDataEnd
 
 interaction81SubidData:

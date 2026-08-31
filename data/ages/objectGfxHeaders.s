@@ -105,7 +105,8 @@ objectGfxHeaderTable:
 	/* $64 */ m_ObjectGfxHeader spr_swords
 	/* $65 */ m_ObjectGfxHeader spr_subrosian
 	/* $66 */ m_ObjectGfxHeader spr_jabuchild
-	/* $67 */ m_ObjectGfxHeader spr_maku_child
+	/* $67 */ m_ObjectGfxHeader spr_pirate_ship, 1
+	/* $67 */ ;m_ObjectGfxHeader spr_maku_child
 	/* $68 */ m_ObjectGfxHeader spr_gorondance_tingle_write
 	/* $69 */ m_ObjectGfxHeader spr_moblinflag_bomb_portal
 	/* $6a */ m_ObjectGfxHeader spr_timeportal
@@ -229,3 +230,7 @@ objectGfxHeaderTable:
 
 	; CROSSITEMS: Extra object gfx headers
 	/* $e0 */ m_ObjectGfxHeader spr_hyperslingshot_inventory
+	/* $e1 */ m_ObjectGfxHeader spr_pirate_ship, 1
+	/* $e1 */ ;m_ObjectGfxHeader gfx_pirate_ship_tiles_1
+	/* $e2 */ ;m_ObjectGfxHeader gfx_pirate_ship_tiles_2
+	/* $e3 */ ;m_ObjectGfxHeader gfx_pirate_ship_tiles_3, 1

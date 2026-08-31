@@ -1004,12 +1004,12 @@ interaction72Animations:
 	.dw interactionAnimation51da7
 	.dw interactionAnimation51daf
 interaction74Animations:
-	.dw interactionAnimation523a5
+	.dw interactionAnimation523a5 ; pirate flag
 	.dw interactionAnimation51cee
 	.dw interactionAnimation51cf6
-	.dw interactionAnimation51ce9
-	.dw interactionAnimation51cfb
-	.dw interactionAnimation51d00
+	.dw interactionAnimation51ce9 ; pirate bow
+	.dw interactionAnimation51cfb ; pirate bow 2
+	.dw interactionAnimation51d00 ; pirate bow 3
 	.dw interactionAnimation523b0
 interaction75Animations:
 	.dw interactionAnimation523bb
@@ -4117,17 +4117,17 @@ interactionb0OamDataPointers: ; 0x52e3f
 	.dw interactionOamData4c8f7
 
 interaction74OamDataPointers: ; 0x52e5b
-	.dw interactionOamData4f2e7
-	.dw interactionOamData4f2f4
-	.dw interactionOamData4f305
-	.dw interactionOamData4f316
-	.dw interactionOamData4d45f
-	.dw interactionOamData4d470
-	.dw interactionOamData4f323
-	.dw interactionOamData4f334
-	.dw interactionOamData4c10d
-	.dw interactionOamData4c38b
-	.dw interactionOamData4c382
+	.dw interactionOamData4f2e7 ; $00
+	.dw interactionOamData4f2f4 ; $02
+	.dw interactionOamData4f305 ; $04
+	.dw interactionOamData4f316 ; $06
+	.dw interactionOamData4d45f ; $08
+	.dw interactionOamData4d470 ; $0a
+	.dw interactionOamData4f323 ; $0c
+	.dw interactionOamData4f334 ; $0e
+	.dw interactionOamData4c10d ; $10
+	.dw interactionOamData4c38b ; $12
+	.dw interactionOamData4c382 ; $14
 
 interactionb4OamDataPointers: ; 0x52e71
 	.dw interactionOamData4d492

@@ -5220,3 +5220,47 @@ interactionOamData531d5:
 	.db $fe $00 $02 $21
 	.db $0e $00 $04 $22
 
+interactionOamPirateShip00:
+	.db $03
+	.db $00 $06 $00 $00
+	.db $10 $08 $0a $00
+	.db $10 $00 $0a $20
+
+interactionOamPirateShip01:
+	.db $04
+	.db $10 $08 $0a $00
+	.db $10 $00 $0a $20
+	.db $00 $06 $02 $00
+	.db $00 $0e $04 $00
+
+interactionOamPirateShip02:
+	.db $04
+	.db $10 $08 $0a $00
+	.db $10 $00 $0a $20
+	.db $00 $06 $06 $00
+	.db $00 $0e $08 $00
+
+interactionOamPirateShip03:
+	.db $03
+	.db $00 $04 $0c $00
+	.db $10 $00 $0e $00
+	.db $10 $08 $0e $20
+
+interactionOamPirateShip04:
+	.db $04
+	.db $00 $00 $1a $00
+	.db $00 $08 $1a $20
+	.db $08 $f8 $18 $00
+	.db $08 $10 $18 $20
+
+interactionOamPirateShip05:
+	.db $08
+	.db $10 $10 $10 $20
+	.db $05 $08 $12 $20
+	.db $f8 $00 $14 $20
+	.db $f0 $f8 $16 $20
+
+	.db $10 $c8 $10 $00
+	.db $05 $d0 $12 $00
+	.db $f8 $d8 $14 $00
+	.db $f0 $e0 $16 $00

@@ -970,3 +970,17 @@ m_GfxHeaderStart $b8, GFXH_TWINROVA_LAVA_LAYOUT
 m_GfxHeaderStart $b9, GFXH_TWINROVA_NORMAL_LAYOUT
 	m_GfxHeader oth_twinrova_normal_layout, wRoomLayout
 	m_GfxHeaderEnd
+
+/*
+; Loaded when entering the southern shore screen with the ship body
+m_GfxHeaderStart $bc, GFXH_PIRATE_SHIP_BODY_LAYOUT
+	m_GfxHeader map_pirate_ship_body, w2TmpGfxBuffer
+	m_GfxHeader flg_pirate_ship_body, w2TmpAttrBuffer
+	m_GfxHeaderEnd
+
+; Loaded when entering the southern shore screen with the ship bow
+m_GfxHeaderStart $bd, GFXH_PIRATE_SHIP_BOW_LAYOUT
+	m_GfxHeader map_pirate_ship_bow, w2TmpGfxBuffer
+	m_GfxHeader flg_pirate_ship_bow, w2TmpAttrBuffer
+	m_GfxHeaderEnd
+*/

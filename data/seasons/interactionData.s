@@ -627,14 +627,14 @@ interaction74SubidData:
 	m_InteractionSubidData $54 $00 $60
 	m_InteractionSubidData $54 $00 $63
 	m_InteractionSubidData $54 $00 $63
-	m_InteractionSubidData $54 $00 $63
+	m_InteractionSubidData $54 $00 $63 ; pirate bow 
 	m_InteractionSubidData $54 $00 $61
 	m_InteractionSubidData $54 $1c $62
-	m_InteractionSubidData $54 $00 $60
+	m_InteractionSubidData $54 $00 $60 ; pirate flag
 	m_InteractionSubidData $54 $00 $64
 	m_InteractionSubidData $54 $00 $65
-	m_InteractionSubidData $54 $00 $64
-	m_InteractionSubidData $54 $00 $65
+	m_InteractionSubidData $54 $00 $64 ; pirate bow 2
+	m_InteractionSubidData $54 $00 $65 ; pirate bow 3
 	m_InteractionSubidData $53 $00 $56
 	m_InteractionSubidDataEnd
 

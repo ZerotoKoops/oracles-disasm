@@ -9,17 +9,21 @@ interactionCode80:
 	ld e,Interaction.subid
 	ld a,(de)
 	rst_jumpTable
-	.dw interactionAnimate
-	.dw interactionAnimate
-	.dw interactionAnimate
-	.dw interactionAnimate
-	.dw interactionAnimate
-	.dw interactionAnimate
-	.dw interactionAnimate
-	.dw @deleteIfGotRoomItem
-	.dw @deleteIfGotRoomItem
-	.dw interactionAnimate
-	.dw interactionAnimate
+	.dw interactionAnimate ; $00
+	.dw interactionAnimate ; $01
+	.dw interactionAnimate ; $02
+	.dw interactionAnimate ; $03
+	.dw interactionAnimate ; $04
+	.dw interactionAnimate ; $05
+	.dw interactionAnimate ; $06
+	.dw @deleteIfGotRoomItem ; $07
+	.dw @deleteIfGotRoomItem ; $08
+	.dw interactionAnimate ; $09
+	.dw interactionAnimate ; $0a
+	.dw interactionAnimate ; $0b
+	.dw interactionAnimate ; $0c
+	.dw interactionAnimate ; $0d
+	.dw interactionAnimate ; $0e
 
 @state0:
 	call interactionInitGraphics
@@ -39,6 +43,10 @@ interactionCode80:
 	.dw @deleteIfGotRoomItem
 	.dw @stub
 	.dw @subid0a
+	.dw @pirateFlag
+	.dw @pirateBow1
+	.dw @pirateBow2
+	.dw @pirateBow3
 
 @stub:
 	ret
@@ -97,3 +105,43 @@ interactionCode80:
 	.db $13 $00
 	.db $14 $00
 	.db $00
+
+@pirateFlag: ; $0b
+@pirateBow1: ; $0c
+	call @pirateBow3@initialize
+	ld e,Interaction.subid
+	ld a,(de)
+	cp $0c
+	ret nz
+; add bow edges and railing 
+	ldbc $30,$00 ; Y X location
+	ld e,$0d;$0a ; subid
+	call @@createDecoration
+	ldbc $30,$18
+	ld e,$0e;$0b
+@@createDecoration:
+	call getFreeInteractionSlot
+	ret nz
+	ld (hl),INTERAC_DECORATION ; INTERAC_74
+	inc l
+	ld (hl),e
+	ld e,Interaction.yh
+	ld a,(de)
+	add b
+	ld l,e
+	ld (hl),a
+	ld e,Interaction.xh
+	ld a,(de)
+	add c
+	ld l,e
+	ld (hl),a
+	ret
+
+@pirateBow2: ; $0d
+@pirateBow3: ; $0e
+@@initialize:
+	call interactionIncState
+	ld a,PALH_cb;PALH_57
+	call loadPaletteHeader
+	call interactionInitGraphics
+	jp objectSetVisible80

@@ -78,6 +78,9 @@ applyRoomSpecificTileChangesAfterGfxLoad:
 	.dw roomTileChangesAfterLoad08
 	.dw roomTileChangesAfterLoad09
 	.dw roomTileChangesAfterLoad0a
+; ZTK added
+	.dw roomTileChangesAfterLoad0b
+	.dw roomTileChangesAfterLoad0c
 
 ;;
 ; Unused stub
@@ -124,6 +127,8 @@ applyRoomSpecificTileChangesAfterGfxLoad:
 	.db $38 $06
 	.db $0a $07
 	.db $67 $09
+	;.db <ROOM_AGES_0eb, $0b
+	;.db <ROOM_AGES_0fb, $0c
 	.db $00
 @group1:
 	.db $01 $08
@@ -694,3 +699,82 @@ checkLoadPastSignAndChestGfx:
 rectangleData_02_7de1:
 	.db $06 $06
 	.dw w3VramTiles+8 w2TmpGfxBuffer
+
+
+; Pirate ship box (North room)
+; copy of Seasons 00
+roomTileChangesAfterLoad0b:
+	; Load extra tileset graphics
+	ld e,AGES_OBJ_GFXH_PIRATE_SHIP_TILES_1 - 1
+	call loadObjectGfxHeaderToSlot4
+
+	; Load new tilemaps
+	;ld a,GFXH_PIRATE_SHIP_BOW_LAYOUT
+	;call loadGfxHeader
+
+	;ld hl,@vramTiles
+	;call copyRectangleFromTmpGfxBuffer
+	;ld hl,@vramAttributes
+	;call copyRectangleFromTmpGfxBuffer
+	ret
+	;ld hl,@roomLayout
+	;jp copyRectangleToRoomLayoutAndCollisions
+
+@vramTiles:
+	.db $0a $0a
+	.dw w3VramTiles+$c8
+	.dw w2TmpGfxBuffer
+
+@vramAttributes:
+	.db $0a $0a
+	.dw w3VramAttributes+$c8
+	.dw w2TmpGfxBuffer+$400
+/*
+@roomLayout:
+	.dw wRoomLayout+$34
+	.db $05 05
+	.db $af $00 $af $00 $00 $00 $af $00 $af $00
+	.db $af $00 $00 $00 $00 $00 $00 $00 $af $00
+	.db $fb $07 $00 $0e $00 $0c $00 $0d $fb $0b
+	.db $00 $0e $00 $0f $e7 $00 $00 $00 $00 $0d
+	.db $00 $0a $00 $00 $00 $00 $00 $00 $00 $05 
+*/
+
+; Pirate ship box (south room)
+; copy of Seasons 01
+roomTileChangesAfterLoad0c:
+	; Load extra tileset graphics
+	ld e,AGES_OBJ_GFXH_PIRATE_SHIP_TILES_1 - 1
+	call loadObjectGfxHeaderToSlot4
+
+	; Load new tilemaps
+	;ld a,GFXH_PIRATE_SHIP_BODY_LAYOUT
+	;call loadGfxHeader
+
+	;ld hl,@vramTiles
+	;call copyRectangleFromTmpGfxBuffer
+	;ld hl,@vramAttributes
+	;call copyRectangleFromTmpGfxBuffer
+	ret
+	;ld hl,@roomLayout
+	;jp copyRectangleToRoomLayoutAndCollisions
+
+@vramTiles:
+	.db $14 $0a
+	.dw w3VramTiles+$08
+	.dw w2TmpGfxBuffer+$140
+
+@vramAttributes:
+	.db $14 $0a
+	.dw w3VramAttributes+$08
+	.dw w2TmpGfxBuffer+$540
+/*
+@roomLayout:
+	.dw wRoomLayout+$04
+	.db $02 $05
+	.db $00 $0a $00 $00
+	.db $00 $00 $00 $00
+	.db $00 $05 $00 $00
+	.db $00 $00 $00 $00
+	.db $00 $00 $00 $00
+*/

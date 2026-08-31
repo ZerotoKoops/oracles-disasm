@@ -92,7 +92,6 @@ group0Mape7ObjectData:
 group0Mape8ObjectData:
 group0Mape9ObjectData:
 group0MapeaObjectData:
-group0MapebObjectData:
 group0MapecObjectData:
 group0MapedObjectData:
 group0MapeeObjectData:
@@ -107,7 +106,6 @@ group0Mapf7ObjectData:
 group0Mapf8ObjectData:
 group0Mapf9ObjectData:
 group0MapfaObjectData:
-group0MapfbObjectData:
 group0MapfcObjectData:
 group0MapfdObjectData:
 group0MapfeObjectData:
@@ -4806,9 +4804,6 @@ group5Mape7ObjectData:
 	obj_End
 
 group5Mape8ObjectData:
-	obj_Interaction $94 $01 $28 $78
-	obj_Interaction $94 $02 $08 $68
-	obj_Part $09 $80 $45
 	obj_End
 
 group5Mape9ObjectData:
@@ -4878,4 +4873,12 @@ group0Mapf6ObjectData:
 group0Mapc7ObjectData:
 	obj_Interaction INTERAC_DECORATION $0a $38 $50
 	obj_Interaction INTERAC_DECORATION $09 $3e $50
+	obj_End
+
+group0MapfbObjectData:
+	obj_Interaction INTERAC_DECORATION $0b $28 $68
+	obj_End
+
+group0MapebObjectData:
+	obj_Interaction INTERAC_DECORATION $0c $20 $68
 	obj_End
