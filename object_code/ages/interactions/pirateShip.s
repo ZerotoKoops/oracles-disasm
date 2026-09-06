@@ -2,6 +2,8 @@
 ; INTERAC_PIRATE_SHIP
 ; ==================================================================================================
 interactionCodec2:
+	jp interactionDelete
+/*
 	ld e,Interaction.subid
 	ld a,(de)
 	rst_jumpTable
@@ -163,3 +165,4 @@ interactionCodec2:
 @subid2State2:
 	ld c,ANGLE_UP
 	jr @moveOffScreen
+*/

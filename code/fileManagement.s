@@ -58,6 +58,10 @@ initializeFile:
 .ifdef ROM_AGES
 	callab roomTileChanges.initializeVinePositions
 .endif
+; ZTK - no intro?
+	;lda GLOBALFLAG_PREGAME_INTRO_DONE
+	;call setGlobalFlag
+
 
 ;;
 ; In addition to saving, this is called after creating a file, as well as when it's about
@@ -357,31 +361,31 @@ initialFileVariables:
 	.db <wLinkName+5,			$00 ; Ensure names have null terminator
 	.db <wKidName+5,			$00
 	.db <wObtainedTreasureFlags,		1<<TREASURE_PUNCH
-	.db <wMaxBombs,				$10
+	.db <wMaxBombs,				$20;$10
 	.db <wLinkHealth,			$10 ; 4 hearts (gets overwritten in standard game)
 	.db <wLinkMaxHealth,			$10
 
 .ifdef ROM_AGES
 	; Initial spawn location
-	.db <wDeathRespawnBuffer.group,		$00
-	.db <wDeathRespawnBuffer.room,		$8a
-	.db <wDeathRespawnBuffer.y,		$38
-	.db <wDeathRespawnBuffer.x,		$48
-	.db <wDeathRespawnBuffer.facingDir,	$00
+	.db <wDeathRespawnBuffer.group,		>ROOM_AGES_5f8
+	.db <wDeathRespawnBuffer.room,		<ROOM_AGES_5f8
+	.db <wDeathRespawnBuffer.y,		$18;$20
+	.db <wDeathRespawnBuffer.x,		$18;$28
+	.db <wDeathRespawnBuffer.facingDir,	DIR_RIGHT
 
 	.db <wJabuWaterLevel,			$21
 	.db <wPortalGroup,			$ff
-	.db <wPirateShipRoom,			$b6
-	.db <wPirateShipY,			$48
-	.db <wPirateShipX,			$48
-	.db <wPirateShipAngle,			$02
+	;.db <wPirateShipRoom,			$b6
+	;.db <wPirateShipY,			$48
+	;.db <wPirateShipX,			$48
+	;.db <wPirateShipAngle,			$02
 .else ;ROM_SEASONS
 	; Initial spawn location
-	.db <wDeathRespawnBuffer.group,		$00
-	.db <wDeathRespawnBuffer.room,		$a7
-	.db <wDeathRespawnBuffer.y,		$38
-	.db <wDeathRespawnBuffer.x,		$48
-	.db <wDeathRespawnBuffer.facingDir,	$02
+	.db <wDeathRespawnBuffer.group,		$05
+	.db <wDeathRespawnBuffer.room,		$f8
+	.db <wDeathRespawnBuffer.y,		$20
+	.db <wDeathRespawnBuffer.x,		$28
+	.db <wDeathRespawnBuffer.facingDir,	DIR_RIGHT;$02
 .endif
 	.db $00
 

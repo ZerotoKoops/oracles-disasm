@@ -70,6 +70,7 @@ applyRoomSpecificTileChanges:
 	.dw tileReplacement_group0Map76 ; $36
 	.dw tileReplacement_group0Mapa5 ; $37
 
+
 roomTileChangerCodeGroupTable:
 	.dw roomTileChangerCodeGroup0Data
 	.dw roomTileChangerCodeGroup1Data
@@ -85,6 +86,7 @@ roomTileChangerCodeGroupTable:
 ;   b1: Index for jump table above
 
 roomTileChangerCodeGroup0Data:
+/*
 	.db $38 $08
 	.db $48 $17
 	.db $5c $14
@@ -110,22 +112,28 @@ roomTileChangerCodeGroup0Data:
 	.db $98 $35
 	.db $a5 $37
 	.db $76 $36
+*/
 	.db $00
 roomTileChangerCodeGroup1Data:
+/*
 	.db $38 $09
 	.db $27 $28
 	.db $8c $2c
 	.db $58 $34
+*/
 	.db $00
 roomTileChangerCodeGroup2Data:
+/*
 	.db $f7 $15
 	.db $90 $2b
 	.db $9e $2f
 	.db $7e $02
+*/
 	.db $00
 roomTileChangerCodeGroup3Data:
 	.db $00
 roomTileChangerCodeGroup4Data:
+/*
 	.db $1b $01
 	.db $4c $03
 	.db $4e $04
@@ -135,8 +143,10 @@ roomTileChangerCodeGroup4Data:
 	.db $c7 $2d
 	.db $c9 $2e
 	.db $ea $33
+*/
 	.db $00
 roomTileChangerCodeGroup5Data:
+/*
 	.db $f5 $00
 	.db $38 $0a
 	.db $25 $0b
@@ -152,11 +162,14 @@ roomTileChangerCodeGroup5Data:
 	.db $b9 $27
 	.db $c2 $29
 	.db $e3 $2a
+*/
 	.db $00
 roomTileChangerCodeGroup6Data:
 	.db $00
 roomTileChangerCodeGroup7Data:
+/*
 	.db $4a $11
+*/
 	.db $00
 
 ;;

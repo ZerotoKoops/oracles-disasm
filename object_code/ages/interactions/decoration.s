@@ -22,8 +22,8 @@ interactionCode80:
 	.dw interactionAnimate ; $0a
 	.dw interactionAnimate ; $0b
 	.dw interactionAnimate ; $0c
-	.dw interactionAnimate ; $0d
-	.dw interactionAnimate ; $0e
+	.dw interactionAnimate;@checkDeleteShipParts; ; $0d
+	.dw interactionAnimate;@checkDeleteShipParts; ; $0e
 
 @state0:
 	call interactionInitGraphics
@@ -112,12 +112,18 @@ interactionCode80:
 	ld e,Interaction.subid
 	ld a,(de)
 	cp $0c
-	ret nz
+	jr z,+
+	lda $00
+	ld (wcc84),a
+	ret
++
+	ld a,d
+	ld (wcc84),a
 ; add bow edges and railing 
 	ldbc $30,$00 ; Y X location
 	ld e,$0d;$0a ; subid
 	call @@createDecoration
-	ldbc $30,$18
+	ldbc $30,$00;$18
 	ld e,$0e;$0b
 @@createDecoration:
 	call getFreeInteractionSlot
@@ -135,6 +141,8 @@ interactionCode80:
 	add c
 	ld l,e
 	ld (hl),a
+	;ld l,Interaction.enabled
+	;set 1,(hl) ; don't despawn
 	ret
 
 @pirateBow2: ; $0d
@@ -145,3 +153,18 @@ interactionCode80:
 	call loadPaletteHeader
 	call interactionInitGraphics
 	jp objectSetVisible80
+
+/*
+@checkDeleteShipParts:
+	ld a,(wScrollMode)
+	cpa $01
+	ret nz
+
+	ld a,(wcc84)
+	cpa $00
+	jp nz,interactionAnimate
+
+	ld l,Interaction.enabled
+	res 1,(hl)
+	jp interactionDelete
+*/

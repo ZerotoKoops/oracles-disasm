@@ -7,6 +7,7 @@
 .include "include/wram.s"
 .include "include/hram.s"
 .include "include/macros.s"
+.include "include/zerotokoops_macros.s"
 .include "include/script_commands.s"
 .include "include/simplescript_commands.s"
 .include "include/movementscript_commands.s"

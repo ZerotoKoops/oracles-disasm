@@ -4161,6 +4161,7 @@ checkPlayRoomMusic:
 	call checkGlobalFlag
 	ret z
 .endif
+playRoomMusic:
 
 .ifdef ROM_SEASONS
 	; Override subrosia music if on a date with Rosa
@@ -5444,10 +5445,15 @@ func_7b93:
 	inc (hl)
 	ld a,$03
 	ld ($d000),a
+	ld a,LINK_STATE_SLEEPING
+	ld (wLinkForceState),a
+
+/*
 	ld a,LINK_STATE_WARPING
 	ld (wLinkForceState),a
 	ld a,$0b
 	ld (wWarpTransition),a
+*/
 	ret
 
 @substate1:
@@ -5478,6 +5484,7 @@ func_7b93:
 	ld (wDisabledObjects),a
 	ld a,GLOBALFLAG_PREGAME_INTRO_DONE
 	call setGlobalFlag
+	call playRoomMusic;checkPlayRoomMusic
 	jp initializeRoom
 
 

@@ -79,6 +79,13 @@ getAdjustedRoomGroup:
 	ld b,a
 	cp $02
 	ret nc
+
+	cpa $00
+	jr nz,+
+	ld a,(wRoomStateModifier)
+	ld b,a
+	ret
++
 	call getThisRoomFlags
 	rrca ; Check ROOMFLAG_LAYOUTSWAP
 	jr nc,+

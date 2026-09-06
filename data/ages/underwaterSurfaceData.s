@@ -17,9 +17,41 @@ underWaterSurfaceTable:
 
 underWaterSurfaceTableGroup0:
 underWaterSurfaceTableGroup1:
+	.db $00 ; ZTK - don't know if this is necessary
 underWaterSurfaceTableGroup2:
+	.db <ROOM_AGES_2eb
+	.dw underWaterSurfaceData_2eb
+
+	.db <ROOM_AGES_2fb
+	.dw underWaterSurfaceData_2fb
+		
+	.db <ROOM_AGES_2ec
+	.dw underWaterSurfaceData_2ec
+
+	.db <ROOM_AGES_2fc
+	.dw underWaterSurfaceData_2fc
+
+	.db <ROOM_AGES_2dc
+	.dw underWaterSurfaceData_2dc
+
+	.db <ROOM_AGES_2da
+	.dw underWaterSurfaceData_2da
+
+	.db <ROOM_AGES_2bb
+	.dw underWaterSurfaceData_noSurfaceSmallRoom
+	.db <ROOM_AGES_2bc
+	.dw underWaterSurfaceData_noSurfaceSmallRoom
+	.db <ROOM_AGES_2cb
+	.dw underWaterSurfaceData_noSurfaceSmallRoom
+	.db <ROOM_AGES_2cc
+	.dw underWaterSurfaceData_noSurfaceSmallRoom
+	.db <ROOM_AGES_2db
+	.dw underWaterSurfaceData_noSurfaceSmallRoom
+
+	.db $00
 underWaterSurfaceTableGroup6:
 underWaterSurfaceTableGroup7:
+/*
 	.db $90
 	.dw underWaterSurfaceData_7a47
 
@@ -130,10 +162,11 @@ underWaterSurfaceTableGroup7:
 
 	.db $d8
 	.dw underWaterSurfaceData_7c37
-
+*/
 	.db $00
 
 underWaterSurfaceTableGroup3:
+/*
 	.db $90
 	.dw underWaterSurfaceData_7a47
 
@@ -208,16 +241,18 @@ underWaterSurfaceTableGroup3:
 
 	.db $d6
 	.dw underWaterSurfaceData_7d37
-
+*/
 	.db $00
 
 underWaterSurfaceTableGroup4:
+/*
 	.db $c1
 	.dw underWaterSurfaceData_7e53
-
+*/
 	.db $00
 
 underWaterSurfaceTableGroup5:
+/*
 	.db $4c
 	.dw underWaterSurfaceData_7d77
 
@@ -241,9 +276,73 @@ underWaterSurfaceTableGroup5:
 
 	.db $35
 	.dw underWaterSurfaceData_7e27
-
+*/
 	.db $00
 
+underWaterSurfaceData_noSurfaceSmallRoom:
+	.dw %1111111111000000
+	.dw %1111111111000000
+	.dw %1111111111000000
+	.dw %1111111111000000
+	.dw %1111111111000000
+	.dw %1111111111000000
+	.dw %1111111111000000
+	.dw %1111111111000000
+underWaterSurfaceData_2eb:
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000011111000000
+	.dw %0000011111000000
+	.dw %0000011111000000
+underWaterSurfaceData_2fb:
+	.dw %0000011111000000
+	.dw %0000111111100000
+	.dw %0000011111000000
+	.dw %0000011111000000
+	.dw %0000011111000000
+	.dw %0000011111000000
+	.dw %0000011111000000
+	.dw %0000011111000000
+underWaterSurfaceData_2ec:
+	.dw %0000000000000000
+	.dw %1100000000000000
+	.dw %1100000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+underWaterSurfaceData_2fc:
+	.dw %0000000000000000
+	.dw %1100000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+	.dw %0000000000000000
+underWaterSurfaceData_2dc:
+	.dw %0000000000000000
+	.dw %1000000000000000
+	.dw %0100000000000000
+	.dw %1000000000000000
+	.dw %0100000000000000
+	.dw %1000000000000000
+	.dw %1000000000000000
+	.dw %1000000000000000
+underWaterSurfaceData_2da:
+	.dw %0000000000000000
+	.dw %0000000001000000
+	.dw %1000000000000000
+	.dw %1000000000000000
+	.dw %0000000000000000
+	.dw %1000000001000000
+	.dw %1010000010000000
+	.dw %1001101101000000
+/*
 underWaterSurfaceData_7a47:
 	.dw %1111111111000000
 	.dw %1111111111000000
@@ -858,3 +957,4 @@ underWaterSurfaceData_7e53:
 	.dw %1001111001110001
 	.dw %1001111111110001
 	.dw %1111111111111111
+*/

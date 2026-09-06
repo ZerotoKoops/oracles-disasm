@@ -5255,6 +5255,16 @@ interactionOamPirateShip04:
 
 interactionOamPirateShip05:
 	.db $08
+	.db $10 $28 $10 $20
+	.db $05 $20 $12 $20
+	.db $f8 $18 $14 $20
+	.db $f0 $10 $16 $20
+
+	.db $10 $e0 $10 $00
+	.db $05 $e8 $12 $00
+	.db $f8 $f0 $14 $00
+	.db $f0 $f8 $16 $00
+/*
 	.db $10 $10 $10 $20
 	.db $05 $08 $12 $20
 	.db $f8 $00 $14 $20
@@ -5264,3 +5274,4 @@ interactionOamPirateShip05:
 	.db $05 $d0 $12 $00
 	.db $f8 $d8 $14 $00
 	.db $f0 $e0 $16 $00
+*/

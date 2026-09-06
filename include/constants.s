@@ -1,5 +1,7 @@
 .include "constants/common/version.s"
 
+.include "constants/common/zerotokoops_constants.s"
+    
 .include "constants/common/breakableTileSources.s"
 .include "constants/common/directions.s"
 .include "constants/common/collisionEffects.s"

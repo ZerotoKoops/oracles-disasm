@@ -2289,7 +2289,6 @@ group3MapeaObjectData:
 	obj_End
 
 group3MapebObjectData:
-	obj_Interaction $bf $02 $28 $48
 	obj_End
 
 group3MapecObjectData:
@@ -4846,7 +4845,7 @@ group5Mapf8ObjectData:
 	obj_Interaction $c3 $00 $28 $c8
 	obj_Interaction $c4 $00 $58 $a8
 	obj_Interaction $c4 $01 $68 $d8
-	obj_Interaction $c4 $02 $18 $28
+	obj_Interaction $c4 $02 $38 $78
 	obj_Interaction $c4 $03 $98 $28
 	obj_End
 

@@ -357,8 +357,6 @@ group2WarpSources:
 	m_PointerWarp     $e8 warpSource79aa
 	m_StandardWarp $4 $e9 $2a $1 $3
 	m_StandardWarp $4 $ea $2e $0 $3
-	m_StandardWarp $4 $eb $2f $0 $3
-	m_StandardWarp $4 $ec $21 $0 $3
 	m_StandardWarp $4 $ee $35 $0 $3
 	m_StandardWarp $4 $f3 $28 $1 $3
 	m_StandardWarp $4 $f4 $24 $0 $3
@@ -367,10 +365,6 @@ group2WarpSources:
 	m_StandardWarp $4 $f7 $0f $1 $3
 	m_StandardWarp $4 $f8 $1c $1 $3
 	m_StandardWarp $4 $f9 $14 $0 $3
-	m_StandardWarp $0 $fa $46 $2 $2
-	m_StandardWarp $0 $fb $44 $2 $2
-	m_StandardWarp $4 $fb $1c $0 $3
-	m_StandardWarp $4 $fc $11 $1 $3
 	m_StandardWarp $8 $fd $2c $0 $3
 	m_StandardWarp $0 $fd $49 $5 $2
 	m_StandardWarp $8 $ff $20 $1 $3
@@ -453,7 +447,6 @@ group3WarpSources:
 	m_StandardWarp $4 $e8 $20 $2 $3
 	m_StandardWarp $0 $e9 $25 $1 $4
 	m_StandardWarp $4 $ea $0a $0 $3
-	m_StandardWarp $4 $eb $0c $0 $3
 	m_StandardWarp $8 $ec $0d $0 $3
 	m_StandardWarp $4 $ed $37 $0 $3
 	m_StandardWarp $4 $ee $41 $0 $3

@@ -2093,6 +2093,13 @@ linkState05:
 @substate0:
 	call itemIncSubstate
 
+	lda GLOBALFLAG_PREGAME_INTRO_DONE
+	call checkGlobalFlag
+	jr nz,+
+	call itemIncSubstate
+	jr ++
++
+
 	ld l,SpecialObject.speed
 	ld (hl),SPEED_80
 
@@ -2110,7 +2117,7 @@ linkState05:
 
 	ld a,$81
 	ld (wLinkInAir),a
-
+++
 	ld a,LINK_ANIM_MODE_SLEEPING
 	jp specialObjectSetAnimation
 
@@ -2164,7 +2171,7 @@ linkState05:
 
 	ld l,SpecialObject.direction
 .ifdef ROM_AGES
-	ld (hl),DIR_LEFT
+	ld (hl),DIR_RIGHT;DIR_LEFT
 .else
 	ld (hl),DIR_RIGHT
 .endif
@@ -2172,7 +2179,7 @@ linkState05:
 	; [SpecialObject.angle] = $18
 	inc l
 .ifdef ROM_AGES
-	ld (hl),$18
+	ld (hl),ANGLE_RIGHT;$18
 .else
 	ld (hl),$08
 .endif

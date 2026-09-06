@@ -6,7 +6,7 @@ specialObjectCode_linkInCutscene:
 	ld a,(de)
 	rst_jumpTable
 	.dw linkCutscene0
-	.dw linkCutscene1
+	.dw linkCutscene1 ; Link summoned cutscene
 	.dw linkCutscene2
 	.dw linkCutscene3
 	.dw linkCutscene4

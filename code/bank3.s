@@ -773,23 +773,23 @@ secretDataToEncodeTable:
 @entry0: ; "Game transfer" secret
 @entry1:
 	.db $11                     ; Bit number:
-	.db <wFileIsHeroGame	$01 ; 20
-	.db <wWhichGame		$01 ; 21
-	.db <wLinkName		$08 ; 22
-	.db <wKidName		$08 ; 30
-	.db <wLinkName+1	$08 ; 38
-	.db <wKidName+1		$08 ; 46
-	.db <wChildStatus	$06 ; 54
-	.db <wLinkName+2	$08 ; 60
-	.db <wKidName+2		$08 ; 68
-	.db <wObtainedRingBox	$01 ; 76
-	.db <wLinkName+3	$08 ; 77
-	.db <wAnimalCompanion	$04 ; 85
-	.db <wLinkName+4	$08 ; 89
-	.db <wKidName+3		$08 ; 97
-	.db <wFileIsLinkedGame	$01 ; 105
-	.db <wKidName+4		$08 ; 106
-	.db <wLinkName+5	$02 ; 114 (This is always 00)
+	.db <wFileIsHeroGame,	$01 ; 20
+	.db <wWhichGame,		$01 ; 21
+	.db <wLinkName,		$08 ; 22
+	.db <wKidName,		$08 ; 30
+	.db <wLinkName+1,	$08 ; 38
+	.db <wKidName+1,		$08 ; 46
+	.db <wChildStatus,	$06 ; 54
+	.db <wLinkName+2,	$08 ; 60
+	.db <wKidName+2,		$08 ; 68
+	.db <wObtainedRingBox,	$01 ; 76
+	.db <wLinkName+3,	$08 ; 77
+	.db <wAnimalCompanion,	$04 ; 85
+	.db <wLinkName+4,	$08 ; 89
+	.db <wKidName+3,		$08 ; 97
+	.db <wFileIsLinkedGame,	$01 ; 105
+	.db <wKidName+4,		$08 ; 106
+	.db <wLinkName+5,	$02 ; 114 (This is always 00)
 
 	; Totals to 96 bits
 	; (plus 20 from header, plus 4 for checksum = 120 bits = 20 6-bit characters)

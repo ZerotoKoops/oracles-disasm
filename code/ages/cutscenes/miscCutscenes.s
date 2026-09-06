@@ -1711,6 +1711,8 @@ pregameIntroCutsceneHandler:
 	call decCbb3
 	ret nz
 	jp cutscene_incCutsceneState
+
+; Beginning of unlinked game
 @stateA:
 	call disableLcd
 	ld a,($ff00+R_SVBK)
@@ -1731,9 +1733,11 @@ pregameIntroCutsceneHandler:
 	call func_6eb7
 	ld a,MUS_ESSENCE_ROOM
 	call playSound
+; Link in Cutscene
 	ld a,$08
 	call setLinkID
 	ld l,<w1Link.enabled
+; Subid $01
 	ld (hl),$01
 	ld l,<w1Link.subid
 	ld (hl),$0b

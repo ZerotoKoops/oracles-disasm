@@ -692,7 +692,47 @@ calculateRoomStateModifier:
 	jr z,+
 	inc b
 +
+; $00 if normal
+; $01 if underwater, no swap
+; $02 if swap
+; $03 if underwater, swap
 	ld a,b
+
+	cpa $00
+	jr nz,@@notNormal
+
+	ld a,(wActiveGroup)
+	or a
+	jr nz,++
+
+	ld a,(wTimeOfDay)
+	and TIME_NIGHT ; or TIME_DAWN
+	jr z,++
+
+	ld a,(wActiveRoom)
+	srl a; \2
+	srl a; \4
+	ld hl,roomSwapLayoutData
+	rst_addAToHl
+	ld b,(hl)
+	ld a,(wActiveRoom)
+	and $03
+-
+	jr z,+
+; if not the right room, shift further right
+	srl b
+	srl b
+	dec a
+	jr -
+
+; load layout swap modifier
++
+	ld a,b
+	and $03
+	jr @@notNormal
+++
+	ld a,b
+@@notNormal:
 	ld (wRoomStateModifier),a
 	ret
 
@@ -704,6 +744,8 @@ calculateRoomStateModifier:
 	sub SPECIALOBJECT_RICKY
 	ld (wRoomStateModifier),a
 	ret
+
+.include {"{GAME_DATA_DIR}/roomSwapLayoutData.s"}
 
 ;;
 ; If there are whirlpools or pollution tiles on the screen, this creates a part of type

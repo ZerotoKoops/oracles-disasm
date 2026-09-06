@@ -369,10 +369,30 @@ wUnappraisedRings: ; $c5c0
 ; List of unappraised rings. each byte always seems to have bit 6 set, indicating that the
 ; ring is unappraised. It probably gets unset the moment you appraise it, but only for
 ; a moment because then it disappears from this list.
-	dsb $40
+	dsb $40-5 ; ZTK: take off some for free stuff
 
 wUnappraisedRingsEnd: ; $c600
 	.db
+
+
+wTimeOfDay:
+	db
+; $00 == day
+; $01 == dusk
+; $02 == night
+; $03 == dawn
+wSecond:
+	db
+wClock:
+	.dw
+wMinute:
+	db
+wHour:
+	db
+wDay:
+	db
+
+
 
 ; ==================================================================================================
 ; C6xx block: deals largely with inventory, also global flags
