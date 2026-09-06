@@ -3449,6 +3449,56 @@ updateStatusBar_body:
 	ld a,(wStatusBarNeedsRefresh)
 	bit 2,a
 	call nz,inGameDrawHeartDisplay
+
+/*
+; clock
+	ld a,GLOBALFLAG_INTRO_DONE
+	call checkGlobalFlag
+	jr z,++
+	;ld hl,w4StatusBarTileMap+$28
+	;ld b,($34-$28+1)
+	;call clearMemory
+; actual clock
+	ld a,(wStatusBarNeedsRefresh)
+	bit 5,a
+	jr z,++
+	ld hl,w4StatusBarTileMap+$34
+	call correctAddressForExtraHeart
+	ld c,$10
+	ld e,$01
+	ld a,(wMinute)
+-
+	ld b,a
+	and $0f
+	add c
+	ldd (hl),a
+	ld a,b
+	swap a
+	and $0f
+	add c
+	ldd (hl),a
+	
+	ld a,(wHour)
+	dec e
+	jr z,-
+
+	ld hl,w4StatusBarTileMap+$14
+	call correctAddressForExtraHeart
+	ld a,(wDay)
+	add c
+	ldd (hl),a
+	ld a,$1e
+	ldd (hl),a
+	dec a
+	ldd (hl),a
+	dec a
+	ldd (hl),a
+
+	;ld hl,wStatusBarNeedsRefresh
+	;res 5,(hl)
+++
+*/
+
 	ld hl,w4StatusBarTileMap+$0a
 	call correctAddressForExtraHeart
 	ld (hl),$04

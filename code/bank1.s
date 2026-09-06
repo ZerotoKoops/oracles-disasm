@@ -1507,6 +1507,7 @@ updateTilesetPalette:
 	ret z
 
 	ld (wLoadedTilesetPalette),a
+	call updateTimeOfDayPalette
 	jp loadPaletteHeader
 
 ;;
@@ -3599,7 +3600,10 @@ standardGameState:
 	.dw cutscene20
 	.dw cutscene21
 .endif
-
+	.dw cutsceneTimeOfDay ; time of day; clock
+	;.dw cutsceneWallRetraction
+	;.dw cutsceneOutOfTime ; clock
+	;.dw cutsceneSongOfTime ; clock
 
 ;;
 ; Cutscene 0 = not in a cutscene; loading a room
@@ -3658,6 +3662,28 @@ cutscene01:
 .else; ROM_SEASONS
 	call updateAllObjects
 .endif
+
+	ld a,GLOBALFLAG_INTRO_DONE
+	call checkGlobalFlag
+	;jr z,@doneUpdatingClock
+/*
+; Don't update clock if in end room
+	ld a,(wActiveGroup)
+	cp >ROOM_SEASONS_398
+	jr nz,+
+	ld a,(wActiveRoom)
+	cp <ROOM_SEASONS_398
+	jr z,@doneUpdatingClock
++
+*/
+	;ld a,(w1ParentItem5.id)
+	;cp ITEM_HARP
+	;jr z,++
+	ld a,(wLinkDeathTrigger)
+	or a
+	call z,updateClock ; clock
+	call c,updateDayOrNight ; clock
+@doneUpdatingClock:
 
 	call updateStatusBar
 
@@ -4200,6 +4226,35 @@ playRoomMusic:
 ++
 .endif
 
+; clock music
+	ld a,(wActiveGroup)
+	cpa >ROOM_AGES_000
+	jr nz,@dayMusic
+
+	ld a,(wTimeOfDay)
+	rst_jumpTable
+	.dw @dayMusic
+	.dw @dawnDuskNoMusic
+	.dw @nightMusic
+	.dw @dawnDuskNoMusic
+
+@dawnDuskNoMusic:
+	ld a,(wActiveMusic)
+	and $7f
+	jr z,+
+	ld a,SNDCTRL_FAST_FADEOUT
+	jr @setMusic
++
+	ld a,(wActiveMusic)
+	cpa MUS_NONE
+	ret z
+
+@nightMusic:
+	lda MUS_SADNESS
+	ld (wActiveMusic2),a
+	jr @setMusic
+@dayMusic:
+	call loadScreenMusic
 	ld a,(wActiveMusic2)
 
 @setMusic:
@@ -4247,7 +4302,22 @@ checkDisplayEraOrSeasonInfo:
 ; In Ages, it's always $00 (green).
 ;
 updateGrassAnimationModifier:
+	ld a,(wActiveGroup)
+	cpa >ROOM_AGES_000
+	jr nz,++
+	ld a,(wTimeOfDay)
+	rrca
+	jr nc,+
+	ld a,$02
++
+	ld hl,@grassAnimationValues
+	rst_addAToHl
+	ld a,(hl)
+++
+	ld (wGrassAnimationModifier),a
+	ret
 
+/*
 .ifdef ROM_AGES
 	ld a,$00
 	ld (wGrassAnimationModifier),a
@@ -4273,7 +4343,7 @@ updateGrassAnimationModifier:
 	ld a,(hl)
 	ld (wGrassAnimationModifier),a
 	ret
-
+*/
 @grassAnimationValues:
 
 .db terrainEffects.greenGrassAnimationFrame0  - terrainEffects.greenGrassAnimationFrame0
@@ -4281,7 +4351,7 @@ updateGrassAnimationModifier:
 .db terrainEffects.orangeGrassAnimationFrame0 - terrainEffects.greenGrassAnimationFrame0
 .db terrainEffects.blueGrassAnimationFrame0   - terrainEffects.greenGrassAnimationFrame0
 
-.endif
+;.endif
 
 
 ;;
@@ -5635,5 +5705,7 @@ cutscene1f:
 	jp updateAllObjects
 
 .endif ; ROM_AGES
+
+	.include "code/bank1Clock.s"
 
 .ends

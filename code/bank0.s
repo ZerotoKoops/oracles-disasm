@@ -12413,6 +12413,7 @@ loadTilesetGraphics:
 	push af
 
 	ld a,(wTilesetPalette)
+	call updateTimeOfDayPalette ; clock
 	call loadPaletteHeader
 
 	call          loadTilesetGfx
@@ -13894,7 +13895,7 @@ getSomariaBlockIndex:
 	ret
 .endif
 
-
+.include "code/bank0Clock.s"
 .include "code/debug.s"
 
 .ENDS

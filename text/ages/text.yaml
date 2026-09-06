@@ -1673,6 +1673,16 @@ groups:
     text: |2-
        The Black Tower
 
+  - name: TX_0210
+    index: 0x010
+    text: >-
+       Dawn
+
+  - name: TX_0211
+    index: 0x011
+    text: >-
+       Night
+
 - group: 0x03
   data:
   - name: TX_0300

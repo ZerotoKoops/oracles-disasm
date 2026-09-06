@@ -41,6 +41,7 @@
 	CUTSCENE_BLACK_TOWER_ESCAPE_ATTEMPT	db ; 0x1f: Triggers after Veran phase 2
 	CUTSCENE_FLAME_OF_DESPAIR	db ; 0x20: The final flame is lit
 	CUTSCENE_BLACK_TOWER_COMPLETE	db ; 0x21
+	CUTSCENE_CHANGE_TIME_OF_DAY	db ; 0x22
 .ende
 
 ; Seasons
@@ -71,4 +72,5 @@
 	CUTSCENE_S_WARP_TO_TWINROVA_FIGHT	db ; 0x17: Triggers after approaching Zelda
 	CUTSCENE_S_FLAMES_FLICKERING	db ; 0x18: Flames turn blue before Twinrova fight
 	CUTSCENE_S_TWINROVA_SACRIFICE	db ; 0x19
+	CUTSCENE_S_CHANGE_TIME_OF_DAY	db ; 0x22
 .ende

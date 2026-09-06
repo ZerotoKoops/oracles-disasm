@@ -58,6 +58,8 @@ initializeFile:
 .ifdef ROM_AGES
 	callab roomTileChanges.initializeVinePositions
 .endif
+	; Set clock
+	call initializeClockVars
 ; ZTK - no intro?
 	;lda GLOBALFLAG_PREGAME_INTRO_DONE
 	;call setGlobalFlag
@@ -140,6 +142,16 @@ eraseFile:
 	xor a
 	ld ($1111),a
 	ret
+
+initializeClockVars:
+	; Set clock
+	ld b,$05
+	ld hl,wFirstClockVar
+	ld de,initialClockVars
+	call copyMemoryReverse
+	ld b,$01
+; hl == wTimeFlags
+	jp clearMemory
 
 ;;
 ; Clear $0550 bytes at hl
@@ -388,6 +400,13 @@ initialFileVariables:
 	.db <wDeathRespawnBuffer.facingDir,	DIR_RIGHT;$02
 .endif
 	.db $00
+
+initialClockVars:
+	.db TIME_DAWN ; wTimeOfDay
+	.db 10 ; seconds
+	.dw $0559 ; hours and minutes
+	.db $00 ; day
+	;.db $00 ; timeflags
 
 ; Standard game (not linked or hero)
 initialFileVariables_standardGame:

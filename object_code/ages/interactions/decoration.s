@@ -20,10 +20,10 @@ interactionCode80:
 	.dw @deleteIfGotRoomItem ; $08
 	.dw interactionAnimate ; $09
 	.dw interactionAnimate ; $0a
-	.dw interactionAnimate ; $0b
-	.dw interactionAnimate ; $0c
-	.dw interactionAnimate;@checkDeleteShipParts; ; $0d
-	.dw interactionAnimate;@checkDeleteShipParts; ; $0e
+	.dw @checkLoadNewPalette;interactionAnimate ; $0b
+	.dw @checkLoadNewPalette;interactionAnimate ; $0c
+	.dw @checkLoadNewPalette;interactionAnimate;@checkDeleteShipParts; ; $0d
+	.dw @checkLoadNewPalette;interactionAnimate;@checkDeleteShipParts; ; $0e
 
 @state0:
 	call interactionInitGraphics
@@ -144,7 +144,7 @@ interactionCode80:
 	;ld l,Interaction.enabled
 	;set 1,(hl) ; don't despawn
 	ret
-
+	
 @pirateBow2: ; $0d
 @pirateBow3: ; $0e
 @@initialize:
@@ -154,7 +154,12 @@ interactionCode80:
 	call interactionInitGraphics
 	jp objectSetVisible80
 
-/*
+; TODO: make the palette update more seamless
+@checkLoadNewPalette:
+	ld a,PALH_cb;PALH_57
+	call loadPaletteHeader
+	jp interactionAnimate
+	/*
 @checkDeleteShipParts:
 	ld a,(wScrollMode)
 	cpa $01

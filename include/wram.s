@@ -369,12 +369,13 @@ wUnappraisedRings: ; $c5c0
 ; List of unappraised rings. each byte always seems to have bit 6 set, indicating that the
 ; ring is unappraised. It probably gets unset the moment you appraise it, but only for
 ; a moment because then it disappears from this list.
-	dsb $40-5 ; ZTK: take off some for free stuff
+	dsb $40-6 ; ZTK: take off some for free stuff
 
 wUnappraisedRingsEnd: ; $c600
 	.db
 
-
+wFirstClockVar:
+	.db
 wTimeOfDay:
 	db
 ; $00 == day
@@ -391,7 +392,9 @@ wHour:
 	db
 wDay:
 	db
-
+wTimeFlags:
+	db
+; bit 0 set if slower time
 
 
 ; ==================================================================================================
