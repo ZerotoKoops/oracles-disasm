@@ -15,7 +15,7 @@ clearInteractions:
 	cp $e0
 	jr c,--
 	ret
-	
+
 incDecimalHlRef:
 	ld a,(hl)
 	add $01
@@ -32,7 +32,7 @@ decDecimalHlRef:
 
 .ifdef ROM_AGES
 checkForDawnDuskPaletteExceptions:
-    ld a,(wTilesetPalette)
+	ld a,(wTilesetPalette)
     ld e,a
     ld hl,@dawnDuskPaletteExceptions
     jp lookupKey
@@ -73,8 +73,9 @@ updateTimeOfDayPalette:
 	call checkForDawnDuskPaletteExceptions
 	jr c,@normalPalette
 	ld a,PALH_TILESET_OVERWORLD_PAST_ALTERNATE
-.else ; ROM_SEASONS
+	ret
 
+.else ; ROM_SEASONS
 @duskPalette:
 	ld a,PALH_TILESET_TARM_RUINS_AUTUMN
 	ret
@@ -88,6 +89,8 @@ updateTimeOfDayPalette:
 	ld a,(wTilesetPalette)
     ret
 
+
+
 updateParts:
 	ldh a,(<hRomBank)
 	push af
@@ -99,6 +102,7 @@ updateParts:
 	setrombank
 	ret
 
+/*
 getDayNightCombination:
 	push hl
     ld hl,wDay
@@ -119,3 +123,4 @@ getDayNightCombination:
 ++
 	pop hl
 	ret
+*/

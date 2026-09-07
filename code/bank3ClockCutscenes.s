@@ -108,7 +108,8 @@ endCutscene:
 	ld a,(wPaletteThread_mode)
 	cpa $00
 	ret nz
-    ;lda $00
+@noWait:
+    lda $00
     ld (wDisabledObjects),a
     ld (wDisableWarpTiles),a
     ld (wDisableScreenTransitions),a
@@ -127,7 +128,7 @@ duskToNightCutscene:
     .dw @state1
     .dw waitForText
     .dw @state3
-    .dw endCutscene
+    .dw endCutscene@noWait
 
 @state0:
 	call retIfTextIsActive
@@ -189,36 +190,36 @@ duskToNightCutscene:
 
 @state3:
     call retIfTextIsActive
-
     call incCutsceneState
+
 .ifdef ROM_AGES
     ld a,(wTilesetFlags)
     and TILESETFLAG_OUTDOORS
-    jr z,++
-    ;ret z
+    jr z,@@notOutdoors
 .else ; ROM_SEASONS
     callab bank1.updateSeasonByRoomPack
-    ;ld a,(wTimeOfDay) ; clock
-	;rra	;$00 if day, $01 if night
-    ;ld (wRoomStateModifier),a
 
     ld a,(wActiveGroup)
     cpa >ROOM_SEASONS_000
-    jr nz,++
-    ;ret nz
+    jr nz,@@notOutdoors
 .endif
 
-
+    callab roomInitialization.calculateRoomStateModifier
 ;reload tileset for change in time of day
     callab bank1.cutsceneTimeOfDay_reloadRoom
-++
+    jr ++
+
+@@notOutdoors:
     call reloadTileMap
+++
+
     callab bank1.checkDarkenRoomAndClearPaletteFadeState ;temp?
     jr z,+
-    call fadeinFromWhiteToRoom
-    or h ; just so the next call is not used
+    call fadeinFromBlack
+    jr ++
 +
-    call z,fadeinFromBlack
+    call fadeinFromWhiteToRoom
+++
 
 /*
     call checkIsAtBeach
@@ -232,20 +233,21 @@ duskToNightCutscene:
 +
 */
 ; Only reset music if in overworld
-    ld a,(wActiveGroup)
 .ifdef ROM_AGES
-    cpa >ROOM_AGES_000
+    ld a,(wTilesetFlags)
+    and TILESETFLAG_OUTDOORS
+    ret z
 .else ; ROM_SEASONS
+    ld a,(wActiveGroup)
     cpa >ROOM_SEASONS_000
-.endif
     ret nz
+.endif
 
 .ifdef ROM_SEASONS
     ld a,(wActiveRoom)
     cpa <ROOM_SEASONS_021
     ret z
 .endif
-    
     ;call loadScreenMusic
     callab bank1.checkPlayRoomMusic
     ld a,SNDCTRL_MEDIUM_FADEIN

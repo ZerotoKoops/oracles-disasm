@@ -1676,12 +1676,13 @@ groups:
   - name: TX_0210
     index: 0x010
     text: >-
-       Dawn
+            \sfx(0xaa)A New Dawn
 
   - name: TX_0211
     index: 0x011
     text: >-
-       Night
+            \sfx(0xce)A Mid-Summer
+                  Night
 
 - group: 0x03
   data:

@@ -701,18 +701,23 @@ calculateRoomStateModifier:
 	cpa $00
 	jr nz,@@notNormal
 
-	ld a,(wActiveGroup)
-	or a
-	jr nz,++
-
 	ld a,(wTimeOfDay)
 	and TIME_NIGHT ; or TIME_DAWN
 	jr z,++
 
+	ld a,(wActiveGroup)
+	cpa $02
+	jr nc,++
+
+	ld hl,roomSwapLayoutData
+	rst_addDoubleIndex
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a
+
 	ld a,(wActiveRoom)
 	srl a; \2
 	srl a; \4
-	ld hl,roomSwapLayoutData
 	rst_addAToHl
 	ld b,(hl)
 	ld a,(wActiveRoom)

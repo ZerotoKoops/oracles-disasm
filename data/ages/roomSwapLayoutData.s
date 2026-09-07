@@ -1,5 +1,10 @@
-
 roomSwapLayoutData:
+	.dw roomSwapLayoutData_group0
+	.dw roomSwapLayoutData_group1
+
+; TODO: Add own table for group 1
+roomSwapLayoutData_group0:
+roomSwapLayoutData_group1:
 ; ROOM_AGES_000 - ROOM_AGES_00f
 	m_swapLayoutData >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300
 	m_swapLayoutData >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300, >ROOM_AGES_300

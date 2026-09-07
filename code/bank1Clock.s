@@ -143,41 +143,29 @@ checkIsNightOutdoors:
 cutsceneTimeOfDay_reloadRoom:
 	call disableLcd
 	call clearOam
+    call clearInteractions
     call reloadTileMap
 
-.ifdef ROM_AGES
-    ld a,(wTimeOfDay)
-    cpa TIME_DAY
-    ld a,(wTilesetPalette)
-    jr z,+
-	ld a,PALH_99
-+
-	call loadPaletteHeader
-.endif
+; Copied from CUTSCENE_03
     call clearScreenVariables
     call clearMemoryOnScreenReload
+    call stopTextThread
+    lda PALH_0f ; All black except for Palette 0
+    call loadPaletteHeader
 
 	call loadTilesetData
 	call loadTilesetGraphics
-	call loadTilesetAndRoomLayout
-	call generateVramTilesWithRoomChanges
-
-    ld a,(wActiveRoom)
-	ld (wLoadingRoom),a
-	call loadRoomCollisions
-
     call func_131f
+    call reloadObjectGfx
+
+    ld a,(wDungeonIndex)
+    cpa $ff
+    call z,clearEnemiesKilledList
+
 	ld de,w1Link.yh
 	call getShortPositionFromDE
 	ld (wWarpDestPos),a
 
-	;call initializeRoom ; doubles objects if not cleared prior
-	call checkDisplayEraOrSeasonInfo
-    call updateGrassAnimationModifier
-	call checkDarkenRoomAndClearPaletteFadeState
+    jp func_5c18
 
-    ;call func_593a ; this updates Link's local respawn 
-    call loadCommonGraphics
-    ld a,$02
-    call loadGfxRegisterStateIndex
-    jp resetCamera
+.include {"{GAME_DATA_DIR}/timeCanPass.s"}

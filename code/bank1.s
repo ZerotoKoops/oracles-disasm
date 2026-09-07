@@ -3665,26 +3665,30 @@ cutscene01:
 
 	ld a,GLOBALFLAG_INTRO_DONE
 	call checkGlobalFlag
-	;jr z,@doneUpdatingClock
-/*
-; Don't update clock if in end room
-	ld a,(wActiveGroup)
-	cp >ROOM_SEASONS_398
-	jr nz,+
-	ld a,(wActiveRoom)
-	cp <ROOM_SEASONS_398
 	jr z,@doneUpdatingClock
-+
-*/
 	;ld a,(w1ParentItem5.id)
 	;cp ITEM_HARP
 	;jr z,++
+	ld a,(wTextIsActive)
+	cpa $00
+	jr nz,@doneUpdatingClock
+
 	ld a,(wLinkDeathTrigger)
 	or a
+	jr nz,@doneUpdatingClock
+
+	ld a,(wActiveGroup)
+	ld hl,timeCanPassTable
+	rst_addDoubleIndex
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a
+	ld a,(wActiveRoom)
+	call checkFlag
 	call z,updateClock ; clock
 	call c,updateDayOrNight ; clock
-@doneUpdatingClock:
 
+@doneUpdatingClock:
 	call updateStatusBar
 
 .ifdef ROM_AGES
@@ -3742,7 +3746,6 @@ cutscene01:
 .else
 	jp initializeRoom
 .endif
-
 
 .ifdef ROM_SEASONS
 
@@ -3818,9 +3821,14 @@ func_5c18:
 	call checkDisplayEraOrSeasonInfo
 	call checkDarkenRoomAndClearPaletteFadeState
 	call fadeinFromWhiteToRoom
+	;ZTK - this is called later in the cutscene
+	ld a,(wCutsceneIndex)
+	cpa CUTSCENE_CHANGE_TIME_OF_DAY
+	jr z,+
 	call checkPlayRoomMusic
 	xor a
 	ld (wCutsceneIndex),a
++
 .ifdef ROM_AGES
 	ld (wDontUpdateStatusBar),a
 .endif
