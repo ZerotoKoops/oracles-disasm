@@ -5480,6 +5480,7 @@ func_7b93:
 	ldh (<hNextLcdInterruptBehaviour),a
 	ld a,SND_WARP_START
 	call playSound
+
 	ld a,$ff
 	jp initWaveScrollValues
 
@@ -5489,6 +5490,11 @@ func_7b93:
 	ld a,(wPaletteThread_mode)
 	or a
 	ret nz
+
+	ld a,$03
+	ld ($d000),a
+	ld a,LINK_STATE_SLEEPING
+	ld (wLinkForceState),a
 
 	ld hl,wCutsceneIndex
 	inc (hl)
@@ -5521,10 +5527,12 @@ func_7b93:
 
 	ld hl,wGenericCutscene.cbb3
 	inc (hl)
+/*
 	ld a,$03
 	ld ($d000),a
 	ld a,LINK_STATE_SLEEPING
 	ld (wLinkForceState),a
+*/
 
 /*
 	ld a,LINK_STATE_WARPING

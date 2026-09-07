@@ -589,23 +589,15 @@ group1MapcbEnemyObjectData:
 	obj_EndPointer
 
 group0Map00EnemyObjectData:
-	obj_RandomEnemy $40 $08 $00
 	obj_EndPointer
 
 group0Map01EnemyObjectData:
-	obj_RandomEnemy $60 $21 $00
 	obj_EndPointer
 
 group0Map02EnemyObjectData:
-	obj_Condition $01
-	obj_SpecificEnemyA $00 $2d $00 $48 $58
-	obj_SpecificEnemyA     $2d $00 $58 $78
 	obj_EndPointer
 
 group0Map03EnemyObjectData:
-	obj_Condition $01
-	obj_SpecificEnemyA $00 $2d $00 $58 $38
-	obj_SpecificEnemyA     $2d $00 $58 $68
 	obj_EndPointer
 
 group0Map04EnemyObjectData:

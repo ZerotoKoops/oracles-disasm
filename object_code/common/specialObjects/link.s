@@ -2097,6 +2097,7 @@ linkState05:
 	call checkGlobalFlag
 	jr nz,+
 	call itemIncSubstate
+	call objectSetInvisible
 	jr ++
 +
 
@@ -2152,9 +2153,16 @@ linkState05:
 	call darkenRoomLightly
 	ld a,$06
 	ld (wPaletteThread_updateRate),a
+	lda GLOBALFLAG_PREGAME_INTRO_DONE
+	call checkGlobalFlag
+	ret nz
+	lda $02
+	ld e,SpecialObject.animCounter
+	ld (de),a
 	ret
 
 @animParameter2:
+	call objectSetVisible
 	ld hl,wLinkMaxHealth
 	ldd a,(hl)
 	ld (hl),a
