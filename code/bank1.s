@@ -4242,15 +4242,15 @@ playRoomMusic:
 	ld a,(wTimeOfDay)
 	rst_jumpTable
 	.dw @dayMusic
-	.dw @dawnDuskNoMusic
+	.dw @dawnDuskMusic
 	.dw @nightMusic
-	.dw @dawnDuskNoMusic
+	.dw @dawnDuskMusic
 
-@dawnDuskNoMusic:
+@dawnDuskMusic:
 	ld a,(wActiveMusic)
 	and $7f
 	jr z,+
-	ld a,SNDCTRL_FAST_FADEOUT
+	ld a,MUS_RIVERSIDE_STATION
 	jr @setMusic
 +
 	ld a,(wActiveMusic)

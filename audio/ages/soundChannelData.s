@@ -90,7 +90,7 @@ bank3aChannelFallback:
 
 .include "audio/common/mus/indoors.s"
 .include "audio/common/mus/titlescreen.s"
-.include "audio/common/mus/miniboss.s"
+;.include "audio/common/mus/miniboss.s"
 .include "audio/common/mus/gameover.s"
 .include "audio/common/mus/cave.s"
 .include "audio/common/mus/getEssence.s"
@@ -206,7 +206,7 @@ bank3bChannelFallback:
 .include "audio/common/mus/ganon.s"
 .include "audio/ages/mus/overworldPast.s"
 .include "audio/ages/mus/nayru.s"
-.include "audio/ages/mus/crescent.s"
+;.include "audio/ages/mus/crescent.s"
 .include "audio/ages/mus/lynnaCity.s"
 .include "audio/ages/mus/lynnaVillage.s"
 .include "audio/ages/mus/makuPath.s"
@@ -486,6 +486,21 @@ sndddChannel6:
 	.dsb 3 $ff
 .endif
 
+.ends
+
+.BANK $78 SLOT 1
+.ORG 0
+
+m_section_superfree AudioData7
+
+bank78ChannelFallback:
+	cmdff
+
+.redefine MUSIC_CHANNEL_FALLBACK bank78ChannelFallback
+
+.include "audio/common/mus/custom/riversideStation.s"
+.include "audio/common/mus/custom/heyYou.s"
+	
 .ends
 
 

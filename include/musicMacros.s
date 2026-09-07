@@ -322,3 +322,127 @@
 	.DEFINE \2, \1 EXPORT
 	@waveform{%.2x{\1}}:
 .endm
+
+
+.macro tempo
+	.redefine BEAT 1
+	.redefine NOTE_END_WAIT 0
+	.redefine Q (150*24 - (150*24) # \1) / \1
+	
+	.if 2*((150*24) # \1) >= \1
+		.redefine Q Q+1
+	.endif
+	
+	.redefine F1 (Q - (Q # 16))/16
+	.redefine F2 (Q * 2 - ((Q * 2) # 16))/16 - F1
+	.redefine F3 (Q * 3 - ((Q * 3) # 16))/16 - (F1+F2)
+	.redefine F4 (Q * 4 - ((Q * 4) # 16))/16 - (F1+F2+F3)
+	.redefine F5 (Q * 5 - ((Q * 5) # 16))/16 - (F1+F2+F3+F4)
+	.redefine F6 (Q * 6 - ((Q * 6) # 16))/16 - (F1+F2+F3+F4+F5)
+	.redefine F7 (Q * 7 - ((Q * 7) # 16))/16 - (F1+F2+F3+F4+F5+F6)
+	.redefine F8 (Q * 8 - ((Q * 8) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7)
+	.redefine F9 (Q * 9 - ((Q * 9) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8)
+	.redefine F10 (Q * 10 - ((Q * 10) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9)
+	.redefine F11 (Q * 11 - ((Q * 11) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9+F10)
+	.redefine F12 (Q * 12 - ((Q * 12) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9+F10+F11)
+	.redefine F13 (Q * 13 - ((Q * 13) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9+F10+F11+F12)
+	.redefine F14 (Q * 14 - ((Q * 14) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9+F10+F11+F12+F13)
+	.redefine F15 (Q * 15 - ((Q * 15) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9+F10+F11+F12+F13+F14)
+	.redefine F16 (Q * 16 - ((Q * 16) # 16))/16 - (F1+F2+F3+F4+F5+F6+F7+F8+F9+F10+F11+F12+F13+F14+F15)
+
+; at least one of these is zero?
+	.if F1*F2*F3*F4*F5*F6*F7*F8*F9*F10*F11*F12*F13*F14*F15*F16 == 0
+		; TODO: add a warning here
+	.endif
+
+	.redefine T1 F1+F2
+	.redefine T2 F3+F4
+	.redefine T3 F5+F6
+	.redefine T4 F7+F8
+	.redefine T5 F9+F10
+	.redefine T6 F11+F12
+	.redefine T7 F13+F14
+	.redefine T8 F15+F16
+	
+	.redefine S1 T1+T2
+	.redefine S2 T3+T4
+	.redefine S3 T5+T6
+	.redefine S4 T7+T8
+	.redefine E1 S1+S2
+	.redefine E2 S3+S4
+	.redefine HF Q*2
+	.redefine W Q*4
+	
+	.redefine W1 (Q - (Q # 12))/12
+	.redefine W2 (Q * 2 - ((Q * 2) # 12))/12 - W1
+	.redefine W3 (Q * 3 - ((Q * 3) # 12))/12 - (W1+W2)
+	.redefine W4 (Q * 4 - ((Q * 4) # 12))/12 - (W1+W2+W3)
+	.redefine W5 (Q * 5 - ((Q * 5) # 12))/12 - (W1+W2+W3+W4)
+	.redefine W6 (Q * 6 - ((Q * 6) # 12))/12 - (W1+W2+W3+W4+W5)
+	.redefine W7 (Q * 7 - ((Q * 7) # 12))/12 - (W1+W2+W3+W4+W5+W6)
+	.redefine W8 (Q * 8 - ((Q * 8) # 12))/12 - (W1+W2+W3+W4+W5+W6+W7)
+	.redefine W9 (Q * 9 - ((Q * 9) # 12))/12 - (W1+W2+W3+W4+W5+W6+W7+W8)
+	.redefine W10 (Q * 10 - ((Q * 10) # 12))/12 - (W1+W2+W3+W4+W5+W6+W7+W8+W9)
+	.redefine W11 (Q * 11 - ((Q * 11) # 12))/12 - (W1+W2+W3+W4+W5+W6+W7+W8+W9+W10)
+	.redefine W12 (Q * 12 - ((Q * 12) # 12))/12 - (W1+W2+W3+W4+W5+W6+W7+W8+W9+W10+W11)
+	
+	.redefine Y1 W1+W2
+	.redefine Y2 W3+W4
+	.redefine Y3 W5+W6
+	.redefine Y4 W7+W8
+	.redefine Y5 W9+W10
+	.redefine Y6 W11+W12
+	.redefine R1 Y1+Y2
+	.redefine R2 Y3+Y4
+	.redefine R3 Y5+Y6
+
+	.redefine X1 (Q - (Q # 10))/10
+	.redefine X2 (Q * 2 - ((Q * 2) # 10))/10 - X1
+	.redefine X3 (Q * 3 - ((Q * 3) # 10))/10 - (X1+X2)
+	.redefine X4 (Q * 4 - ((Q * 4) # 10))/10 - (X1+X2+X3)
+	.redefine X5 (Q * 5 - ((Q * 5) # 10))/10 - (X1+X2+X3+X4)
+	.redefine X6 (Q * 6 - ((Q * 6) # 10))/10 - (X1+X2+X3+X4+X5)
+	.redefine X7 (Q * 7 - ((Q * 7) # 10))/10 - (X1+X2+X3+X4+X5+X6)
+	.redefine X8 (Q * 8 - ((Q * 8) # 10))/10 - (X1+X2+X3+X4+X5+X6+X7)
+	.redefine X9 (Q * 9 - ((Q * 9) # 10))/10 - (X1+X2+X3+X4+X5+X6+X7+X8)
+	.redefine X10 (Q * 10 - ((Q * 10) # 10))/10 - (X1+X2+X3+X4+X5+X6+X7+X8+X9)
+
+	.redefine Q1 X1+X2
+	.redefine Q2 X3+X4
+	.redefine Q3 X5+X6
+	.redefine Q4 X7+X8
+	.redefine Q5 X9+X10
+.endm
+
+;;
+; \1: First pitch
+; \2: Second pitch
+; \3: repeats of tremolo before holding - 0 if to fill full length
+; \4: total note length
+; \5: length of first tremolo note
+; \6: length of second tremolo note
+.macro m_tremolo
+.if \3 > 0
+    .if \4 <= \3*(\5+\6)
+        .fail
+    .endif
+
+    .rept \3
+        beat \1 \5 \2 \6
+    .endr
+        beat \1 (\4-(\3*(\5+\6)))
+.else
+    .redefine WORKING_2 \5+\6
+    .redefine WORKING_1 \4 # WORKING_2
+    .redefine WORKING_3 (\4 - WORKING_1) / WORKING_2
+
+    .rept WORKING_3
+        beat \1 \5 \2 \6
+    .endr
+        beat \1 (\4-WORKING_3*WORKING_2)
+
+    .undefine WORKING_1
+    .undefine WORKING_2
+    .undefine WORKING_3
+.endif
+.endm

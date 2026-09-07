@@ -7,7 +7,9 @@
 
 .ifdef ROM_AGES
 	MUS_OVERWORLD_PAST        db ; $04
+	MUS_RIVERSIDE_STATION	 .db ; $05
 	MUS_CRESCENT              db ; $05
+
 .else
 	MUS_TEMPLE_REMAINS        db ; $04
 	MUS_TARM_RUINS            db ; $05
@@ -101,6 +103,7 @@
 	MUS_CREDITS_2             db ; $2a
 	MUS_MAPLE_THEME           db ; $2b
 	MUS_MAPLE_GAME            db ; $2c
+	MUS_HEY_YOU				 .db ; $2d
 	MUS_MINIBOSS              db ; $2d
 	MUS_BOSS                  db ; $2e
 	MUS_LADX_SIDEVIEW         db ; $2f

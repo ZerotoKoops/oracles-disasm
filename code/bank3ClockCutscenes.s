@@ -26,14 +26,16 @@ dawnDuskCutscene:
 	ld hl,wTmpcfc0.genericCutscene.state
 	call clearMemory  
     ld a,(wActiveRoom)
+
 /*
 ; Guru Guru
     cp <ROOM_SEASONS_021
     jr z,+
+*/
 	ld a,SNDCTRL_MEDIUM_FADEOUT
 	call playSound  
-+
-*/
+;+
+
 	jp incCutsceneState
 
 @state1:
@@ -51,12 +53,14 @@ dawnDuskCutscene:
 .else ; ROM_SEASONS
 
 ; Check for in Dark Forest
+/*
     ld a,(wTilesetPalette)
     cpa PALH_TILESET_TARM_RUINS_SPRING
     jr nz,+
+
     ld a,$02
     jr @@loadTransitionData
-
+*/
 +
     xor a ; clear carry flag
     ld a,(wTimeOfDay)
@@ -85,7 +89,11 @@ dawnDuskCutscene:
 .endif
 	call loadPaletteHeader
     callab bank1.updateGrassAnimationModifier
-    ret
+    
+    callab bank1.checkPlayRoomMusic
+    ld a,SNDCTRL_MEDIUM_FADEIN
+	jp playSound 
+
 
 .ifdef ROM_SEASONS
 ;;

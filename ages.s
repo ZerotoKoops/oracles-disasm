@@ -1,5 +1,4 @@
 ; Main file for Oracle of Ages, US version
-
 .include "include/constants.s"
 .include "include/rominfo.s"
 .include "include/emptyfill.s"
@@ -7,7 +6,6 @@
 .include "include/wram.s"
 .include "include/hram.s"
 .include "include/macros.s"
-.include "include/zerotokoops_macros.s"
 .include "include/script_commands.s"
 .include "include/simplescript_commands.s"
 .include "include/movementscript_commands.s"
@@ -15,6 +13,8 @@
 .include "objects/macros.s"
 .include "include/gfxDataMacros.s"
 .include "include/musicMacros.s"
+
+.include "include/zerotokoops_macros.s"
 
 .include {"{BUILD_DIR}/textDefines.s"}
 

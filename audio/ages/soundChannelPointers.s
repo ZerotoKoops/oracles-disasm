@@ -283,15 +283,15 @@ musMapleGame:
 	.dw musMapleGameChannel6
 	.db $ff
 
-musMiniboss:
+musHeyYou:
 	.db $00
-	.dw musMinibossChannel0
+	.dw musHeyYouChannel0
 	.db $01
-	.dw musMinibossChannel1
+	.dw musHeyYouChannel1
 	.db $04
-	.dw musMinibossChannel4
+	.dw musHeyYouChannel4
 	.db $06
-	.dw musMinibossChannel6
+	.dw musHeyYouChannel6
 	.db $ff
 
 musBoss:
@@ -492,15 +492,15 @@ musNayru:
 	.dw musNayruChannel6
 	.db $ff
 
-musCrescent:
+musRiversideStation:
 	.db $00
-	.dw musCrescentChannel0
+	.dw musRiversideStationChannel0
 	.db $01
-	.dw musCrescentChannel1
+	.dw musRiversideStationChannel1
 	.db $04
-	.dw musCrescentChannel4
+	.dw musRiversideStationChannel4
 	.db $06
-	.dw musCrescentChannel6
+	.dw musRiversideStationChannel6
 	.db $ff
 
 musAmbiPalace:

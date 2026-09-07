@@ -6,7 +6,7 @@ soundPointers:
 	/* 0x02 */ m_soundPointer musMinigame
 	/* 0x03 */ m_soundPointer musOverworld
 	/* 0x04 */ m_soundPointer musOverworldPast
-	/* 0x05 */ m_soundPointer musCrescent
+	/* 0x05 */ m_soundPointer musRiversideStation
 	/* 0x06 */ m_soundPointer musEssence
 	/* 0x07 */ m_soundPointer musAmbiPalace
 	/* 0x08 */ m_soundPointer musNayru
@@ -46,7 +46,7 @@ soundPointers:
 	/* 0x2a */ m_soundPointer musCredits2
 	/* 0x2b */ m_soundPointer musMapleTheme
 	/* 0x2c */ m_soundPointer musMapleGame
-	/* 0x2d */ m_soundPointer musMiniboss
+	/* 0x2d */ m_soundPointer musHeyYou
 	/* 0x2e */ m_soundPointer musBoss
 	/* 0x2f */ m_soundPointer musLadxSideview
 	/* 0x30 */ m_soundPointer musFairyForest
