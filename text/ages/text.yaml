@@ -7519,9 +7519,12 @@ groups:
 
   - name: TX_1213
     index: 0x13
-    text: |-
-      \pos(2)Accept our
-      quest, hero!
+    text: >-
+      \pos(2)Spinning, spinning.
+
+      Will you ever find a way out?
+      
+      Will you ever be appreciated?
 
 - group: 0x13
   data:
@@ -18191,145 +18194,153 @@ groups:
   data:
   - name: TX_3600
     index: 0x00
-    text: |-
-      Sailin' the seas
-      is every man's
-      dream!\stop
-      It was great
-      to so gallantly
-      sail off to me
-      dreams...
-      \call(TX_3602)
+    text: >-
+      Oh, blast it all!
+
+      I thought my crew would get us to \col(3)Kinomi\col(0) faster.\stop
+
+      Oh, I'm sorry Ma'am \col(4)Farore\col(0).
+      
+      I hope you have been resting well.\stop
+
+      My first mate told me we need to stop at this \col(1)port\col(0) before we can reach \col(3)Kinomi\col(0).
+      
+      I can see that land with my spyglass, but I like to heed my crew.\stop
+
+      I know you've been looking forward to your birthday celebration with your fellow \col(1)oracles\col(0).
+      We should be there very soon!\stop
+
+      I know it's not too fitting of a lady of your stature, but would you mind
+      helping my crew take \col(1)stock\col(0)?
+      It would help us get outta here sooner!
+        \opt()Sure! \opt()Sorry
+
 
   - name: TX_3601
     index: 0x01
-    text: |-
-      Ahoy! It's been
-      a long time! I
-      didn't expect to
-      meet you 'ere!
-      We've come all
-      the way back
-      from \col(3)'Olodrum\col(0)...
-      \call(TX_3602)
+    text: >-
+      Argh, I suppose you need rest.
+
+      But if you change your mind, just ask.
 
   - name: TX_3602
     index: 0x02
-    text: |-
-      But we got stuck
-      in this \col(3)Sea o'
-      Storms\col(0) and can't
-      get out!
-      Har! Ye've got
-      the \col(1)Zora's Scale\col(0)
-      sea charm!
-      Aye, that could
-      calm this \col(3)Sea o'
-      Storms\col(0)!
-      'Ow about you
-      give me that
-      \col(1)Zora's Scale\col(0)!
-        \opt()OK \opt()Sorry
+    text: >-
+      Perfect! You can speak with 'Enry up \col(1)near the deck stairs\col(0).
+
+      And if he gives you any trouble,
+      just give 'im a good whack with that \col(4)book\col(0) of yours.
 
   - name: TX_3603
     index: 0x03
-    text: |-
-      Thank'ee!
-      Yer a good man!
-      Ahoy, mateys!
+    text: >-
+      Yes, Cap'n, \col(4)Farore\col(0) and I took stock.
+      It seems we'll need the following items:
+
+      \col(1)Rope\col(0), a \col(1)sea chart\col(0) of the waters northeast of here...
 
   - name: TX_3604
     index: 0x04
     text: |-
-      \call(TX_3603)
-      We're off to
-      \col(3)'Olodrum\col(0), the
-      land o' seasons!
+      Is that all? Our voyage seemed so short when we charted from Labrynna!
 
   - name: TX_3605
     index: 0x05
     text: |-
-      \call(TX_3603)
-      See the spirit
-      o' a seafarin'
-      man!
+      Aye, Cap'n! We'll get started on gathering these items...
 
   - name: TX_3606
     index: 0x06
-    text: |-
-      Thank'ee! Now
-      we can escape
-      these seas! Take
-      this as a sign
-      o' me thanks!
-      It's the jewel
-      called the \col(1)Tokay
-      Eyeball\col(0)! It's
-      said to be the
-      thing that opens
-      the way to the
-      \col(3)ancient tomb\col(0).
-      I don't know if
-      it's true or
-      not, though.
+    text: >-
+      On second account, I noticed our fair lady here is lacking in \col(1)protection\col(0).
+      Let's find something for her as well, eh?
 
   - name: TX_3607
     index: 0x07
-    text: |-
-      Aye, aye, sir!
+    text: >-
+      ...
+
+      Aye, aye, sir!\stop
+
+      Shall \col(4)Farore\col(0) come with to help find what she'd want?
 
   - name: TX_3608
     index: 0x08
-    text: |-
-      'Ow long have we
-      been adrift?
+    text: >-
+      And this goes there...\stop
+
+      Oh, 'ey, \col(4)Farore\col(0)!
+
+      Cap'n told me to take stock before
+      we go out for anything new.
+
+      If you want to help, you can ask the \col(3)Cap'n\col(0).
 
   - name: TX_3609
     index: 0x09
-    text: |-
-      \col(3)Cap'n\col(0) isn't
-      thinkin' about a
-      thing.
+    text: >-
+      'Ow long 'ave we been at sea?
+      It feels like seasons! Maybe even ages!\stop
+
+      I hope this stop is quick before we get to \col(3)Kinomi\col(0).
 
   - name: TX_360a
     index: 0x0a
-    text: |-
-      Tales tell of
-      giant ruins out
-      east in the
-      \col(3)Sea o' No
-      Return\col(0).
+    text: >-
+      Couldn't sleep again, \col(4)Farore\col(0)?
+
+      Cheer up! We just landed anchor for supplies.
+      We should be to \col(3)Kinomi\col(0) soon!
 
   - name: TX_360b
     index: 0x0b
-    text: |-
-      If ye go to the
-      ruins out east,
-      ye can never
-      return.
+    text: >-
+      Cap'n 'as been 'ounding us about this trip.
+      
+      'E won't stop talkin' about makin' it on time!
+
+      I'm sure you want to be on time too, eh, \col(4)Farore\col(0)?
 
   - name: TX_360c
     index: 0x0c
-    text: |-
-      Ye've really
-      'elped us out.
-      Aye, we found
-      that \col(1)Tokay
-      Eyeball\col(0) on
-      \col(3)Crescent Island\col(0).
-      Maybe ye should
-      'ead that way?\stop
-      We're off, now!
-      Ahoy, mateys!\stop
-      Aye, aye, sir!
+    text: >-
+      The \col(3)Cap'n\col(0) gave you permission to help?
+
+      Thank'ee! This will go by much faster!
+
+      Maybe we can use your book...
 
   - name: TX_360d
     index: 0x0d
-    text: |-
-      The eye socket
-      is hollowed out,
-      but what could
-      go there..?
+    text: >-
+      Hmm...
+
+      Yes, of course!\stop
+
+      \col(4)Farore\col(0), you can handle yourself in the big city, eh?
+
+  - name: TX_360e
+    index: 0x0e
+    text: >-
+      You don't have to watch my crew that much, \col(4)Farore\col(0).
+
+      Please feel free to enjoy yourself while we're here,
+      but just be back before we set sail!
+
+  - name: TX_360f
+    index: 0x0f
+    text: >-
+      We're looking for \col(1)rope\col(0), a \col(1)sea chart\col(0),
+      and something for \col(1)your protection\col(0).
+
+      Ask my crew if you're having trouble finding things!
+
+  - name: TX_3610
+    index: 0x10
+    text: >-
+      The Cap'n just wanted to do something nice for you.
+
+      I hope you find what you're looking for!
 
 - group: 0x37
   data:

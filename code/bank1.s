@@ -3663,7 +3663,7 @@ cutscene01:
 	call updateAllObjects
 .endif
 
-	ld a,GLOBALFLAG_INTRO_DONE
+	ld a,GLOBALFLAG_TIME_FLOWING
 	call checkGlobalFlag
 	jr z,@doneUpdatingClock
 	;ld a,(w1ParentItem5.id)
@@ -5571,6 +5571,9 @@ func_7b93:
 	ld a,GLOBALFLAG_PREGAME_INTRO_DONE
 	call setGlobalFlag
 	call playRoomMusic;checkPlayRoomMusic
+; make bed solid
+	ld hl,wRoomCollisions+$11
+	ld (hl),$0f
 	jp initializeRoom
 
 

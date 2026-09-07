@@ -4841,6 +4841,7 @@ group5Mapf8ObjectData:
 	obj_Interaction $c4 $01 $68 $d8
 	obj_Interaction $c4 $02 $38 $78
 	obj_Interaction $c4 $03 $98 $28
+	obj_Interaction INTERAC_PIRATE $05 $30 $b8
 	obj_End
 
 group5Mapf9ObjectData:

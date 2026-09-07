@@ -23,7 +23,8 @@
 
 	GLOBALFLAG_0b				.db ; $0b: Set when getting bombs from ambi
 	GLOBALFLAG_TALKED_TO_CAPTAIN db ; $0b: Set after first talking to Pirate Captain in the intro
-	GLOBALFLAG_0c				db ; $0c: Maku tree disappeared?
+	GLOBALFLAG_0c				.db ; $0c: Maku tree disappeared?
+	GLOBALFLAG_TIME_FLOWING		db ; $0c
 	GLOBALFLAG_0d				db ; $0d
 	GLOBALFLAG_WON_FAIRY_HIDING_GAME	db ; $0e
 	GLOBALFLAG_D3_CRYSTALS			db ; $0f

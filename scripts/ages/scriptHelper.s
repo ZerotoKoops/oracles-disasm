@@ -8019,6 +8019,7 @@ symmetryNpcSubid6And7Script:
 ; INTERAC_PIRATE_CAPTAIN
 ; ==================================================================================================
 
+/*
 pirateCaptain_warpOut:
 	ld hl,@unlinkedWarp
 	call checkIsLinkedGame
@@ -8032,14 +8033,30 @@ pirateCaptain_warpOut:
 
 @linkedWarp:
 	m_HardcodedWarpA ROOM_AGES_0c8, $01, $52, $03
-
+*/
 
 pirateCaptainScript:
 	initcollisions
 @loop:
 	checkabutton
 	disableinput
-	showtextdifferentforlinked TX_3600, TX_3601
+	jumpifglobalflagset GLOBALFLAG_TALKED_TO_CAPTAIN, @agreedToHelp
+
+	showtext TX_3600
+	wait 30
+	jumpiftextoptioneq $00,@agreedToHelp
+	showtext TX_3601
+	enableinput
+	scriptjump @loop
+
+@agreedToHelp:
+	showtext TX_3602
+	setglobalflag GLOBALFLAG_TALKED_TO_CAPTAIN
+	enableinput
+	scriptjump @loop
+
+/*
+	;showtextdifferentforlinked TX_3600, TX_3601
 	jumpiftextoptioneq $00, @gaveZoraScale
 	enableinput
 	scriptjump @loop
@@ -8058,11 +8075,59 @@ pirateCaptainScript:
 	asm15 pirateCaptain_warpOut
 	setglobalflag GLOBALFLAG_PIRATES_GONE
 	scriptend
+*/
 
 
 ; ==================================================================================================
 ; INTERAC_PIRATE
 ; ==================================================================================================
+pirate_warpToRoom:
+	ld hl,@warpData
+	jp setWarpDestVariables
+
+@warpData:
+	m_HardcodedWarpA ROOM_AGES_5f8, $01, $3c, $03
+
+pirateSubid5Script:
+	initcollisions
+	setangleandanimation ANGLE_RIGHT
+	checkcfc0bit 1
+	setangleandanimation ANGLE_RIGHT
+
+	checkcfc0bit 6
+	setangle ANGLE_DOWN
+	setanimation DIR_DOWN
+	setspeed SPEED_200
+	wait 10
+	movedown $1c
+	wait 5
+	setangle ANGLE_RIGHT
+	moveright $08
+	wait 5
+	setangle ANGLE_DOWN
+	movedown $17
+	wait 5
+	setangle ANGLE_LEFT
+	moveleft $43
+
+	xorcfc0bit 7
+	scriptend
+
+/*
+	ld hl,@unlinkedWarp
+	call checkIsLinkedGame
+	jr z,+
+	ld hl,@linkedWarp
++
+	jp setWarpDestVariables
+
+@unlinkedWarp:
+	m_HardcodedWarpA ROOM_AGES_1d7, $01, $45, $03
+
+@linkedWarp:
+	m_HardcodedWarpA ROOM_AGES_0c8, $01, $52, $03
+*/
+/*
 ;;
 pirate_openEyeballCave:
 	ld c,$54
@@ -8078,7 +8143,7 @@ pirate_openEyeballCave:
 	call playSound
 	ldbc INTERAC_PUFF, $00
 	jp objectCreateInteraction
-
+*/
 
 ; ==================================================================================================
 ; INTERAC_TINGLE

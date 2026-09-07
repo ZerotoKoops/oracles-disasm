@@ -1731,7 +1731,7 @@ pregameIntroCutsceneHandler:
 	ld a,$02
 	call func_6e9a
 	call func_6eb7
-	ld a,MUS_ESSENCE_ROOM
+	ld a,MUS_BLACK_TOWER_ENTRANCE;MUS_ESSENCE_ROOM
 	call playSound
 ; Link in Cutscene
 	ld a,$08
@@ -1755,6 +1755,8 @@ pregameIntroCutsceneHandler:
 	cp $07
 	ret nz
 	call clearLinkObject
+	ld a,SNDCTRL_FAST_FADEOUT
+	call playSound
 	ld hl,wTmpcbb3
 	ld (hl),$3c
 	jp cutscene_incCutsceneState

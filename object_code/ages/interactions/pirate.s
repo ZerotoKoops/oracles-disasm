@@ -12,7 +12,10 @@ interactionCodec4:
 	.dw @state1
 	.dw @state2
 	.dw @state3
+/*
+	.dw @state3
 	.dw @state4
+*/
 
 @state0:
 	ld e,Interaction.subid
@@ -23,23 +26,45 @@ interactionCodec4:
 	.dw @subid2Init
 	.dw @subid3Init
 	.dw @subid4Init
+	.dw @subid5Init
 
-@subid0Init:
 @subid1Init:
 @subid2Init:
 @subid3Init:
+@initialize:
 	ld a,(de)
 	ld hl,@scriptTable
 	rst_addDoubleIndex
 	ldi a,(hl)
 	ld h,(hl)
 	ld l,a
+@initialize_presetScript:
 	call interactionSetScript
 	call interactionInitGraphics
 	call objectSetVisiblec2
 	jp interactionIncState
 
+@subid5Init:
+	lda <ROOM_AGES_5e8
+	call getARoomFlags
+	and ROOMFLAG_80
+	jp z,interactionDelete
+
+	call getThisRoomFlags
+	and ROOMFLAG_80
+	jp nz,interactionDelete
+
+	jr @initialize
+
+@subid0Init:
+	call getThisRoomFlags
+	and ROOMFLAG_80
+	jr z,@initialize
+	ld hl,mainScripts.pirateSubid0Script_talkedWithCaptain
+	jr @initialize_presetScript
+
 @subid4Init:
+/*
 	call getThisRoomFlags
 	and ROOMFLAG_80
 	jp nz,interactionDelete
@@ -48,7 +73,7 @@ interactionCodec4:
 	ld e,Interaction.state
 	ld a,$03
 	ld (de),a
-
+*/
 	ld e,Interaction.subid
 	ld a,(de)
 	ld hl,@scriptTable
@@ -64,6 +89,7 @@ interactionCodec4:
 	.dw mainScripts.pirateSubid2Script
 	.dw mainScripts.pirateSubid3Script
 	.dw mainScripts.pirateSubid4Script
+	.dw mainScripts.pirateSubid5Script
 
 
 ; Subids 0-3: waiting for signal from piration captain to jump in excitement
@@ -71,6 +97,7 @@ interactionCodec4:
 	ld a,(wTmpcfc0.genericCutscene.state)
 	bit 0,a
 	jp nz,@jump
+@state3:
 	call interactionRunScript
 	jp npcFaceLinkAndAnimate
 
@@ -89,6 +116,7 @@ interactionCodec4:
 	ret nz
 	ld hl,wTmpcfc0.genericCutscene.state
 	set 1,(hl)
+	call interactionIncState
 	jp interactionAnimate
 
 
@@ -108,6 +136,7 @@ interactionCodec4:
 	jp objectCheckCenteredWithLink
 
 
+/*
 ; Subid 4: tokay eyeball slot, waiting to be put in
 @state3:
 	call objectCheckCollidedWithLink_notDead
@@ -150,3 +179,4 @@ interactionCodec4:
 	ld a,10
 	ld (de),a
 	ret
+*/

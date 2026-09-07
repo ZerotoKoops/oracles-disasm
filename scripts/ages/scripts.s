@@ -8939,12 +8939,80 @@ symmetryNpcSubidCScript:
 pirateCaptainScript:
 	loadscript scriptHelp.pirateCaptainScript
 
+pirateCaptainTookStock:
+	initcollisions
+	jumpifroomflagset ROOMFLAG_80,@npcLoop
+
+	disableinput
+	checkpalettefadedone
+	wait 60
+	writememory w1Link.direction, DIR_LEFT
+	wait 30
+	showtext TX_3603
+	wait 20
+	writememory w1Link.direction, DIR_UP
+	wait 40
+	showtext TX_3604
+	wait 20
+	writememory w1Link.direction, DIR_LEFT
+	wait 40
+	showtext TX_3605
+	wait 10
+	writememory w1Link.direction, DIR_UP
+	showtext TX_3606
+	wait 20
+	xorcfc0bit 0
+	checkcfc0bit 1
+	writememory w1Link.direction, DIR_LEFT
+	wait 40
+	showtext TX_3607
+	wait 10
+	writememory w1Link.direction, DIR_UP
+	wait 60
+	showtext TX_360d
+	xorcfc0bit 6
+	checkcfc0bit 7
+	wait 20
+	showtext TX_360e
+	orroomflag ROOMFLAG_80
+	setglobalflag GLOBALFLAG_INTRO_DONE
+	enableinput
+	scriptend
+
+@npcLoop:
+	checkabutton
+	disableinput
+	showtext TX_360f
+	enableinput
+	scriptjump @npcLoop
 
 ; ==================================================================================================
 ; INTERAC_PIRATE
 ; ==================================================================================================
+pirateSubid5Script:
+	loadscript scriptHelp.pirateSubid5Script
+
+pirateSubid0Script_talkedWithCaptain:
+	rungenericnpc TX_3610
+
 pirateSubid0Script:
-	rungenericnpc TX_3608
+	initcollisions
+@loop:
+	checkabutton
+	disableinput
+	jumpifglobalflagset GLOBALFLAG_TALKED_TO_CAPTAIN, @agreedToHelp
+	
+	showtext TX_3608
+	enableinput
+	scriptjump @loop
+
+@agreedToHelp:
+	showtext TX_360c
+	wait 60
+	orroomflag ROOMFLAG_80
+	asm15 scriptHelp.pirate_warpToRoom
+	scriptend
+
 pirateSubid1Script:
 	rungenericnpc TX_3609
 pirateSubid2Script:
@@ -8962,7 +9030,9 @@ pirateSubid4Script:
 	disableinput
 	playsound SNDCTRL_STOPMUSIC
 
+
 pirateSubid4Script_insertEyeball:
+/*
 	orroomflag ROOMFLAG_80
 	spawninteraction INTERAC_DECORATION, $06, $52, $6a
 	playsound SND_OPENCHEST
@@ -8977,6 +9047,7 @@ pirateSubid4Script_insertEyeball:
 	resetmusic
 	asm15 loseTreasure, TREASURE_TOKAY_EYEBALL
 	enableinput
+*/
 	scriptend
 
 

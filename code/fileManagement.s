@@ -404,7 +404,7 @@ initialFileVariables:
 initialClockVars:
 	.db TIME_DAWN ; wTimeOfDay
 	.db 10 ; seconds
-	.dw $0559 ; hours and minutes
+	.dw $1730 ; hours and minutes
 	.db $00 ; day
 	;.db $00 ; timeflags
 
