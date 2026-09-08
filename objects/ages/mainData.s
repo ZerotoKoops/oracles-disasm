@@ -210,8 +210,6 @@ group1Mape0ObjectData:
 group1Mape1ObjectData:
 group1Mape2ObjectData:
 group1Mape3ObjectData:
-group1Mape4ObjectData:
-group1Mape5ObjectData:
 group1Mape6ObjectData:
 group1Mape7ObjectData:
 group1Mape8ObjectData:
@@ -226,8 +224,6 @@ group1Mapf0ObjectData:
 group1Mapf1ObjectData:
 group1Mapf2ObjectData:
 group1Mapf3ObjectData:
-group1Mapf4ObjectData:
-group1Mapf5ObjectData:
 group1Mapf6ObjectData:
 group1Mapf7ObjectData:
 group1Mapf8ObjectData:
@@ -4875,4 +4871,21 @@ group0MapfbObjectData:
 
 group0MapebObjectData:
 	obj_Interaction INTERAC_DECORATION $0c $20 $68
+	obj_End
+
+group1Mape4ObjectData:
+	obj_Pointer group1Mape4EnemyObjectData
+	obj_End
+
+group1Mape5ObjectData:
+	obj_Pointer group1Mape5EnemyObjectData
+	obj_End
+
+group1Mapf4ObjectData:
+	obj_Interaction INTERAC_MISCELLANEOUS_1 $0b $50 $78
+	obj_Interaction INTERAC_PATCH $00 $38 $48
+	obj_End
+
+group1Mapf5ObjectData:
+	obj_Interaction INTERAC_PATCH $01 $38 $38
 	obj_End

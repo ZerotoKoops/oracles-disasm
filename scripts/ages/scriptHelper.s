@@ -7126,6 +7126,15 @@ twinrova_subid06Script_body:
 ; ==================================================================================================
 
 ;;
+; @param	a	Rupee value (see constants/common/rupeeValues.s)
+patch_checkHasRupees:
+	call cpRupeeValue
+	ld e,Interaction.var3d
+	ld (de),a
+	ret
+
+/*
+;;
 patch_jump:
 	ld h,d
 	ld l,Interaction.speedZ
@@ -7286,7 +7295,7 @@ patch_downstairsScript_body:
 	asm15 patch_setStairTile, TILEINDEX_STANDARD_FLOOR
 	wait 8
 	scriptend
-
+*/
 
 ; ==================================================================================================
 ; INTERAC_MOBLIN

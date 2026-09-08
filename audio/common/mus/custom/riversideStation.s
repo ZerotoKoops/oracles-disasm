@@ -132,13 +132,13 @@ musRiversideStationChannel0:
 .redefine LO_VOL $4
 
 
-
+@measure1Loop: 
 ; Measure 1
     octave 5
     duty $03
     env $0 $05
     vibrato $e1
-@measure1Loop: 
+
     m_musRiversideStationChannel0_measure1 g ds
 ; Measure 2
     m_musRiversideStationChannel0_measure1 f cs

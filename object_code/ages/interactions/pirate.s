@@ -60,6 +60,7 @@ interactionCodec4:
 	call getThisRoomFlags
 	and ROOMFLAG_80
 	jr z,@initialize
+	; TODO: make him red
 	ld hl,mainScripts.pirateSubid0Script_talkedWithCaptain
 	jr @initialize_presetScript
 

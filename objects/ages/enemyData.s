@@ -2546,3 +2546,11 @@ group0MapcaEnemyObjectData:
 
 group0Mapc9EnemyObjectData:
 	obj_EndPointer
+
+group1Mape4EnemyObjectData:
+	obj_RandomEnemy $20 ENEMY_ZOL $00
+	obj_EndPointer
+
+group1Mape5EnemyObjectData:
+	obj_RandomEnemy $20 ENEMY_ZOL $00
+	obj_EndPointer

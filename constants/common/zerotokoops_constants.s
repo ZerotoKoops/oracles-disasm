@@ -21,3 +21,10 @@
 
 	.define NUM_SONGS $0a
 	.define SONG_LENGTH $08
+
+.enum 0
+	FIRST_GROUP		db ; $00
+	SECOND_GROUP	db ; $01
+	THIRD_GROUP		db ; $02
+	FOURTH_GROUP	db ; $03
+.ende

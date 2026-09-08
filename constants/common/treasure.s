@@ -44,6 +44,7 @@
 	TREASURE_1b			db ; $1b
 	TREASURE_1c			db ; $1c
 	TREASURE_MINECART_COLLISION	db ; $1d ; Probably not an actual treasure
+	TREASURE_BOOK_OF_MIGHT .db
 	TREASURE_FOOLS_ORE		db ; $1e
 	TREASURE_1f			db ; $1f
 

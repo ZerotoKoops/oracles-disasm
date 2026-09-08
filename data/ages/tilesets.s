@@ -736,8 +736,8 @@ tilesetData:
 	; HACK-BASE: Stub tilesets for expanded tilesets patch
 	.db $0f $81 $00 $00 PALH_TILESET_FAIRIES_FOREST $00 $00 $01 ; Tileset 0x67
 	.db $0f $01 $00 $00 PALH_TILESET_FOREST_OF_TIME $00 $00 $01 ; Tileset 0x68
-	.db $0f $01 $00 $00 PALH_99 $00 $00 $01 ; Tileset 0x69
-	.db $0f $01 $00 $00 $00 $00 $00 $00 ; Tileset 0x6a
+	.db $0f $01 $00 $00 PALH_cc $00 $00 $01 ; Tileset 0x69
+	.db $0f $01 $00 $00 PALH_cc $00 $00 $01 ; Tileset 0x6a
 	.db $0f $01 $00 $00 $00 $00 $00 $00 ; Tileset 0x6b
 	.db $0f $01 $00 $00 $00 $00 $00 $00 ; Tileset 0x6c
 	.db $0f $01 $00 $00 $00 $00 $00 $00 ; Tileset 0x6d

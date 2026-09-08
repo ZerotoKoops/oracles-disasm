@@ -4667,9 +4667,8 @@ groups:
   - name: TX_09_FOOLSORE
     index: auto
     text: |-
-      Traded Ore
-      Not as useful
-      as a feather.
+      Book of Might
+      A hard-cover bound book.
 
 - group: 0x0a
   data:
@@ -7523,7 +7522,7 @@ groups:
       \pos(2)Spinning, spinning.
 
       Will you ever find a way out?
-      
+
       Will you ever be appreciated?
 
 - group: 0x13
@@ -18327,6 +18326,8 @@ groups:
       Please feel free to enjoy yourself while we're here,
       but just be back before we set sail!
 
+      If you find anything on that list, bring it back here!
+
   - name: TX_360f
     index: 0x0f
     text: >-
@@ -21674,212 +21675,90 @@ groups:
 
   - name: TX_5801
     index: 0x01
-    text: |-
-      I am \col(3)Patch\col(0), the
-      restoration
-      guru. Did you
-      need me?
-        \opt()Yes \opt()No
+    text: >-
+      Hello, my lady!\stop
+
+      My \col(1)brother\col(0) and I run this shop here.
+      
+      We sell repair planks and \col(1)rope\col(0).
 
   - name: TX_5802
     index: 0x02
-    text: |-
-      You must have
-      time to kill if
-      you came all
-      the way here.
+    text: >-
+      Oh, you need some? Well...\stop
+
+      Unfortunately, we just ran out.
+      But, my \col(1)brother\col(0) may have something to appease ya.
 
   - name: TX_5803
     index: 0x03
-    text: |-
-      You don't seem
-      to have anything
-      I can restore.
-      So, what then?
+    text: >-
+      Don't worry there, lassie!
+
+      We don't bite!\stop
+
+      My brother is currently staking out at our home \col(1)across the road\col(0).
+      Feel free to pop in if you change your mind.\stop
+
+      The code is \col(1)grains\col(0).
 
   - name: TX_5804
     index: 0x04
-    text: |-
-      Heh, heh! I see.
-      You want me to
-      repair that
-      \col(1)\call(0xff)\col(0).\stop
-      My Restoration
-      Ceremony might
-      fix it.
-      ...Want to try?
-        \opt()Yes \opt()No
+    text: >-   
+      Pleasure doin' business with ya, lassie!
+
+      Enjoy the rope!
 
   - name: TX_5805
     index: 0x05
-    text: |-
-      Then that
-      \col(1)\call(0xff)\col(0)
-      will never be
-      restored...
+    text: >-  
+      Oh, hi there, missie!
+
+      What do I sell?
+        \opt()Maps \opt()Rope
+        \opt()Grains \opt()Pigs
 
   - name: TX_5806
     index: 0x06
-    text: |-
-      You are willing
-      to try? Very
-      well. Follow me.
-      Heh, heh!
+    text: >- 
+      Unless you've talked with my \col(1)brother\col(0),
+      I don't have business with you!
 
   - name: TX_5807
     index: 0x07
-    text: |-
-      Welcome to
-      Patch's
-      Crazy Cart!
-      Will you partake
-      in my ceremony?
-        \opt()Yes \opt()No
+    text: >- 
+      Fine meetin' a young missie like you!
+      Now, what was it you're after?\stop
+
+      \col(1)Rope\col(0)? Say no more!
+
+      100 rupees
+        \opt()Fine \opt()No way!\cmd8(0x11)
 
   - name: TX_5808
     index: 0x08
-    text: |-
-      Very well! Do
-      you want to hear
-      the rules?
-        \opt()No \opt()Yes
+    text: >- 
+      A missie with no rupees is not my style.
 
   - name: TX_5809
     index: 0x09
-    text: |-
-      Then let me
-      explain!\stop
-      I'll place your
-      \col(1)\call(0xff)\col(0)
-      on that green
-      tile and recite
-      the words of my
-      Restoration
-      Ceremony. You
-      must knock all
-      the beasts that
-      appear into a
-      hole--any hole
-      will do. Sounds
-      easy, right?
-      ...However!!!\stop
-      Restoration is
-      delicate work.
-      Your precious
-      \col(1)\call(0xff)\col(0)
-      sits on these
-      tracks...
-      The cart starts
-      moving when the
-      ceremony begins.
-      As long as you
-      stand on the
-      switch, the cart
-      won't hit your
-      \col(1)\call(0xff)\col(0),
-      but if you don't
-      and it gets hit,\stop
-      BANG!!!\stop
-      So? Will you
-      take part in
-      this fun--err,
-      delicate
-      ceremony?
-        \opt()Yes \opt()No
+    text: >- 
+      A missie with that many rupees has more to share.
 
   - name: TX_580a
     index: 0x0a
-    text: |-
-      Let the ceremony
-      begin!
+    text: >- 
+      Thank 'ee kindly!
+      Your item is down these stairs.
 
-  - name: TX_580b
-    index: 0x0b
-    text: |-
-      Dex ifeb!!!
-      Dex iflla!!!
-
-  - name: TX_580c
-    index: 0x0c
-    text: |-
-      The ceremony
-      failed, but your
-      \col(1)\call(0xff)\col(0)
-      seems to have
-      survived. Try
-      again sometime.
-
-  - name: TX_580d
-    index: 0x0d
-    text: |-
-      Hmm... Eh, heh!
-      My ceremony
-      succeeded! You
-      are talented.
-      You got through
-      this trap--err,
-      ceremony.
-      Here is your
-      \col(1)\call(0xff)\col(0),
-      as good as new!\stop
-      As usual, I am
-      perfect!
-
-  - name: TX_580e
-    index: 0x0e
-    text: |-
-      Here you go.
-
-  - name: TX_580f
-    index: 0x0f
-    text: |-
-      Bring me any-
-      thing else that
-      needs fixing,
-      and I'll prepare
-      my trap--err,
-      ceremony!
-
-  - name: TX_5810
-    index: 0x10
-    text: |-
-      I haven't seen
-      you in awhile.\stop
-      If you've come
-      all the way up
-      the wall, you
-      must need
-      something fixed.
-      But my fun--
-      err, delicate
-      ceremony, is
-      more difficult
-      now. Do you
-      wish to try?
-        \opt()Yes \opt()No
-
-  - name: TX_5811
-    index: 0x11
-    text: |-
-      There is nothing
-      the restoration
-      guru cannot
-      repair!
-
-  - name: TX_5812
-    index: 0x12
-    text: |-
-      Tuni Nut
-
-  - name: TX_5813
-    index: 0x13
-    text: |-
-      Broken Sword
-
-  - name: TX_5814
-    index: 0x14
-    text: |-
-      Mermaid's Eye
+  - name:
+    - TX_580b
+    - TX_580c
+    index:
+    - 0x0b
+    - 0x0c
+    text: >- 
+      Hmm...
 
 - group: 0x59
   data:

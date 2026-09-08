@@ -711,7 +711,7 @@ interaction92SubidData:
 
 interaction94SubidData:
 	m_InteractionSubidData $52 $00 $02
-	m_InteractionSubidData $52 $00 $02
+	m_InteractionSubidData $52 $00 $22
 	m_InteractionSubidData $72 $00 $48
 	m_InteractionSubidData $00 $00 $00
 	m_InteractionSubidData $83 $06 $59

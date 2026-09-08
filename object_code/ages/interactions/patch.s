@@ -12,14 +12,42 @@ interactionCode94:
 	rst_jumpTable
 	.dw patch_subid00
 	.dw patch_subid01
+/*
 	.dw patch_subid02
 	.dw patch_subid03
 	.dw patch_subid04
 	.dw patch_subid05
 	.dw patch_subid06
 	.dw patch_subid07
+*/
 
 
+patch_subid00:
+patch_subid01:
+	call checkInteractionState
+	jr z,@state0
+; state1
+	call interactionRunScript
+	jp npcFaceLinkAndAnimate
+
+@state0:
+	ld e,Interaction.subid
+	ld a,(de)
+	ld hl,patch_scriptTable
+	rst_addDoubleIndex
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a
+	call interactionSetScript
+	call interactionInitGraphics
+	jp interactionIncState	
+
+patch_scriptTable:
+	.dw mainScripts.patch_subid0Script ; Brother 1
+	.dw mainScripts.patch_subid1Script ; Brother 2
+
+
+/*
 ; Patch in the upstairs room
 patch_subid00:
 	ld e,Interaction.state
@@ -712,3 +740,4 @@ patch_subid07:
 	ld bc,$f2f8
 	call objectTakePositionWithOffset
 	jp objectSetVisible81
+*/

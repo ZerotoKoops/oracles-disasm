@@ -7915,6 +7915,80 @@ twinrova_subid06Script:
 ; INTERAC_PATCH
 ; ==================================================================================================
 
+patch_subid0Script:
+	initcollisions
+@npcLoop:
+	jumpifitemobtained TREASURE_CHEVAL_ROPE,@gotRope
+	checkabutton
+	disableinput
+	showtext TX_5801
+	wait 20
+	showtext TX_5802
+	wait 20
+	showtext TX_5803
+	enableinput
+	scriptjump @npcLoop
+
+@gotRope:
+	rungenericnpc TX_5804
+
+patch_subid1Script:
+	initcollisions
+
+	jumpifroomflagset ROOMFLAG_80, @gotRope
+	checkabutton
+	disableinput
+	showtext TX_5805
+	wait 20
+	jumpiftextoptioneq $02,@answeredCorrectly
+
+	showtext TX_5806
+	enableinput
+@answeredWrong:
+	rungenericnpc TX_5806
+
+@answeredCorrectly:
+	showtext TX_5807
+	wait 10
+	jumpiftextoptioneq $01,@notEnoughRupees
+
+@payRupees:
+	asm15 scriptHelp.patch_checkHasRupees, RUPEEVAL_100
+	jumpifobjectbyteeq Interaction.var3d, $01, @notEnoughRupees
+
+	asm15 removeRupeeValue, RUPEEVAL_100
+	wait 20
+	asm15 scriptHelp.patch_checkHasRupees, RUPEEVAL_001
+	jumpifobjectbyteeq Interaction.var3d, $01, @skipSteal
+
+	showtext TX_5809
+	checktext
+	asm15 removeRupeeValue, RUPEEVAL_020
+	wait 20
+@skipSteal:
+	showtext TX_580a
+
+	orroomflag ROOMFLAG_80
+	setspeed SPEED_180
+	setangle ANGLE_DOWN
+	movedown $11
+	wait 5
+	setangle ANGLE_LEFT
+	moveleft $0a
+	enableinput
+
+@gotRope:
+	setcoords $50, $28
+	rungenericnpc TX_580a
+
+@notEnoughRupees:
+	wait 30
+	showtext TX_5808
+	enableinput
+	checkabutton
+	scriptjump @answeredCorrectly
+
+/*
 patch_upstairsRepairTuniNutScript:
 	loadscript scriptHelp.patch_upstairsRepairTuniNutScript
 
@@ -8025,7 +8099,7 @@ patch_downstairsAfterBeatingMinigameScript:
 	checkabutton
 	showtext TX_580f
 	scriptjump @npcLoop
-
+*/
 
 ; ==================================================================================================
 ; INTERAC_MOBLIN
@@ -8977,7 +9051,6 @@ pirateCaptainTookStock:
 	orroomflag ROOMFLAG_80
 	setglobalflag GLOBALFLAG_INTRO_DONE
 	enableinput
-	scriptend
 
 @npcLoop:
 	checkabutton
@@ -9010,6 +9083,8 @@ pirateSubid0Script:
 	showtext TX_360c
 	wait 60
 	orroomflag ROOMFLAG_80
+	playsound SND_WARP_START
+	wait 10
 	asm15 scriptHelp.pirate_warpToRoom
 	scriptend
 

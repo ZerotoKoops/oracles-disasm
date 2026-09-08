@@ -56,7 +56,7 @@ initializeFile:
 ++
 	callab commonInteractions5.initializeChildOnGameStart
 .ifdef ROM_AGES
-	callab roomTileChanges.initializeVinePositions
+	;callab roomTileChanges.initializeVinePositions
 .endif
 	; Set clock
 	call initializeClockVars
@@ -373,6 +373,7 @@ initialFileVariables:
 	.db <wLinkName+5,			$00 ; Ensure names have null terminator
 	.db <wKidName+5,			$00
 	.db <wObtainedTreasureFlags,		1<<TREASURE_PUNCH
+	.db <wObtainedTreasureFlags+$03,		1<<(TREASURE_BOOK_OF_MIGHT # $08)
 	.db <wMaxBombs,				$20;$10
 	.db <wLinkHealth,			$10 ; 4 hearts (gets overwritten in standard game)
 	.db <wLinkMaxHealth,			$10
@@ -399,6 +400,7 @@ initialFileVariables:
 	.db <wDeathRespawnBuffer.x,		$28
 	.db <wDeathRespawnBuffer.facingDir,	DIR_RIGHT;$02
 .endif
+	.db <wInventoryA, TREASURE_BOOK_OF_MIGHT
 	.db $00
 
 initialClockVars:

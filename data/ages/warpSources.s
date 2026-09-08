@@ -110,6 +110,21 @@ group0WarpSources:
 	m_StandardWarp $0 $a5 $3e $5 $4
 	m_PointerWarp  $e8 group0Roome8WarpSources
 	m_StandardWarp $0 $eb $03 $5 TRANSITION_SRC_FADEOUT
+	m_StandardWarp $0 $fa $11 $1 $4
+	m_PointerWarp  $ea group0RoomeaWarpSources
+	m_PointerWarp  $db group0RoomdbWarpSources
+	m_StandardWarp $0 $cb $19 $1 $4
+	m_StandardWarp $0 $cc $51 $1 $4
+	m_StandardWarp $0 $dc $52 $1 $4
+	m_WarpListEndNoDefault
+group0RoomdbWarpSources:
+	m_PositionWarp $42 $4b $1 $4
+	m_PositionWarp $17 $4c $1 $4
+	m_WarpListEndNoDefault
+group0RoomeaWarpSources:
+	m_PositionWarp $22 $1e $1 $4
+	m_PositionWarp $25 $49 $1 $4
+	m_PositionWarp $28 $4a $1 $4
 	m_WarpListEndNoDefault
 group0Roome8WarpSources:
 	m_PositionWarp $53 $08 $0 $4
@@ -264,8 +279,19 @@ group1WarpSources:
 	m_StandardWarp $0 $dd $6a $5 $4
 	m_PointerWarp     $41 warpSource784a
 	m_StandardWarp $0 $27 $48 $1 $2
-	m_StandardWarp $0 $e2 $19 $1 $2
-	m_StandardWarp $0 $e0 $42 $5 $2
+	m_StandardWarp $04 $e2 $55 $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $e0 $53 $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $f0 $0c $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $f1 $1c $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $f2 $21 $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $f3 $2f $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $f4 $52 $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $0 $f4 $50 $1 TRANSITION_SRC_FADEOUT
+	m_StandardWarp $04 $f5 $4f $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $0 $f5 $4d $1 TRANSITION_SRC_FADEOUT
+	m_StandardWarp $0 $e5 $4e $1 TRANSITION_SRC_FADEOUT
+	m_StandardWarp $0 $e4 $4f $1 TRANSITION_SRC_FADEOUT
+	m_StandardWarp $08 $e3 $51 $0 TRANSITION_SRC_LEAVESCREEN
 	m_WarpListEndNoDefault
 
 warpSource7836:
