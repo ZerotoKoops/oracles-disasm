@@ -13666,6 +13666,46 @@ groups:
       eats \col(1)shields\col(0)!
       How frightful!
 
+  - name: TX_2c23
+    index: 0x23
+    text: >-
+      Hoh hoh! I am
+      
+      \col(3)Troy\col(0)! 
+
+      I think I saw you traveling with
+      my friend \Link once!
+
+      I summer here when I'm not in \col(1)Labrynna\col(0).
+
+  - name: TX_2c24
+    index: 0x24
+    text: >-
+      What I've been enjoying is
+      digging up the ground with
+      my \col(1)shovel\col(0)!\stop
+
+      Say, I'll trade you for it though
+      if you have any \col(1)bombs\col(0)?
+
+  - name: TX_2c25
+    index: 0x25
+    text: >-     
+      No? Too bad...
+
+  - name: TX_2c26
+    index: 0x26
+    text: >-  
+      I only need \col(1)four\col(0).
+
+      Trade bombs?
+        \opt()Yes \opt()No
+
+  - name: TX_2c27
+    index: 0x27
+    text: >-  
+      Thank you, again, miss!
+
 - group: 0x2d
   data:
   - name: TX_2d00

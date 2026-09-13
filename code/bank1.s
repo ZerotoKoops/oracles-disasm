@@ -3665,7 +3665,7 @@ cutscene01:
 
 	ld a,GLOBALFLAG_TIME_FLOWING
 	call checkGlobalFlag
-	;jr z,@doneUpdatingClock
+	jr z,@doneUpdatingClock
 	;ld a,(w1ParentItem5.id)
 	;cp ITEM_HARP
 	;jr z,++

@@ -8183,7 +8183,7 @@ troy_chooseRandomAnimalText:
 	add <TX_2c13
 	ld (wTextSubstitutions),a
 	ret
-
+/*
 
 ; Troy at target carts
 troySubid0Script:
@@ -8286,6 +8286,80 @@ troySubid1Script:
 	asm15 troy_chooseRandomAnimalText
 	showtext TX_2c12
 	scriptjump @loop
+*/
+
+
+troy_checkNumBombs:
+	ld l,$00
+	ld a,(wNumBombs)
+	cpa $04
+	jr c,+
+	inc l
++
+	ld e,Interaction.var3c
+	ld a,l
+	ld (de),a
+	ret	
+
+troy_decreaseBombs:
+	ld a,(wNumBombs)
+	sub $04
+	daa
+	ld (wNumBombs),a
+	jp setStatusBarNeedsRefreshBit1
+	
+; Gives you the shovel if you have bombs
+troySubid0Script:
+	initcollisions
+	jumpifroomflagset ROOMFLAG_ITEM, @gaveShovel
+
+@loop:
+	checkabutton
+	disableinput
+	jumpifroomflagset ROOMFLAG_80, +
+	showtext TX_2c23
+	orroomflag ROOMFLAG_80
+	checktext
+	wait 10
++
+	showtext TX_2c24
+	jumpifitemobtained TREASURE_BOMBS, @hasBombs
+@refuse:
+	checktext
+	wait 20
+	showtext TX_2c25
+	enableinput
+	scriptjump @loop
+
+@hasBombs:
+	showtext TX_2c26
+	jumpiftextoptioneq $01, @refuse
+	asm15 troy_checkNumBombs
+	jumpifobjectbyteeq Interaction.var3c, $00, @refuse
+; enough bombs
+	checktext
+	asm15 troy_decreaseBombs
+	playsound SND_GETSEED
+	wait 20
+	giveitem TREASURE_SHOVEL, $00
+	checktext
+	wait 10
+	showtext TX_2c27
+	enableinput
+
+@gaveShovel:
+	checkabutton
+	jumpifroomflagset ROOMFLAG_40, ++
+	asm15 troy_chooseRandomAnimalText
+	showtext TX_2c11
+	orroomflag ROOMFLAG_40
+	scriptjump @gaveShovel
+++
+	asm15 troy_chooseRandomAnimalText
+	showtext TX_2c12
+	scriptjump @gaveShovel
+
+
 
 
 ; ==================================================================================================

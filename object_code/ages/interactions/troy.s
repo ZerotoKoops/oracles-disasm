@@ -2,9 +2,41 @@
 ; INTERAC_TROY
 ; ==================================================================================================
 interactionCodeca:
+	call checkInteractionState
+	jr z,@state0
+
+; state1
+	call interactionRunScript
+	jp c,interactionDelete
+	jp interactionAnimateAsNpc	
+
+@state0:
+	call interactionInitGraphics
+	ld e,Interaction.subid
+	ld a,(de)
+	ld hl,@scriptTable
+	rst_addDoubleIndex
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a
+	call interactionSetScript
+	jp interactionIncState
+
+
+; Index by subid
+@scriptTable:
+	.dw mainScripts.troySubid0Script
+
+
+
+
+
+
+/*
 	ld e,Interaction.subid
 	ld a,(de)
 	rst_jumpTable
+
 	.dw @subid0
 	.dw @subid1
 
@@ -55,3 +87,4 @@ interactionCodeca:
 @scriptTable:
 	.dw mainScripts.troySubid0Script
 	.dw mainScripts.troySubid1Script
+*/

@@ -9300,10 +9300,12 @@ syrupCuccoScript_triedToSteal:
 
 troySubid0Script:
 	loadscript scriptHelp.troySubid0Script
+/*
+	loadscript scriptHelp.troySubid0Script
 
 troySubid1Script:
 	loadscript scriptHelp.troySubid1Script
-
+*/
 
 ; ==================================================================================================
 

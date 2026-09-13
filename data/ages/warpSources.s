@@ -117,6 +117,7 @@ group0WarpSources:
 	m_StandardWarp $0 $cc $51 $1 $4
 	m_StandardWarp $0 $dc $52 $1 $4
 	m_PointerWarp  $d8 group0Roomd8WarpSources
+	m_StandardWarp $0 $d6 $55 $1 $4
 	m_WarpListEndNoDefault
 group0Roomd8WarpSources:
 	m_PositionWarp $35 $32 $0 $4
@@ -301,6 +302,7 @@ group1WarpSources:
 	m_StandardWarp $03 $e6 $46 $0 TRANSITION_SRC_LEAVESCREEN
 	m_StandardWarp $04 $f6 $08 $0 TRANSITION_SRC_LEAVESCREEN
 	m_StandardWarp $04 $f7 $4d $0 TRANSITION_SRC_LEAVESCREEN
+	m_StandardWarp $04 $e8 $56 $0 TRANSITION_SRC_LEAVESCREEN
 	m_WarpListEndNoDefault
 
 warpSource7836:

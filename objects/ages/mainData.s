@@ -211,7 +211,6 @@ group1Mape2ObjectData:
 group1Mape3ObjectData:
 group1Mape6ObjectData:
 group1Mape7ObjectData:
-group1Mape8ObjectData:
 group1Mape9ObjectData:
 group1MapeaObjectData:
 group1MapebObjectData:
@@ -4872,4 +4871,8 @@ group1Mapf5ObjectData:
 
 group0Mape9ObjectData:
 	obj_Interaction INTERAC_MISCELLANEOUS_2 $08 $65 $02
+	obj_End
+
+group1Mape8ObjectData:
+	obj_Interaction INTERAC_TROY $00 $40 $50
 	obj_End
