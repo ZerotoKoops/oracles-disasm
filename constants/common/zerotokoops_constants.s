@@ -28,3 +28,33 @@
 	THIRD_GROUP		db ; $02
 	FOURTH_GROUP	db ; $03
 .ende
+
+	.define DUSK_PALETTE_HEADER PALH_TILESET_OVERWORLD_PAST_ALTERNATE ;$33
+	.define DAWN_PALETTE_HEADER PALH_TILESET_OVERWORLD_PAST_ALTERNATE
+	.define DUSK_PALETTE_DATA paletteData4b50
+	.define DAWN_PALETTE_DATA paletteData4b50
+
+
+.enum 0
+	SECTION_A	db ; $00
+	SECTION_B	db ; $01
+	SECTION_C	db ; $02
+	SECTION_D	db ; $03
+	SECTION_E	db ; $04
+	SECTION_F	db ; $05
+	SECTION_G	db ; $06
+	SECTION_H	db ; $07
+	SECTION_I	db ; $08
+	SECTION_J	db ; $09
+	SECTION_K	db ; $0a
+	SECTION_L	db ; $0b
+	SECTION_M	db ; $0c
+	SECTION_N	db ; $0d
+	SECTION_O	db ; $0e
+	SECTION_P	db ; $0f
+	SECTION_Q	db ; $10
+	SECTION_R	db ; $11
+	SECTION_S	db ; $12
+	SECTION_T	db ; $13
+	SECTION_U	db ; $14
+.ende

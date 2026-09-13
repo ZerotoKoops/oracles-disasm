@@ -45,7 +45,6 @@ chestGroup2Data:
 chestGroup3Data:
 	m_ChestData $24, $0e, TREASURE_OBJECT_RING_26
 	m_ChestData $18, $1f, TREASURE_OBJECT_RUPEES_06
-	m_ChestData $35, $e8, TREASURE_OBJECT_NONE_00
 	m_ChestData $35, $ff, TREASURE_OBJECT_NONE_00
 	m_ChestData $18, $f9, TREASURE_OBJECT_RING_20
 	m_ChestData $34, $fd, TREASURE_OBJECT_HEART_PIECE_01

@@ -500,7 +500,40 @@ bank78ChannelFallback:
 
 .include "audio/common/mus/custom/riversideStation.s"
 .include "audio/common/mus/custom/heyYou.s"
-	
+.include "audio/common/mus/custom/crownCity.s"
+
+.ends
+
+.BANK $79 SLOT 1
+.ORG 0
+
+m_section_superfree AudioData8
+
+bank79ChannelFallback:
+	cmdff
+
+.redefine MUSIC_CHANNEL_FALLBACK bank79ChannelFallback
+.include "audio/common/mus/custom/hyruleField/hyruleFieldA.s" ; L is a copy of A
+.include "audio/common/mus/custom/hyruleField/hyruleFieldB.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldC.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldD.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldE.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldF.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldG.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldH.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldI.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldJ.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldK.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldM.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldN.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldO.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldP.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldQ.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldR.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldS.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldT.s"
+.include "audio/common/mus/custom/hyruleField/hyruleFieldU.s"
+
 .ends
 
 

@@ -404,7 +404,7 @@ initialFileVariables:
 	.db $00
 
 initialClockVars:
-	.db TIME_DAWN ; wTimeOfDay
+	.db TIME_DUSK ; wTimeOfDay
 	.db 10 ; seconds
 	.dw $1730 ; hours and minutes
 	.db $00 ; day

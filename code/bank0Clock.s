@@ -56,7 +56,7 @@ updateTimeOfDayPalette:
 	.dw @normalPalette
 .ifdef ROM_AGES
 	.dw @dawnDuskPalette
-	.dw @nightPalette
+	.dw @normalPalette;@nightPalette
 	.dw @dawnDuskPalette
 .else ; ROM_SEASONS
 	.dw @duskPalette
@@ -72,8 +72,20 @@ updateTimeOfDayPalette:
 @dawnDuskPalette:
 	call checkForDawnDuskPaletteExceptions
 	jr c,@normalPalette
-	ld a,PALH_TILESET_OVERWORLD_PAST_ALTERNATE
+
+	ld a,(wTimeOfDay)
+	sra a
+	ld hl,@@paletteHeaders
+	rst_addAToHl
+	ld a,(hl)
 	ret
+
+@@paletteHeaders:
+	.db DUSK_PALETTE_HEADER
+	.db DAWN_PALETTE_HEADER
+@@paletteData:
+	.dw DUSK_PALETTE_DATA
+	.dw DAWN_PALETTE_DATA
 
 .else ; ROM_SEASONS
 @duskPalette:
@@ -124,3 +136,36 @@ getDayNightCombination:
 	pop hl
 	ret
 */
+
+;;
+; @param	a	Palette header to load (see data/[ages|seasons]/paletteHeaders.s)
+loadPaletteData:
+	push de
+	ld l,a
+	ld a,($ff00+R_SVBK)
+	ld c,a
+	ldh a,(<hRomBank)
+	ld b,a
+	push bc
+	ld a,:bank1Moveable.paletteHeaderTable
+	setrombank
+
+	ld a,l
+	ld hl,bank1Moveable.paletteHeaderTable
+	rst_addDoubleIndex
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a
+; load palette data address
+	inc hl
+	ldi a,(hl)
+	ld h,(hl)
+	ld l,a	
+
+	pop bc
+	ld a,b
+	setrombank
+	ld a,c
+	ld ($ff00+R_SVBK),a
+	pop de
+	ret

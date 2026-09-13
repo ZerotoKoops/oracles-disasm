@@ -3,6 +3,7 @@
 	MUS_NONE                  db ; $00
 	MUS_TITLESCREEN           db ; $01
 	MUS_MINIGAME              db ; $02
+	MUS_HYRULE_FIELD		 .db ; $03
 	MUS_OVERWORLD             db ; $03
 
 .ifdef ROM_AGES
@@ -28,6 +29,7 @@
 	MUS_GAMEOVER              db ; $09
 
 .ifdef ROM_AGES
+	MUS_CROWN_CITY			 .db ; $0a
 	MUS_LYNNA_CITY            db ; $0a
 	MUS_LYNNA_VILLAGE         db ; $0b
 	MUS_ZORA_VILLAGE          db ; $0c
@@ -152,7 +154,8 @@
 	MUS_48                    db ; $48 (blank)
 	MUS_49                    db ; $49 (blank)
 	MUS_PRECREDITS            db ; $4a
-	MUS_4b                    db ; $4b (blank)
+	MUS_4b              	 .db ; $4b (blank)
+	SIZE_OF_MUS				  db
 
 .ende
 

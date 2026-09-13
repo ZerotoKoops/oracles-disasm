@@ -32,7 +32,7 @@ dawnDuskCutscene:
     cp <ROOM_SEASONS_021
     jr z,+
 */
-	ld a,SNDCTRL_MEDIUM_FADEOUT
+	ld a,SNDCTRL_FAST_FADEOUT
 	call playSound  
 ;+
 
@@ -45,11 +45,23 @@ dawnDuskCutscene:
     call checkForDawnDuskPaletteExceptions
     ret c
 
-	ld hl,$de90
-	ld bc,paletteData4b50;4a30
+    ld a,(wTilesetPalette)
+    call loadPaletteData
+    push hl
+
+	ld a,(wTimeOfDay)
+	sra a
+	ld hl,updateTimeOfDayPalette@dawnDuskPalette@paletteData
+	rst_addDoubleIndex
+	ld c,(hl)
+    inc hl
+    ld b,(hl)
+
+    pop hl
 	call func_13c6
 
-	lda PALH_TILESET_OVERWORLD_PAST_ALTERNATE
+    call updateTimeOfDayPalette@dawnDuskPalette
+
 .else ; ROM_SEASONS
 
 ; Check for in Dark Forest
@@ -89,13 +101,15 @@ dawnDuskCutscene:
 .endif
 	call loadPaletteHeader
     callab bank1.updateGrassAnimationModifier
-    
+
     callab bank1.checkPlayRoomMusic
     ld a,SNDCTRL_MEDIUM_FADEIN
 	jp playSound 
 
 
-.ifdef ROM_SEASONS
+.ifdef ROM_AGES
+
+.else ; ROM_SEASONS
 ;;
 ; word: transition to
 ; word: transition from
@@ -156,6 +170,8 @@ duskToNightCutscene:
     ;ld a,(wTilesetFlags)
     ;and TILESETFLAG_OUTDOORS
     ;ret z
+	lda SNDCTRL_FAST_FADEOUT
+	call playSound  
 	jp fadeoutToBlack
     
 @state1:
@@ -258,7 +274,7 @@ duskToNightCutscene:
 .endif
     ;call loadScreenMusic
     callab bank1.checkPlayRoomMusic
-    ld a,SNDCTRL_MEDIUM_FADEIN
+    lda SNDCTRL_MEDIUM_FADEIN
 	jp playSound 
 
 waitForText:

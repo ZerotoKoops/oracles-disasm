@@ -318,7 +318,6 @@ group3Map4fEnemyObjectData:
 	obj_EndPointer
 
 group3Mapf6EnemyObjectData:
-	obj_SpecificEnemyA $00 $38 $00 $38 $50
 	obj_EndPointer
 
 group2MapafEnemyObjectData:
@@ -563,7 +562,6 @@ group0MapdaEnemyObjectData:
 	obj_EndPointer
 
 group0Mapb9EnemyObjectData:
-	obj_RandomEnemy $40 $1a $00
 	obj_EndPointer
 
 group1MapbcEnemyObjectData:

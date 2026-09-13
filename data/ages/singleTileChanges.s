@@ -19,6 +19,8 @@ singleTileChangeGroupTable:
 ; b3: New tile to put at that position
 
 singleTileChangeGroup0Data:
+	.db <ROOM_AGES_0e9, ROOMFLAG_02, $65, TILEINDEX_OVERWORLD_STANDARD_GROUND
+/*
 	.db $39 $40 $22 $d7
 	.db $83 $80 $43 $1c
 	.db $13 $02 $42 $d7
@@ -30,9 +32,11 @@ singleTileChangeGroup0Data:
 	.db $6a $02 $48 $3a
 	.db $48 $02 $68 $3a
 	.db $64 $02 $67 $3a
+*/
 	.db $00 $00
 
 singleTileChangeGroup1Data:
+/*
 	.db $0e $80 $16 $af
 	.db $48 $02 $48 $3a
 	.db $15 $80 $34 $9e
@@ -46,28 +50,36 @@ singleTileChangeGroup1Data:
 	.db $a5 $80 $23 $ef
 	.db $65 $08 $51 $3a
 	.db $65 $02 $61 $3a
+*/
 	.db $00 $00
 
 singleTileChangeGroup2Data:
+/*
 	.db $d7 $f0 $42 $e9
+*/
 	.db $00 $00
 
 singleTileChangeGroup3Data:
+/*
 	.db $d6 $f1 $55 $e9
 	.db $0f $80 $16 $af
 	.db $9e $80 $31 $1c
 	.db $9e $80 $32 $a0
+*/
 	.db $00 $00
 
 singleTileChangeGroup4Data:
+/*
 	.db $56 $20 $44 $a0
 	.db $59 $80 $a3 $a0
 	.db $4b $80 $54 $a0
 	.db $4b $80 $55 $1d
 	.db $c5 $20 $57 $52
+*/
 	.db $00 $00
 
 singleTileChangeGroup5Data:
+/*
 	.db $19 $01 $08 $34
 	.db $26 $02 $5e $35
 	.db $87 $40 $7c $50
@@ -89,9 +101,12 @@ singleTileChangeGroup5Data:
 	.db $f0 $80 $9d $44
 	.db $f1 $80 $66 $45
 	.db $f5 $80 $9d $44
+*/
 	.db $00 $00
 
 singleTileChangeGroup6Data:
+/*
 	.db $2b $80 $aa $19
+*/
 singleTileChangeGroup7Data:
 	.db $00 $00

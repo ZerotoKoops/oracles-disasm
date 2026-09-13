@@ -13896,6 +13896,7 @@ getSomariaBlockIndex:
 .endif
 
 .include "code/bank0Clock.s"
+.include "code/bank0HyruleField.s"
 .include "code/debug.s"
 
 .ENDS

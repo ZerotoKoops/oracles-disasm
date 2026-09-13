@@ -236,6 +236,10 @@ updateSound:
 	jr z,+
 	jp @ret
 +
+	ld a,(wActiveMusic)
+	cpa MUS_HYRULE_FIELD
+	call z,updateJumpIndex
+
 	ld a,(wSoundVolume)
 	ld ($ff00+R_NR50),a
 	ld a,(wSoundFadeDirection)
@@ -664,6 +668,29 @@ doNextChannelCommand:
 	jr c,+
 	jp cmdVolume
 +
+; Custom music code
+	cpa $60
+	jr z,@afterTranspose
+	jr nc,@afterTranspose
+
+	ld b,a
+	ld a,(wSoundChannel)
+	cpa $05
+	jr nc,@skipTranspose
+
+	ld a,b
+	ld hl,wChannelTranspose
+	call loadChannelVariable
+	ld b,(hl)
+	add b
+	cpa $60
+	jr c,@afterTranspose
+	sub $60
+	jr @afterTranspose
+
+@skipTranspose:
+	ld a,b
+@afterTranspose:
 	ld (wSoundCmd),a
 	jp standardSoundCmd
 
@@ -680,14 +707,14 @@ doNextChannelCommand:
 	.dw channelCmdfe
 	.dw channelCmdfd
 	.dw channelCmdff
-	.dw channelCmdff
-	.dw channelCmdff
+	.dw channelCmdfb ; indexJump
+	.dw channelCmdfa ; endSec
 	.dw channelCmdf9
 	.dw channelCmdf8
-	.dw channelCmdff
+	.dw channelCmdf7 ; breakOrLoop
 	.dw channelCmdf6
-	.dw channelCmdff
-	.dw channelCmdff
+	.dw channelCmdf5 ; beginLoop
+	.dw channelCmdf4 ; transpose
 	.dw channelCmdf3
 	.dw channelCmdf2
 	.dw channelCmdf1
@@ -702,6 +729,154 @@ channelCmdf2:
 ;;
 channelCmdf3:
 	jp doNextChannelCommand
+
+; ========================================
+; Custom Commands
+; ========================================
+
+;;
+; indexJump
+channelCmdfb:
+	ld a,(wSoundChannel)
+	ld hl,indexJumpTableChannel0
+	cp $01
+	jr nz,+
+	ld hl,indexJumpTableChannel1
++
+	cp $04
+	jr nz,+
+	ld hl,indexJumpTableChannel4
++
+	cp $06
+	jr nz,+
+	ld hl,indexJumpTableChannel6
++
+	ld a,(wChannelJumpIndex)
+	ld (wLastChannelJumpIndex),a
+
+	rst_addDoubleIndex
+	call loadHLIntoAddressPointerSkipVar
+	jp doNextChannelCommand
+
+;;
+; beginLoop
+channelCmdf5:
+	ld a,(wSoundChannel)
+	scf
+	ccf
+	cp $07
+	jp nc,channels6And7
+; Set loop counter
+	call getNextChannelByte
+	ld hl,wChannelLoopCounters
+	call loadChannelVariable
+	ld (hl),a
+
+; Set loop pointer
+	ld hl,wChannelLoopPointers
+	call loadAddressPointerIntoHL
+	jp doNextChannelCommand
+
+loadAddressPointerIntoHL:
+	;ret ; temp
+	ld a,(wSoundChannel)
+	sla a
+	add <hSoundChannelAddresses
+	ld c,a
+	ld a,($ff00+c)
+	inc c
+
+	ld e,a
+	ld a,($ff00+c)
+	ld d,a
+
+	ld a,(wSoundChannel)
+	sla a
+	ld c,a
+	ld b,$00
+	add hl,bc
+
+	ld a,e
+	ldi (hl),a
+	ld (hl),d
+	ret
+
+loadHLIntoAddressPointer:
+	call loadChannelVariable
+	add hl,de
+loadHLIntoAddressPointerSkipVar:
+	;ret ; temp
+	ldi a,(hl)
+	ld e,a
+	ld d,(hl)
+
+	ld a,(wSoundChannel)
+	sla a
+	add <hSoundChannelAddresses
+	ld c,a
+
+	ld a,e
+	ld ($ff00+c),a
+	inc c
+	ld a,d
+	ld ($ff00+c),a
+	ret	
+
+;;
+; breakOrLoop
+channelCmdf7:
+	ld a,(wSoundChannel)
+	scf
+	ccf
+	cp $07
+	jr nc,channels6And7
+
+	ld hl,wChannelLoopCounters
+	call loadChannelVariable
+	dec (hl)
+	ld a,(hl)
+	and %01111111
+	ld hl,wChannelLoopPointers
+	call nz,loadHLIntoAddressPointer
+
+	jp doNextChannelCommand
+
+;;
+; endSec
+channelCmdfa:
+	ld hl,wChannelAddressPointers
+	call loadHLIntoAddressPointer
+
+	jp doNextChannelCommand
+
+;;
+; transpose
+channelCmdf4:
+	call getNextChannelByte
+	ld hl,wChannelTranspose
+	call loadChannelVariable
+	ld (hl),a
+	jp doNextChannelCommand
+
+; [hl] : Channel Variable to set hl to
+loadChannelVariable:
+	push af
+	ld a,(wSoundChannel)
+	ld e,a
+	ld d,$00
+	add hl,de
+	pop af
+	ret
+
+channels6And7:
+	call getNextChannelByte
+	jp doNextChannelCommand
+
+
+; ========================================
+; End Custom Commands
+; ========================================
+
 
 ;;
 ; Vibrato
@@ -1701,7 +1876,36 @@ setWaveform:
 	ld ($ff00+R_NR34),a
 	ret
 
+;;
+; goto
 channelCmdfe:
+	ld hl,wChannelAddressPointers
+	call loadAddressPointerIntoHL
+	inc de
+	inc de
+	ld (hl),d
+	dec l
+	ld (hl),e
+
+	call getNextChannelByte
+	ld l,a
+	call getNextChannelByte
+	ld h,a
+	call writeHLtoHRAM
+	jp doNextChannelCommand
+
+writeHLtoHRAM:
+	ld a,(wSoundChannel)
+	sla a
+	ld b,a
+	ld a,l
+	ld c,<hSoundChannelAddresses
+	call writeIndexedHighRamAndIncrement
+	ld a,h
+	ld ($ff00+c),a
+	inc c
+	ret 	
+/*
 	call getNextChannelByte
 	ld l,a
 	call getNextChannelByte
@@ -1716,6 +1920,7 @@ channelCmdfe:
 	ld ($ff00+c),a
 	inc c
 	jp doNextChannelCommand
+*/
 
 ;;
 func_39_4a10:
@@ -1947,6 +2152,19 @@ playSound:
 	jp @playSoundEnd
 
 @normalSound:
+; Clear custom variables
+	cpa SIZE_OF_MUS
+	jr nc,+
+
+	ld b,$06+$08	;temp $08 for wChannelJumpIndex
+	ld hl,wChannelTranspose
+	call clearMemory
+
+	ld b,$08
+	ld hl,wChannelVibratos
+	call clearMemory
++
+; end clear
 	ld a,$00
 	ld (wSoundFadeDirection),a
 	ld a,(wSoundTmp)
@@ -2194,6 +2412,9 @@ nonExistentFunction:
 
 .include "audio/common/noise.s"
 .include "audio/common/waveforms.s"
+
+.include "audio/common/hyruleField_indexJumpTable.s"
+
 .include {"audio/{GAME}/soundChannelPointers.s"}
 .include {"audio/{GAME}/soundPointers.s"}
 

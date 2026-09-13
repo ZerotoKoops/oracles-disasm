@@ -7,7 +7,7 @@
 ; - PALH_SPR:     Loads sprite palettes only
 ; - PALH:         If none of the above, could load both sprite & bg palettes (or not yet categorized)
 
-.define NUM_PALETTE_HEADERS $cc+$01
+.define NUM_PALETTE_HEADERS $cd+$01
 
 paletteHeaderTable:
 	.repeat NUM_PALETTE_HEADERS index COUNT
@@ -817,6 +817,13 @@ m_PaletteHeaderStart $cb, PALH_cb
 	m_PaletteHeaderEnd
 
 m_PaletteHeaderStart $cc, PALH_cc
-	m_PaletteHeaderBg  0, 1, paletteDataNight1
-	m_PaletteHeaderBg  2, 6, paletteData44a8
+	m_PaletteHeaderBg  2, 6, paletteDataNight1
 	m_PaletteHeaderEnd
+
+m_PaletteHeaderStart $cd, PALH_cd
+	m_PaletteHeaderBg  2, 6, paletteDataNight2
+	m_PaletteHeaderEnd
+
+
+.define PALH_NIGHT_1, PALH_cc
+.define PALH_NIGHT_2, PALH_cd

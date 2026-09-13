@@ -446,3 +446,26 @@
     .undefine WORKING_3
 .endif
 .endm
+
+; 
+.macro beginLoop	;cmdf1
+	.db $f5
+	.db \1
+.endm
+
+.macro breakOrLoop	;cmdf2
+	.db $f7
+.endm
+
+.macro endSec	;cmdf3
+	.db $fa
+.endm
+
+.macro transpose	;cmdf4
+	.db $f4
+	.db \1
+.endm
+	
+.macro indexJump ;cmdfb
+	.db $fb
+.endm	
