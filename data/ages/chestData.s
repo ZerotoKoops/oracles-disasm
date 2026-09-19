@@ -17,6 +17,8 @@ chestDataGroupTable:
 	.dw chestGroup7Data
 
 chestGroup0Data:
+	m_ChestData $12, $87, TREASURE_OBJECT_SEED_SATCHEL_05
+	m_ChestData $62, $77, TREASURE_OBJECT_SLINGSHOT_00
 	m_ChestData $49, $51, TREASURE_OBJECT_RUPEES_04
 	m_ChestData $51, $49, TREASURE_OBJECT_RUPEES_04
 	m_ChestData $36, $84, TREASURE_OBJECT_RUPEES_05

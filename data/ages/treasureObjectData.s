@@ -189,7 +189,7 @@ treasureObjectData11:
 
 treasureObjectData13:
 	m_BeginTreasureSubids TREASURE_SLINGSHOT
-	m_TreasureSubid $38, $01, <TX_00_GET_SLINGSHOT,      $7d, TREASURE_OBJECT_SLINGSHOT_00
+	m_TreasureSubid $38, $02, <TX_00_GET_SLINGSHOT,      $7d, TREASURE_OBJECT_SLINGSHOT_00
 	m_TreasureSubid $38, $02, <TX_00_GET_HYPERSLINGSHOT, $7e, TREASURE_OBJECT_SLINGSHOT_01
 
 treasureObjectData15:
@@ -219,6 +219,7 @@ treasureObjectData19:
 	m_TreasureSubid $29, $00, $2d, $20, TREASURE_OBJECT_SEED_SATCHEL_02
 	m_TreasureSubid $09, $00, $2d, $20, TREASURE_OBJECT_SEED_SATCHEL_03
 	m_TreasureSubid $01, $00, $80, $20, TREASURE_OBJECT_SEED_SATCHEL_UPGRADE
+	m_TreasureSubid $69, $00, $80, $20, TREASURE_OBJECT_SEED_SATCHEL_05
 
 treasureObjectData20:
 	m_BeginTreasureSubids TREASURE_EMBER_SEEDS

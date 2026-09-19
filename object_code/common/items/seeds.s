@@ -36,15 +36,17 @@ itemCode24:
 	cp $63
 	jr z,@shooter
 
-	ld b,a
-	call itemUpdateAngle
-	ld a,b
+	;ld b,a
+	;call itemUpdateAngle
+	;ld a,b
 	or a
-	ld l,Item.id
+	;ld l,Item.id
 	jr z,@satchel
 	jr @slingshot
 
 @satchel:
+	call itemUpdateAngle
+	ld l,Item.id
 	; Satchel
 	ldi a,(hl)
 	cp ITEM_GALE_SEED
@@ -154,14 +156,14 @@ seedItemState1:
 
 	; Check bit 4 of Item.var2a
 	bit 4,a
-	jr z,@seedCollidedWithEnemy
+	jp z,@seedCollidedWithEnemy
 
 	; [Item.var2a] = 0
 	ld (hl),$00
 
-	call func_50f4
+	call func_50f4 ; determine bounces if from shooter
 	jr z,@updatePosition
-	jr @seedCollidedWithWall
+	jp @seedCollidedWithWall
 .else
 	jr nz,@seedCollidedWithEnemy
 .endif
@@ -185,18 +187,67 @@ seedItemState1:
 	jr nz,@seedCollidedWithWall
 
 @updatePosition:
+; ZTK added
+	ld e,Item.substate
+	ld a,(de)
+	cpa $00
+	jr z,@@substate0
+
+@@substate1:
+	;call itemUpdateAngle
 	call @checkWithinBoundary
 	jp c,objectApplySpeed
 	jp seedItemDelete
 
+@@substate0:
+	ld b,BTN_A
+	ld a,(wInventoryA)
+	cpa TREASURE_SLINGSHOT
+	jr z,+
+	ld b,BTN_B
++
+	ld a,(wKeysPressed)
+	and b
+	jr z,@@letSeedGo
+
+	;call @checkWithinBoundary
+	;jp nc,seedItemDelete
+	ld hl,w1Link.yh
+	ldi a,(hl)
+	ld b,a
+	inc l
+	ld c,(hl)
+	ld e,Item.angle
+	ld a,(de)
+	inc a
+	and $1f
+	ld (de),a
+	ld a,$14 ; Radius
+	jp objectSetPositionInCircleArc
+
+@@letSeedGo:
+	; lda $00
+	inc a
+	ld (de),a ; [substate]
+	ld e,Item.angle
+	ld a,(de)
+	add $08
+	and %00011100 ; remove some precision so aiming is easier
+	ld (de),a
+	jr @@substate1
+*/
+
 @checkWithinBoundary:
 	; Slingshot seeds disappear when they leave the screen; seed shooter seeds disappear when
 	; they leave the room.
+	jp objectCheckWithinRoomBoundary
+/*
 	ld e,Item.subid
 	ld a,(de)
 	cp $63
 	jp z,objectCheckWithinRoomBoundary
 	jp objectCheckWithinScreenBoundary
+*/
 
 @satchelUpdate:
 	; Set speed to 0 if landed in water?
@@ -928,6 +979,12 @@ data_5114:
 ;;
 ; @param[out]	zflag	z if no collision
 slingshotCheckCanPassSolidTile:
+; ZTK added	
+	ld e,Item.substate
+	ld a,(de)
+	cpa $00
+	ret z
+
 	call objectCheckTileCollision_allowHoles
 	jr nc,++
 	call itemCheckCanPassSolidTile

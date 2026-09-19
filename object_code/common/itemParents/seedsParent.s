@@ -60,6 +60,12 @@ parentItemCode_slingshot:
 	push bc
 	ld e,$01
 	call itemCreateChildWithID
+/*
+	ld e,Item.var03
+	ld a,(de)
+	ld l,Item.var03
+	ld (hl),a
+*/
 	pop bc
 	dec c
 	jr nz,@spawnSeed
@@ -298,6 +304,8 @@ clearSelfIfNoSeeds:
 	ld a,(hl)
 	or a
 	ret nz
+	ld a,SND_ERROR ; ZTK Added
+	call playSound ; ZTK added
 	pop hl
 	jp clearParentItem
 

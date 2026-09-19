@@ -29,7 +29,6 @@ group0Map7dObjectData:
 group0Map7eObjectData:
 group0Map7fObjectData:
 group0Map85ObjectData:
-group0Map87ObjectData:
 group0Map8aObjectData:
 group0Map8cObjectData:
 group0Map8eObjectData:
@@ -4875,4 +4874,8 @@ group0Mape9ObjectData:
 
 group1Mape8ObjectData:
 	obj_Interaction INTERAC_TROY $00 $40 $50
+	obj_End
+
+group0Map87ObjectData:
+	obj_Pointer group0Map87EnemyObjectData
 	obj_End

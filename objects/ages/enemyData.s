@@ -2552,3 +2552,7 @@ group1Mape4EnemyObjectData:
 group1Mape5EnemyObjectData:
 	obj_RandomEnemy $20 ENEMY_ZOL $00
 	obj_EndPointer
+
+group0Map87EnemyObjectData:
+	obj_RandomEnemy $80 ENEMY_KEESE $00
+	obj_EndPointer
