@@ -20,6 +20,8 @@ uncmpGfxHeaderTable:
 	.dw uncmpGfxHeader_l2Boomerang
 	.dw uncmpGfxHeader_rodOfSeasons
 	.dw uncmpGfxHeader_foolsOre
+	
+	.dw uncmpGfxHeader_extraShop
 
 
 
@@ -329,4 +331,10 @@ uncmpGfxHeader_rodOfSeasons:
 
 uncmpGfxHeader_foolsOre:
 	m_GfxHeader spr_item_icons_2, $8521, $02, $140
+	m_GfxHeaderEnd
+
+uncmpGfxHeader_extraShop:
+; ZTK added
+	m_GfxHeaderRam w3TileMappingIndices+$160, $9961, $02
+	m_GfxHeaderRam w3VramTiles+$160,          $9960, $02
 	m_GfxHeaderEnd

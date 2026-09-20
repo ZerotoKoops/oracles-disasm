@@ -4,6 +4,7 @@
 ; Variables:
 ;   var30/31: Y/X position where the item rests in the selection area
 ; ==================================================================================================
+; TODO: Figure out how to reload shop price tiles when an 
 interactionCode47:
 	ld e,Interaction.state
 	ld a,(de)
@@ -29,6 +30,7 @@ shopItemState0:
 	; If this is the ring box upgrade, check whether to change it to the L3 box
 	ld e,Interaction.subid
 	ld a,(de)
+/*
 	cp $00
 	jr nz,++
 
@@ -42,13 +44,16 @@ shopItemState0:
 	ld a,$14
 	ld (de),a
 ++
+*/
 	; If this is 10 bombs, delete self if Link doesn't have bombs
 	ld a,(de)
-	cp $04
+	cp $02;$04
 	jr nz,++
+/*
 	ld a,TREASURE_BOMBS
 	call checkTreasureObtained
 	jp nc,shopItemPopStackAndDeleteSelf
+*/
 	jr @checkFlutePurchasable
 ++
 .else
@@ -59,6 +64,7 @@ shopItemState0:
 	ld a,(de)
 .endif
 
+/*
 	; If this is the shield, check whether to replace it with a gasha seed (linked)
 	cp $03
 	jr nz,@checkFlutePurchasable
@@ -68,6 +74,7 @@ shopItemState0:
 	; Replace with gasha seed
 	ld a,$13
 	ld (de),a
+*/
 
 @checkFlutePurchasable:
 	; Decide whether the flute is purchasable (update bit 3 of wBoughtShopItems2)
@@ -413,6 +420,18 @@ shopItemGetTilesForRupeeDisplay:
 	ret
 
 @itemPricePositions:
+	/* $00 */ .dw w3VramTiles+$164
+	/* $01 */ .dw w3VramTiles+$168
+	/* $02 */ .dw w3VramTiles+$172
+	/* $03 */ .dw w3VramTiles+$176
+	/* $04 */ .dw w3VramTiles+$63
+	/* $05 */ .dw w3VramTiles+$67
+	/* $06 */ .dw w3VramTiles+$71
+	/* $07 */ .dw w3VramTiles+$75
+	/* $08 */ .dw w3VramTiles+$164
+	/* $09 */ .dw w3VramTiles+$63
+	/* $0a */ .dw w3VramTiles+$176
+/*
 	.dw w3VramTiles+$66
 	.dw w3VramTiles+$6f
 	.dw w3VramTiles+$6a
@@ -437,36 +456,49 @@ shopItemGetTilesForRupeeDisplay:
 	.dw w3VramTiles+$66
 	.dw w3VramTiles+$6e
 .endif
+*/
 
 shopItemPrices:
-	/* $00 */ .db RUPEEVAL_300
+	/* $00 */ .db RUPEEVAL_050
 	/* $01 */ .db RUPEEVAL_010
-	/* $02 */ .db RUPEEVAL_300
+	/* $02 */ .db RUPEEVAL_020
 	/* $03 */ .db RUPEEVAL_030
-	/* $04 */ .db RUPEEVAL_020
-.ifdef ROM_AGES
-	/* $05 */ .db RUPEEVAL_300
-.else
-	/* $05 */ .db RUPEEVAL_200
-.endif
-	/* $06 */ .db RUPEEVAL_500
+	/* $04 */ .db RUPEEVAL_500
+	/* $05 */ .db RUPEEVAL_100
+	/* $06 */ .db RUPEEVAL_150
 	/* $07 */ .db RUPEEVAL_300
-	/* $08 */ .db RUPEEVAL_300
-	/* $09 */ .db RUPEEVAL_300
-	/* $0a */ .db RUPEEVAL_300
-	/* $0b */ .db RUPEEVAL_100
-	/* $0c */ .db RUPEEVAL_010
-	/* $0d */ .db RUPEEVAL_150
-	/* $0e */ .db RUPEEVAL_100
-	/* $0f */ .db RUPEEVAL_100
-	/* $10 */ .db RUPEEVAL_100
-	/* $11 */ .db RUPEEVAL_050
-	/* $12 */ .db RUPEEVAL_080
-	/* $13 */ .db RUPEEVAL_030
-.ifdef ROM_AGES
-	/* $14 */ .db RUPEEVAL_300
-	/* $15 */ .db RUPEEVAL_500
-.endif
+	/* $08 */ .db RUPEEVAL_100
+	/* $09 */ .db RUPEEVAL_150
+	/* $0a */ .db RUPEEVAL_050
+
+;	/* $00 */ .db RUPEEVAL_300
+;	/* $01 */ .db RUPEEVAL_010
+;	/* $02 */ .db RUPEEVAL_300
+;	/* $03 */ .db RUPEEVAL_030
+;	/* $04 */ .db RUPEEVAL_020
+;.ifdef ROM_AGES
+;	/* $05 */ .db RUPEEVAL_300
+;.else
+;	/* $05 */ .db RUPEEVAL_200
+;.endif
+;	/* $06 */ .db RUPEEVAL_500
+;	/* $07 */ .db RUPEEVAL_300
+;	/* $08 */ .db RUPEEVAL_300
+;	/* $09 */ .db RUPEEVAL_300
+;	/* $0a */ .db RUPEEVAL_300
+;	/* $0b */ .db RUPEEVAL_100
+;	/* $0c */ .db RUPEEVAL_010
+;	/* $0d */ .db RUPEEVAL_150
+;	/* $0e */ .db RUPEEVAL_100
+;	/* $0f */ .db RUPEEVAL_100
+;	/* $10 */ .db RUPEEVAL_100
+;	/* $11 */ .db RUPEEVAL_050
+;	/* $12 */ .db RUPEEVAL_080
+;	/* $13 */ .db RUPEEVAL_030
+;.ifdef ROM_AGES
+;	/* $14 */ .db RUPEEVAL_300
+;	/* $15 */ .db RUPEEVAL_500
+;.endif
 
 ;;
 ; @param[out]	zflag	z if Link should grab or release the item
@@ -490,10 +522,23 @@ shopItemCheckGrabbed:
 	jr nc,@dontGrab
 
 	; Check Link's close enough to the selection area (vertically)
+	ld e,Interaction.subid
+	ld a,(de)
+	cpa $04;$06 ; 4 items on the lower row
+	ld b,$3d
+	jr nc,+
+	ld b,$7d
++
 	ld l,<w1Link.yh
 	ld a,(hl)
-	cp $3d
+	sub b
 	jr nc,@dontGrab
+
+/*
+; check that Link isn't too high
+	cpa $10
+	jr c,@dontGrab
+*/
 
 	; Check that Link's facing the selection area (DIR_UP)
 	ld l,<w1Link.direction
@@ -510,44 +555,57 @@ shopItemCheckGrabbed:
 ;   b0: Treasure index to give (if $00, it's a random ring)
 ;   b1: Treasure parameter (if it's random ring, this is the tier of the ring)
 shopItemTreasureToGive:
-.ifdef ROM_AGES
-	/* $00 */ .db  TREASURE_RING_BOX      $02
-.else
-	/* $00 */ .db  TREASURE_SEED_SATCHEL  $01
-.endif
-	/* $01 */ .db  TREASURE_HEART_REFILL  $0c
-	/* $02 */ .db  TREASURE_GASHA_SEED    $01
-	/* $03 */ .db  TREASURE_SHIELD        $01
-	/* $04 */ .db  TREASURE_BOMBS         $10
-.ifdef ROM_AGES
-	/* $05 */ .db  $00                    $03
-.else
-	/* $05 */ .db  TREASURE_TREASURE_MAP  $01
-.endif
-	/* $06 */ .db  TREASURE_GASHA_SEED    $01
-	/* $07 */ .db  TREASURE_POTION        $01
-	/* $08 */ .db  TREASURE_GASHA_SEED    $01
-	/* $09 */ .db  TREASURE_POTION        $01
-	/* $0a */ .db  TREASURE_GASHA_SEED    $01
-	/* $0b */ .db  TREASURE_BOMBCHUS      $05
-	/* $0c */ .db  $00                    $00
-.ifdef ROM_AGES
-	/* $0d */ .db  TREASURE_FLUTE         SPECIALOBJECT_DIMITRI
-	/* $0e */ .db  TREASURE_GASHA_SEED    $01
-	/* $0f */ .db  TREASURE_RING          GBA_TIME_RING
-.else
-	/* $0d */ .db  TREASURE_FLUTE         SPECIALOBJECT_MOOSH
-	/* $0e */ .db  TREASURE_GASHA_SEED    $01
-	/* $0f */ .db  TREASURE_RING          GBA_NATURE_RING
-.endif
-	/* $10 */ .db  $00                    $01
-	/* $11 */ .db  TREASURE_SHIELD        $02
-	/* $12 */ .db  TREASURE_SHIELD        $03
-	/* $13 */ .db  TREASURE_GASHA_SEED    $01
-.ifdef ROM_AGES
-	/* $14 */ .db  TREASURE_RING_BOX      $03
-	/* $15 */ .db  TREASURE_HEART_PIECE   $01
-.endif
+	/* $00 */ .db TREASURE_GASHA_SEED	$01
+	/* $01 */ .db TREASURE_HEART_REFILL $0c
+	/* $02 */ .db TREASURE_BOMBS		$10
+	/* $03 */ .db TREASURE_SHIELD		$01
+	/* $04 */ .db TREASURE_GORON_LETTER $00
+	/* $05 */ .db TREASURE_EMPTY_BOTTLE $00
+	/* $06 */ .db TREASURE_GORON_VASE 	$00
+	/* $07 */ .db TREASURE_HEART_PIECE 	$01
+	/* $08 */ .db TREASURE_GASHA_SEED 	$01
+	/* $09 */ .db TREASURE_FLUTE       SPECIALOBJECT_DIMITRI
+	/* $0a */ .db TREASURE_SHIELD		$02
+
+
+;.ifdef ROM_AGES
+;	/* $00 */ .db  TREASURE_RING_BOX      $02
+;.else
+;	/* $00 */ .db  TREASURE_SEED_SATCHEL  $01
+;.endif
+;	/* $01 */ .db  TREASURE_HEART_REFILL  $0c
+;	/* $02 */ .db  TREASURE_GASHA_SEED    $01
+;	/* $03 */ .db  TREASURE_SHIELD        $01
+;	/* $04 */ .db  TREASURE_BOMBS         $10
+;.ifdef ROM_AGES
+;	/* $05 */ .db  $00                    $03
+;.else
+;	/* $05 */ .db  TREASURE_TREASURE_MAP  $01
+;.endif
+;	/* $06 */ .db  TREASURE_GASHA_SEED    $01
+;	/* $07 */ .db  TREASURE_POTION        $01
+;	/* $08 */ .db  TREASURE_GASHA_SEED    $01
+;	/* $09 */ .db  TREASURE_POTION        $01
+;	/* $0a */ .db  TREASURE_GASHA_SEED    $01
+;	/* $0b */ .db  TREASURE_BOMBCHUS      $05
+;	/* $0c */ .db  $00                    $00
+;.ifdef ROM_AGES
+;	/* $0d */ .db  TREASURE_FLUTE         SPECIALOBJECT_DIMITRI
+;	/* $0e */ .db  TREASURE_GASHA_SEED    $01
+;	/* $0f */ .db  TREASURE_RING          GBA_TIME_RING
+;.else
+;	/* $0d */ .db  TREASURE_FLUTE         SPECIALOBJECT_MOOSH
+;	/* $0e */ .db  TREASURE_GASHA_SEED    $01
+;	/* $0f */ .db  TREASURE_RING          GBA_NATURE_RING
+;.endif
+;	/* $10 */ .db  $00                    $01
+;	/* $11 */ .db  TREASURE_SHIELD        $02
+;	/* $12 */ .db  TREASURE_SHIELD        $03
+;	/* $13 */ .db  TREASURE_GASHA_SEED    $01
+;.ifdef ROM_AGES
+;	/* $14 */ .db  TREASURE_RING_BOX      $03
+;	/* $15 */ .db  TREASURE_HEART_PIECE   $01
+;.endif
 
 
 ; This lists conditions where a shop item may be replaced with something else.
@@ -557,63 +615,87 @@ shopItemTreasureToGive:
 ;   b2: Item to sell if the first one is unavailable (or $ff to sell nothing)
 ;   b3: Value to add to x position if the first item was sold out
 shopItemReplacementTable:
-	/* $00 */ .db <wBoughtShopItems1  $01 $ff $00
-	/* $01 */ .db <wBoughtShopItems2  $08 $0d $04
-	/* $02 */ .db <wBoughtShopItems1  $02 $06 $00
-	/* $03 */ .db <wShieldLevel       $02 $11 $00
-	/* $04 */ .db <wBoughtShopItems1  $00 $ff $00
-	/* $05 */ .db <wBoughtShopItems1  $08 $ff $00
-	/* $06 */ .db <wBoughtShopItems1  $04 $ff $00
-	/* $07 */ .db <wBoughtShopItems2  $10 $09 $18
-	/* $08 */ .db <wBoughtShopItems2  $10 $0a $10
-	/* $09 */ .db <wBoughtShopItems1  $00 $ff $00
-	/* $0a */ .db <wBoughtShopItems1  $40 $ff $00
-	/* $0b */ .db <wBoughtShopItems2  $20 $ff $00
-	/* $0c */ .db <wBoughtShopItems1  $00 $ff $00
-	/* $0d */ .db <wBoughtShopItems2  $00 $ff $00
-	/* $0e */ .db <wBoughtShopItems2  $01 $ff $00
-	/* $0f */ .db <wBoughtShopItems2  $02 $ff $00
-	/* $10 */ .db <wBoughtShopItems2  $04 $ff $00
-	/* $11 */ .db <wShieldLevel       $01 $12 $00
-	/* $12 */ .db <wShieldLevel       $00 $ff $00
-	/* $13 */ .db <wBoughtShopItems1  $20 $03 $00
-.ifdef ROM_AGES
-	/* $14 */ .db <wBoughtShopItems1  $01 $ff $00
-	/* $15 */ .db <wBoughtShopItems2  $40 $05 $00
-.endif
+	/* $00 */ .db <wBoughtShopItems1 $01 $08 $00
+	/* $01 */ .db <wBoughtShopItems2 $08 $09 $04
+	/* $02 */ .db <wBoughtShopItems1 $00 $ff $00
+	/* $03 */ .db <wShieldLevel		 $02 $0a $00
+	/* $04 */ .db <wBoughtShopItems1 $02 $ff $00
+	/* $05 */ .db <wBoughtShopItems1 $04 $ff $00
+	/* $06 */ .db <wBoughtShopItems1 $08 $ff $00
+	/* $07 */ .db <wBoughtShopItems1 $10 $ff $00
+	/* $08 */ .db <wBoughtShopItems1 $20 $ff $00
+	/* $09 */ .db <wBoughtShopItems2 $00 $ff $00
+	/* $0a */ .db <wShieldLevel      $00 $ff $00;$01 $12 $00
+
+;	/* $00 */ .db <wBoughtShopItems1  $01 $ff $00
+;	/* $01 */ .db <wBoughtShopItems2  $08 $0d $04
+;	/* $02 */ .db <wBoughtShopItems1  $02 $06 $00
+;	/* $03 */ .db <wShieldLevel       $02 $11 $00
+;	/* $04 */ .db <wBoughtShopItems1  $00 $ff $00
+;	/* $05 */ .db <wBoughtShopItems1  $08 $ff $00
+;	/* $06 */ .db <wBoughtShopItems1  $04 $ff $00
+;	/* $07 */ .db <wBoughtShopItems2  $10 $09 $18
+;	/* $08 */ .db <wBoughtShopItems2  $10 $0a $10
+;	/* $09 */ .db <wBoughtShopItems1  $00 $ff $00
+;	/* $0a */ .db <wBoughtShopItems1  $40 $ff $00
+;	/* $0b */ .db <wBoughtShopItems2  $20 $ff $00
+;	/* $0c */ .db <wBoughtShopItems1  $00 $ff $00
+;	/* $0d */ .db <wBoughtShopItems2  $00 $ff $00
+;	/* $0e */ .db <wBoughtShopItems2  $01 $ff $00
+;	/* $0f */ .db <wBoughtShopItems2  $02 $ff $00
+;	/* $10 */ .db <wBoughtShopItems2  $04 $ff $00
+;	/* $11 */ .db <wShieldLevel       $01 $12 $00
+;	/* $12 */ .db <wShieldLevel       $00 $ff $00
+;	/* $13 */ .db <wBoughtShopItems1  $20 $03 $00
+;.ifdef ROM_AGES
+;	/* $14 */ .db <wBoughtShopItems1  $01 $ff $00
+;	/* $15 */ .db <wBoughtShopItems2  $40 $05 $00
+;.endif
 
 
 ; Text to show upon buying a shop item (or $00 for no text)
 shopItemTextTable:
-.ifdef ROM_AGES
-	/* $00 */ .db <TX_0058
-.else
-	/* $00 */ .db <TX_0046
-.endif
+	/* $00 */ .db <TX_004b
 	/* $01 */ .db <TX_004c
-	/* $02 */ .db <TX_004b
+	/* $02 */ .db <TX_004d
 	/* $03 */ .db <TX_001f
-	/* $04 */ .db <TX_004d
-.ifdef ROM_AGES
-	/* $05 */ .db <TX_0054
-.else
-	/* $05 */ .db <TX_006c
-.endif
-	/* $06 */ .db <TX_004b
-	/* $07 */ .db <TX_006d
+	/* $04 */ .db <TX_004a
+	/* $05 */ .db <TX_00_GET_EMPTYBOTTLE
+	/* $06 */ .db <TX_003f
+	/* $07 */ .db <TX_0017
 	/* $08 */ .db <TX_004b
-	/* $09 */ .db <TX_006d
-	/* $0a */ .db <TX_004b
-	/* $0b */ .db <TX_0032
-	/* $0c */ .db $00
-	/* $0d */ .db <TX_003b
-	/* $0e */ .db <TX_004b
-	/* $0f */ .db <TX_0054
-	/* $10 */ .db <TX_0054
-	/* $11 */ .db <TX_0020
-	/* $12 */ .db <TX_0021
-	/* $13 */ .db <TX_004b
-.ifdef ROM_AGES
-	/* $14 */ .db <TX_0059
-	/* $15 */ .db <TX_0017
-.endif
+	/* $09 */ .db <TX_003b
+	/* $0a */ .db <TX_0020
+
+;.ifdef ROM_AGES
+;	/* $00 */ .db <TX_0058
+;.else
+;	/* $00 */ .db <TX_0046
+;.endif
+;	/* $01 */ .db <TX_004c
+;	/* $02 */ .db <TX_004b
+;	/* $03 */ .db <TX_001f
+;	/* $04 */ .db <TX_004d
+;.ifdef ROM_AGES
+;	/* $05 */ .db <TX_0054
+;.else
+;	/* $05 */ .db <TX_006c
+;.endif
+;	/* $06 */ .db <TX_004b
+;	/* $07 */ .db <TX_006d
+;	/* $08 */ .db <TX_004b
+;	/* $09 */ .db <TX_006d
+;	/* $0a */ .db <TX_004b
+;	/* $0b */ .db <TX_0032
+;	/* $0c */ .db $00
+;	/* $0d */ .db <TX_003b
+;	/* $0e */ .db <TX_004b
+;	/* $0f */ .db <TX_0054
+;	/* $10 */ .db <TX_0054
+;	/* $11 */ .db <TX_0020
+;	/* $12 */ .db <TX_0021
+;	/* $13 */ .db <TX_004b
+;.ifdef ROM_AGES
+;	/* $14 */ .db <TX_0059
+;	/* $15 */ .db <TX_0017
+;.endif

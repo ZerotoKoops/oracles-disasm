@@ -1088,6 +1088,13 @@ groups:
       good! Get your
       \col(1)feather\col(0) back!
 
+  - name: TX_00_GET_EMPTYBOTTLE
+    index: auto
+    text: >-
+      You got an
+      \col(1)empty bottle\col(0)!
+
+
 - group: 0x01
   data:
   - name: TX_0100

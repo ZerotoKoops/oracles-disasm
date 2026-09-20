@@ -13,6 +13,16 @@ checkReloadShopItemTiles:
 	push de
 	ld a,UNCMP_GFXH_11
 	call loadUncompressedGfxHeader
+	ld a,(wActiveGroup)
+	cpa >ROOM_AGES_5e1
+	jr nz,@end
+	ld a,(wActiveRoom)
+	cpa <ROOM_AGES_5e1
+	jr nz,@end
+; loads extra line
+	lda UNCMP_GFXH_AGES_EXTRA_SHOP
+	call loadUncompressedGfxHeader
+@end:
 	pop de
 	ret
 
@@ -149,10 +159,12 @@ shopkeeperState1:
 	ld e,Interaction.subid
 	ld a,(de)
 	and $01
-	ld c,$69
+; [subid] == $00,$02
+	ld c,$99;$69
 	ld b,(hl)
-	ld a,$69
+	ld a,$99;$69
 	jr z,+
+; [subid] == $01
 	ld b,$27
 	ld c,(hl)
 	ld a,$27

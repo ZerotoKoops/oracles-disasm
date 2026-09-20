@@ -221,9 +221,6 @@ group1Mapf0ObjectData:
 group1Mapf1ObjectData:
 group1Mapf2ObjectData:
 group1Mapf3ObjectData:
-group1Mapf6ObjectData:
-group1Mapf7ObjectData:
-group1Mapf8ObjectData:
 group1Mapf9ObjectData:
 group1MapfaObjectData:
 group1MapfbObjectData:
@@ -1269,6 +1266,7 @@ group0Mapa0ObjectData:
 	obj_End
 
 group0Mapa7ObjectData:
+	obj_Interaction INTERAC_TINGLE $00 $40 $28
 	obj_End
 
 group0Mapa8ObjectData:
@@ -4736,13 +4734,20 @@ group5MapdbObjectData:
 	obj_End
 
 group5Mape0ObjectData:
-	obj_Interaction $66 $0e $98 $18 $08
-	obj_Interaction $66 $0d $18 $98 $04
 	obj_Pointer group5Mape0EnemyObjectData
 	obj_End
 
 group5Mape1ObjectData:
 	obj_Pointer group5Mape1EnemyObjectData
+	obj_Interaction INTERAC_SHOPKEEPER $00 $88 $d8
+	obj_Interaction INTERAC_SHOP_ITEM $06 $28 $98
+	obj_Interaction INTERAC_SHOP_ITEM $07 $28 $b8
+	obj_Interaction INTERAC_SHOP_ITEM $00 $68 $28
+	obj_Interaction INTERAC_SHOP_ITEM $01 $68 $48
+	obj_Interaction INTERAC_SHOP_ITEM $02 $68 $98
+	obj_Interaction INTERAC_SHOP_ITEM $03 $68 $b8
+	obj_Interaction INTERAC_SHOP_ITEM $04 $28 $28
+	obj_Interaction INTERAC_SHOP_ITEM $05 $28 $48
 	obj_End
 
 group5Mape2ObjectData:
@@ -4878,4 +4883,16 @@ group1Mape8ObjectData:
 
 group0Map87ObjectData:
 	obj_Pointer group0Map87EnemyObjectData
+	obj_End
+
+group1Mapf7ObjectData:
+	obj_Interaction $00 $00 $38 $58
+	obj_End
+
+group1Mapf6ObjectData:
+	obj_Interaction $00 $00 $38 $38
+	obj_End
+
+group1Mapf8ObjectData:
+	obj_Pointer group1Mapf8EnemyObjectData
 	obj_End

@@ -240,14 +240,10 @@ group5MapdfEnemyObjectData:
 	obj_ItemDrop     $07 $98
 	obj_EndPointer
 
-group5Mape0EnemyObjectData:
 group5Mape2EnemyObjectData:
 	obj_EndPointer
 
 group5Mape1EnemyObjectData:
-	obj_SpecificEnemyA $00 $4d $00 $88 $a8
-	obj_SpecificEnemyA     $4d $00 $68 $b8
-	obj_RandomEnemy $60 $32 $00
 	obj_EndPointer
 
 group5Mape3EnemyObjectData:
@@ -2555,4 +2551,11 @@ group1Mape5EnemyObjectData:
 
 group0Map87EnemyObjectData:
 	obj_RandomEnemy $80 ENEMY_KEESE $00
+	obj_EndPointer
+
+group1Mapf8EnemyObjectData:
+	obj_RandomEnemy $20 ENEMY_ZOL $00
+	obj_EndPointer
+
+group5Mape0EnemyObjectData:
 	obj_EndPointer
