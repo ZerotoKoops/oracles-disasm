@@ -48,6 +48,7 @@
 	; Used to give minecarts collisions with enemies
 	ITEM_MINECART_COLLISION		db ; 0x1d
 
+	ITEM_BOOK_OF_MIGHT		.db ; 0x1e
 	ITEM_FOOLS_ORE			db ; 0x1e
 	ITEM_1f				db ; 0x1f
 

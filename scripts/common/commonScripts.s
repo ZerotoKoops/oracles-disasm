@@ -474,6 +474,18 @@ shopkeeperScript_boughtEverything:
 
 shopkeeperScript_purchaseItem:
 	jumptable_objectbyte Interaction.var37
+	.dw @buyHiddenShopGashaSeed1
+	.dw @buy3Hearts
+	.dw @buy10Bombs
+	.dw @buyL1Shield
+	.dw @buyPage
+	.dw @buyEmptyBottle
+	.dw @buyVase
+	.dw @buyHiddenShopHeartPiece
+	.dw @buyHiddenShopGashaSeed2
+	.dw @buyStrangeFlute
+	.dw @buyL2Shield
+/*
 	.dw @buyUpgradeableItem
 	.dw @buy3Hearts
 	.dw @buyHiddenShopGashaSeed1
@@ -498,6 +510,7 @@ shopkeeperScript_purchaseItem:
 	.dw @buyUpgradeableItem
 	.dw @buyHiddenShopHeartPiece
 .endif
+*/
 
 ; Ring box upgrade (ages) or satchel upgrade (seasons)
 @buyUpgradeableItem:

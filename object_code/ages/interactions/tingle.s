@@ -25,8 +25,12 @@ interactionCodec8:
 	call objectSetVisiblec0
 	ld a,>TX_1e00
 	call interactionSetHighTextIndex
+	ldbc $09,$06
+	call objectSetCollideRadii
+/*
 	ld a,$06
 	call objectSetCollideRadius
+*/
 
 	; Count number of seed types Link has
 	ldbc TREASURE_EMBER_SEEDS, 00

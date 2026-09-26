@@ -560,7 +560,7 @@ shootingGallery_addValueToScore:
 	.dw $0050 ; $11
 	.dw $0061 ; $12
 	.dw $00a1 ; $13
-	.dw $0051 ; $14 (strike)
+	.dw $0021 ; $14 (strike)
 
 
 ; Scripts for INTERAC_SHOOTING_GALLERY.

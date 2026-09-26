@@ -323,20 +323,27 @@ shootingGallery_cpScore:
 
 ;;
 shootingGallery_equipSword:
+	ld a,TREASURE_SWORD
+	call checkTreasureObtained
+	ld b,ITEM_SWORD
+	jr c,+
+	ld b,ITEM_BOOK_OF_MIGHT
++
+
 	ld hl,hFF8A
 	ld a,(wInventoryA)
-	cp ITEM_SWORD
+	cp b
 	jr nz,@equipOnB
 
 @equipOnA:
 	xor a
 	ldi (hl),a
-	ld a,ITEM_SWORD
+	ld a,b
 	ld (hl),a
 	jr shootingGallery_changeEquips
 
 @equipOnB:
-	ld a,ITEM_SWORD
+	ld a,b
 	ldi (hl),a
 	xor a
 	ld (hl),a
@@ -421,7 +428,7 @@ shootingGallery_setEntranceTiles:
 
 @positions:
 	.db $e0 $e1 ; Create entrance
-	.db $c6 $c6 ; Remove entrance
+	.db $b2 $b2 ;$c6 $c6 ; Remove entrance
 
 ;;
 ; Sets bit 7 in wcddb if Link has the give number of rupees, clears it otherwise.

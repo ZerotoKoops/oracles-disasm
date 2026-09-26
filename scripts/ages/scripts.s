@@ -571,6 +571,7 @@ shootingGalleryScript_humanNpc:
 	scriptjump @repliedNo
 
 @repliedYes:
+/*
 	asm15 scriptHelp.shootingGallery_checkLinkHasRupees, RUPEEVAL_10
 	jumpifmemoryset wcddb, $80, @enoughRupees
 
@@ -579,9 +580,10 @@ shootingGalleryScript_humanNpc:
 	enableinput
 	checkabutton
 	scriptjump @notEnoughRupees
+*/
 
 @enoughRupees:
-	asm15 removeRupeeValue, RUPEEVAL_10
+	;asm15 removeRupeeValue, RUPEEVAL_10
 	showtext TX_0801
 	wait 30
 	jumpiftextoptioneq $00, @beginGame

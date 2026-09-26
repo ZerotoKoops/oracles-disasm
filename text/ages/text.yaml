@@ -3757,7 +3757,7 @@ groups:
     text: |-
       Need some target
       practice? It's
-      only 10 Rupees!
+      free!
         \opt()Yes \opt()No
 
   - name: TX_0801
@@ -3936,7 +3936,7 @@ groups:
     index: 0x1a
     text: |-
       Try again for
-      10 Rupees?
+      free?
        \opt()Sure \opt()No
 
   - name: TX_081b
@@ -3949,7 +3949,7 @@ groups:
   - name: TX_081c
     index: 0x1c
     text: |-
-      Strike! -50 pts!
+      Strike! -20 pts!
 
 - group: 0x09
   data:
@@ -14153,9 +14153,12 @@ groups:
 
   - name: TX_2e01
     index: 0x01
-    text: |-
-      \left Rolling Ridge
-      \down Lynna City
+    text: >-
+      \left \col(1)Tingle\col(0)'s Many 
+          Maps!\stop
+      If you bring me down well, I have maps to sell!\stop
+
+      Please no \col(1)bombs\col(0)!
 
   - name: TX_2e02
     index: 0x02

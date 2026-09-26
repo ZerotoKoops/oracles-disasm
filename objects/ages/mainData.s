@@ -210,7 +210,6 @@ group1Mape2ObjectData:
 group1Mape3ObjectData:
 group1Mape6ObjectData:
 group1Mape7ObjectData:
-group1Mape9ObjectData:
 group1MapeaObjectData:
 group1MapebObjectData:
 group1MapecObjectData:
@@ -4895,4 +4894,8 @@ group1Mapf6ObjectData:
 
 group1Mapf8ObjectData:
 	obj_Pointer group1Mapf8EnemyObjectData
+	obj_End
+
+group1Mape9ObjectData:
+	obj_Interaction INTERAC_SHOOTING_GALLERY $00 $68 $88
 	obj_End

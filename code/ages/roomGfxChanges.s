@@ -166,6 +166,7 @@ applyRoomSpecificTileChangesAfterGfxLoad:
 
 @group5:
 	.db <ROOM_AGES_5e1, $04
+	.db <ROOM_AGES_5e0, $04 ; maybe not necessary?
 	.db $00
 @group4:	
 @group6:

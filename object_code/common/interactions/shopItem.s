@@ -564,7 +564,7 @@ shopItemTreasureToGive:
 	/* $06 */ .db TREASURE_GORON_VASE 	$00
 	/* $07 */ .db TREASURE_HEART_PIECE 	$01
 	/* $08 */ .db TREASURE_GASHA_SEED 	$01
-	/* $09 */ .db TREASURE_FLUTE       SPECIALOBJECT_DIMITRI
+	/* $09 */ .db TREASURE_FLUTE       SPECIALOBJECT_RICKY
 	/* $0a */ .db TREASURE_SHIELD		$02
 
 
