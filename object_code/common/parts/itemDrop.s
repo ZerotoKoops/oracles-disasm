@@ -205,6 +205,26 @@ partCode01:
 
 	ld e,Part.subid
 	ld a,(de)
+	cpa $00
+	jr nz,++
+; fairy
+	ld hl,w1ParentItem2.id
+	ld a,ITEM_EMPTY_BOTTLE
+	cp (hl)
+	jr nz,++
+; bottle out
+	ld hl,wEmptyBottleItem
+	ld a,(hl)
+	cpa BOTTLE_EMPTY
+	jr nz,++
+; bottle is empty, let's fill it!
+; Refreshes status bar
+	ld (hl),BOTTLE_FAIRY
+	ld hl,wStatusBarNeedsRefresh
+	set 0,(hl)
+	jr @deleteSelf
+++
+	ld a,(de)
 	add a
 	ld hl,@itemDropTreasureTable
 	rst_addDoubleIndex

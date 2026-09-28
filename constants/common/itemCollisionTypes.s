@@ -28,6 +28,7 @@
 .ifdef ROM_AGES
 	ITEMCOLLISION_SHOVEL			db ; $0c: Shovel (bumps enemies)
 	ITEMCOLLISION_SWITCH_HOOK		db ; $0d: Switch hook
+	ITEMCOLLISION_EMPTY_BOTTLE		.db ; $0e
 	ITEMCOLLISION_0e			db ; $0e: Unused?
 .else
 	ITEMCOLLISION_ROD_OF_SEASONS		db ; $0c: Rod of Seasons

@@ -35,7 +35,7 @@ itemUsageParameterTable:
 	.db $02, <wGameKeysJustPressed  ; ITEM_BOMBCHUS
 	.db $05, <wGameKeysJustPressed  ; ITEM_FLUTE
 	.db $43, <wGameKeysJustPressed  ; ITEM_SHOOTER
-	.db $00, <wGameKeysJustPressed  ; ITEM_10
+	.db $33, <wGameKeysJustPressed  ; ITEM_10 ; ITEM_EMPTY_BOTTLE
 	.db $05, <wGameKeysJustPressed  ; ITEM_HARP
 	.db $00, <wGameKeysJustPressed  ; ITEM_12
 	.db $43, <wGameKeysJustPressed  ; ITEM_SLINGSHOT
@@ -78,7 +78,7 @@ linkItemAnimationTable:
 	.db $30, LINK_ANIM_MODE_21      ; ITEM_BOMBCHUS
 	.db $70, LINK_ANIM_MODE_FLUTE   ; ITEM_FLUTE
 	.db $c6, LINK_ANIM_MODE_21      ; ITEM_SHOOTER
-	.db $80, LINK_ANIM_MODE_NONE    ; ITEM_10
+	.db $e6, LINK_ANIM_MODE_22      ; ITEM_EMPTY_BOTTLE $80, LINK_ANIM_MODE_NONE    ; ITEM_10
 	.db $70, LINK_ANIM_MODE_HARP_2  ; ITEM_HARP
 	.db $80, LINK_ANIM_MODE_NONE    ; ITEM_12
 	.db $c6, LINK_ANIM_MODE_21      ; ITEM_SLINGSHOT

@@ -911,6 +911,11 @@ wWildTokayGameLevel: ; $c6ea
 ; Goes up to 4. (Level 0 is playing for the scent seedling.)
 	db
 
+wEmptyBottleItem:
+; $01: fairy
+; 
+	.db
+
 wMakuTreeSeedSatchelXPosition: ; $c6eb
 	db
 

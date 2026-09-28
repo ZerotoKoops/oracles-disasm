@@ -22,6 +22,7 @@ uncmpGfxHeaderTable:
 	.dw uncmpGfxHeader_foolsOre
 	
 	.dw uncmpGfxHeader_extraShop
+	.dw uncmpGfxHeader_emptyBottle
 
 
 
@@ -337,4 +338,8 @@ uncmpGfxHeader_extraShop:
 ; ZTK added
 	m_GfxHeaderRam w3TileMappingIndices+$160, $9961, $02
 	m_GfxHeaderRam w3VramTiles+$160,          $9960, $02
+	m_GfxHeaderEnd
+
+uncmpGfxHeader_emptyBottle:
+	m_GfxHeader spr_item_icons_2, $8521, $02, $1a0
 	m_GfxHeaderEnd

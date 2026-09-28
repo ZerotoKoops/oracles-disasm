@@ -58,3 +58,9 @@
 	SECTION_T	db ; $13
 	SECTION_U	db ; $14
 .ende
+
+.enum 0
+	BOTTLE_EMPTY	db ; $00
+	BOTTLE_FAIRY	db ; $01
+	BOTTLE_WATER	db ; $02
+.ende

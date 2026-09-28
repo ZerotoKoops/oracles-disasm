@@ -414,7 +414,7 @@ parentItemUpdate:
 	.dw parentItemCode_bombchu		; ITEM_BOMBCHUS
 	.dw parentItemCode_flute		; ITEM_FLUTE
 	.dw parentItemCode_shooter		; ITEM_SHOOTER
-	.dw clearParentItem			; ITEM_10
+	.dw parentItemCode_emptyBottle ;clearParentItem			; ITEM_10 ITEM_EMPTY_BOTTLE
 	.dw parentItemCode_harp			; ITEM_HARP
 	.dw clearParentItem			; ITEM_12
 	.dw parentItemCode_slingshot		; ITEM_SLINGSHOT

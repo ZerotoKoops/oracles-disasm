@@ -381,7 +381,9 @@ interactiond7SubidData:
 	m_InteractionSubidData $84 $04 $40 ; $7f (Magic Boomerang)
 	m_InteractionSubidData $7d $0e $50 ; $80 (Roc's Cape)
 	m_InteractionSubidData $7d $10 $20 ; $81 (Rod of Seasons)
-	m_InteractionSubidData $7d $14 $00 ; $82 (Fool's Ore)
+	m_InteractionSubidData $7d $14 $20 ; $82 (Fool's Ore)
+
+	m_InteractionSubidData $82 $10 $32 ; $83 (empty bottle)
 
 	m_InteractionSubidDataEnd
 

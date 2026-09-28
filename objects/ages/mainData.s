@@ -34,9 +34,7 @@ group0Map8cObjectData:
 group0Map8eObjectData:
 group0Map8fObjectData:
 group0Map93ObjectData:
-group0Map95ObjectData:
 group0Map96ObjectData:
-group0Map97ObjectData:
 group0Map9aObjectData:
 group0Map9bObjectData:
 group0Map9cObjectData:
@@ -1145,7 +1143,7 @@ group0Map74ObjectData:
 	obj_End
 
 group0Map77ObjectData:
-	obj_Interaction $44 $03 $48 $68
+	obj_Pointer group0Map77EnemyObjectData
 	obj_End
 
 group0Map78ObjectData:
@@ -4898,4 +4896,11 @@ group1Mapf8ObjectData:
 
 group1Mape9ObjectData:
 	obj_Interaction INTERAC_SHOOTING_GALLERY $00 $68 $88
+	obj_End
+
+group0Map97ObjectData:
+	obj_End
+
+group0Map95ObjectData:
+	obj_Interaction INTERAC_GASHA_SPOT $02 $28 $18
 	obj_End

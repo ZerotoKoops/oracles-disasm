@@ -23,7 +23,7 @@ itemAttributes:
 	.db $18 $00 $fc $00 ; $0d: ITEM_BOMBCHUS
 	.db $12 $00 $00 $00 ; $0e: ITEM_FLUTE
 	.db $12 $00 $00 $00 ; $0f: ITEM_SHOOTER
-	.db $12 $00 $00 $00 ; $10: ITEM_10
+	.db $80|ITEMCOLLISION_EMPTY_BOTTLE $99 $00 $00 ;$12 $00 $00 $00 ; $10: ITEM_10
 	.db $12 $00 $00 $00 ; $11: ITEM_HARP
 	.db $12 $00 $00 $00 ; $12: ITEM_12
 	.db $12 $00 $00 $00 ; $13: ITEM_SLINGSHOT

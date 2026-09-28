@@ -114,8 +114,8 @@ treasureCollectionBehaviourTable:
 	.db SND_GETITEM
 
 	; TREASURE_10 (0x10)
-	.db $00
-	.db $00
+	.db <wEmptyBottleItem
+	.db $08
 	.db SND_NONE
 
 	; TREASURE_HARP (0x11)
@@ -433,7 +433,7 @@ treasureCollectionBehaviourTable:
 	.db $00
 	.db SND_NONE
 
-	; TREASURE_EMPTY_BOTTLE (0x50)
+	; TREASURE_EMPTY_BOTTLE_QUEST (0x50)
 	.db $00
 	.db $00
 	.db SND_NONE
@@ -444,8 +444,8 @@ treasureCollectionBehaviourTable:
 	.db SND_GETITEM
 
 	; TREASURE_CHEVAL_ROPE (0x52)
-	.db <wDeathRespawnBuffer.rememberedCompanionId
-	.db $05
+	.db $00;<wDeathRespawnBuffer.rememberedCompanionId
+	.db $00;$05
 	.db SND_NONE
 
 	; TREASURE_MEMBERS_CARD (0x53)

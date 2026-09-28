@@ -148,6 +148,7 @@ itemCode1ePost:
 	call cpRelatedObject1ID
 	jp nz,itemDelete
 
+@foolsOreArc:
 	ld l,Item.animParameter
 	ld a,(hl)
 	and $06
@@ -159,6 +160,51 @@ itemCode1ePost:
 	ld (de),a
 	ld hl,swordArcData
 	jr itemSetPositionInSwordArc
+
+;;
+; ITEM_EMPTY_BOTTLE
+;
+itemCode10Post:
+	call cpRelatedObject1ID
+	jp nz,itemDelete
+
+	call objectGetTileAtPosition
+	ld hl,@specialTiles
+	call lookupCollisionTable
+	jr nc,+
+; over water
+	ld (wEmptyBottleItem),a
+	ld hl,wStatusBarNeedsRefresh
+	set 0,(hl)
++
+	jr itemCode1ePost
+
+
+; B0: tile index
+; B1: bottle item
+@specialTiles:
+	.dw @overworld
+	.dw @indoors
+	.dw @dungeons
+	.dw @sidescrolling
+	.dw @underwater
+	.dw @five
+
+@overworld:
+	.db $fa, BOTTLE_WATER
+	.db $fe, BOTTLE_WATER
+	.db $ff, BOTTLE_WATER
+@underwater:
+@sidescrolling:
+	.db $00
+@dungeons:
+@indoors:
+@five:
+	.db $fa BOTTLE_WATER
+	.db $fc BOTTLE_WATER
+	.db $fe BOTTLE_WATER
+	.db $ff BOTTLE_WATER
+	.db $00
 
 ;;
 ; ITEM_PUNCH

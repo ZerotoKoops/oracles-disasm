@@ -2559,3 +2559,6 @@ group1Mapf8EnemyObjectData:
 
 group5Mape0EnemyObjectData:
 	obj_EndPointer
+
+group0Map77EnemyObjectData:
+	obj_EndPointer

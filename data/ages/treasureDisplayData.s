@@ -18,6 +18,7 @@ treasureDisplayData1:
 	.db TREASURE_SLINGSHOT,    <wSlingshotSelectedSeeds,$0d
 	.db TREASURE_BOOMERANG,    <wBoomerangLevel,        $0e
 	.db TREASURE_FEATHER,      <wFeatherLevel,          $0f
+	.db TREASURE_EMPTY_BOTTLE, <wEmptyBottleItem,		$10
 	.db $00,                   $00,                    $00
 
 treasureDisplayData2:
@@ -37,6 +38,7 @@ treasureDisplayData2:
 	.dw treasureDisplayData_hyperSlingshot
 	.dw treasureDisplayData_boomerang-7
 	.dw treasureDisplayData_feather-7
+	.dw treasureDisplayData_emptyBottle
 
 
 ; The parts marked as "filler" in this table aren't actually used, since they have their
@@ -85,7 +87,7 @@ treasureDisplayData_standard:
 	.db TREASURE_BOMBCHUS,           $a0, $05, $00, $00, $01, <TX_0929 ; TREASURE_BOMBCHUS (0x0d)
 	.db $00,                         $07, $00, $07, $00, $ff, <TX_0900 ; X TREASURE_FLUTE (0x0e)
 	.db $00,                         $88, $00, $00, $00, $ff, <TX_0940 ; X TREASURE_SHOOTER (0x0f)
-	.db $00,                         $00, $00, $00, $00, $ff, <TX_0900 ; TREASURE_10 (0x10)
+	.db TREASURE_EMPTY_BOTTLE,		 $9d, $03, $00, $00, $ff, <TX_09_EMPTYBOTTLE ; TREASURE_10 (0x10)
 	.db TREASURE_HARP,               $00, $00, $00, $00, $05, <TX_0941 ; X TREASURE_HARP (0x11)
 	.db $00,                         $00, $00, $00, $00, $ff, <TX_0900 ; TREASURE_12 (0x12)
 	.db $00,                         $07, $00, $07, $00, $ff, <TX_0900 ; TREASURE_SLINGSHOT (0x13)
@@ -99,7 +101,7 @@ treasureDisplayData_standard:
 	.db $00,                         $00, $00, $00, $00, $ff, <TX_0900 ; TREASURE_1b (0x1b)
 	.db $00,                         $00, $00, $00, $00, $ff, <TX_0900 ; TREASURE_1c (0x1c)
 	.db $00,                         $00, $00, $00, $00, $ff, <TX_0900 ; TREASURE_MINECART_COLLISION (0x1d)
-	.db TREASURE_FOOLS_ORE,          $9a, $00, $00, $00, $ff, <TX_09_FOOLSORE ; TREASURE_FOOLS_ORE (0x1e)
+	.db TREASURE_FOOLS_ORE,          $9a, $02, $00, $02, $ff, <TX_09_FOOLSORE ; TREASURE_FOOLS_ORE (0x1e)
 	.db $00,                         $9a, $00, $9a, $00, $ff, <TX_0900 ; TREASURE_1f (0x1f)
 	.db TREASURE_EMBER_SEEDS,        $80, $00, $83, $00, $ff, <TX_0932 ; TREASURE_EMBER_SEEDS (0x20)
 	.db TREASURE_SCENT_SEEDS,        $80, $00, $84, $00, $ff, <TX_0933 ; TREASURE_SCENT_SEEDS (0x21)
@@ -149,7 +151,7 @@ treasureDisplayData_standard:
 	.db TREASURE_SCENT_SEEDLING,     $f0, $00, $f1, $00, $ff, <TX_0948 ; TREASURE_SCENT_SEEDLING (0x4d)
 	.db TREASURE_ZORA_SCALE,         $d6, $04, $d7, $04, $ff, <TX_0954 ; TREASURE_ZORA_SCALE (0x4e)
 	.db TREASURE_TOKAY_EYEBALL,      $ed, $05, $00, $00, $ff, <TX_095a ; TREASURE_TOKAY_EYEBALL (0x4f)
-	.db TREASURE_EMPTY_BOTTLE,       $e8, $03, $e8, $23, $ff, <TX_0900 ; TREASURE_EMPTY_BOTTLE (0x50)
+	.db TREASURE_EMPTY_BOTTLE_QUEST,       $e8, $03, $e8, $23, $ff, <TX_09_EMPTYBOTTLE ; TREASURE_EMPTY_BOTTLE (0x50)
 	.db TREASURE_FAIRY_POWDER,       $e9, $03, $e9, $23, $ff, <TX_0959 ; TREASURE_FAIRY_POWDER (0x51)
 	.db TREASURE_CHEVAL_ROPE,        $d8, $03, $d9, $03, $ff, <TX_0946 ; TREASURE_CHEVAL_ROPE (0x52)
 	.db TREASURE_MEMBERS_CARD,       $26, $01, $27, $01, $ff, <TX_091c ; TREASURE_MEMBERS_CARD (0x53)
@@ -258,3 +260,9 @@ treasureDisplayData_boomerang:
 treasureDisplayData_feather:
 	.db TREASURE_FEATHER, $96, $04, $00, $00, $00, <TX_092c
 	.db TREASURE_FEATHER, $97, $05, $00, $00, $00, <TX_09_ROCSCAPE
+
+treasureDisplayData_emptyBottle:
+	.db TREASURE_EMPTY_BOTTLE, $9d, $03, $00, $00, $ff, <TX_09_EMPTYBOTTLE ; BOTTLE_EMPTY
+	.db TREASURE_EMPTY_BOTTLE, $9d, $03, $83, $02, $ff, <TX_09_FAIRYBOTTLE ; BOTTLE_FAIRY
+	.db TREASURE_EMPTY_BOTTLE, $9d, $03, $84, $03, $ff, <TX_09_WATERBOTTLE ; BOTTLE_WATER
+

@@ -149,6 +149,7 @@ m_section_free Bank_6 NAMESPACE bank6
 	.include "object_code/common/itemParents/bombsBraceletParent.s"
 	.include "object_code/common/itemParents/featherParent.s"
 	.include "object_code/common/itemParents/magnetGloveParent.s"
+	.include "object_code/common/itemParents/emptyBottleParent.s"
 
 	.include "object_code/common/itemParents/commonCode.s"
 
@@ -230,6 +231,7 @@ specialObjectLoadAnimationFrameToBuffer:
 		.include "object_code/common/items/bracelet.s"
 		.include "object_code/common/items/commonBombAndBraceletCode.s"
 		.include "object_code/common/items/dust.s"
+		.include "object_code/common/items/emptyBottle.s"
 
 		; CROSSITEMS
 		.include "object_code/common/items/magnetGloves.s"

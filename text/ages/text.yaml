@@ -1094,6 +1094,18 @@ groups:
       You got an
       \col(1)empty bottle\col(0)!
 
+  - name: TX_00_GET_FAIRYBOTTLE
+    index: auto
+    text: >-
+      You bottled a
+      \col(1)fairy\col(0)!\stop
+
+      Let her go anywhere and she will heal you.
+
+  - name: TX_00_GET_WATERBOTTLE
+    index: auto
+    text: >-
+      You put \col(1)water\col(0) in the bottle!
 
 - group: 0x01
   data:
@@ -4676,6 +4688,34 @@ groups:
     text: |-
       Book of Might
       A hard-cover bound book.
+
+  - name: TX_09_EMPTYBOTTLE
+    index: auto
+    text: |-
+      Empty Bottle
+      A bottle of many possibilities.
+
+  - name: TX_09_FAIRYBOTTLE
+    index: auto
+    text: |-
+      Bottled Fairy
+      Let her go and she will heal you.
+
+  - name: TX_09_WATERBOTTLE
+    index: auto
+    text: |-
+      Water in Bottle
+      Try on many things.
+
+  - name: TX_09_CANTEMPTY
+    index: auto
+    text: >-
+      You can't use that here...
+
+  - name: TX_09_SOFTSOIL
+    index: auto
+    text: >-
+      \sfx($4d)You watered your seedling a little...
 
 - group: 0x0a
   data:

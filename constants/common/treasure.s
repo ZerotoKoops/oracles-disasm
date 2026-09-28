@@ -30,6 +30,7 @@
 	TREASURE_BOMBCHUS		db ; $0d
 	TREASURE_FLUTE			db ; $0e
 	TREASURE_SHOOTER		db ; $0f
+	TREASURE_EMPTY_BOTTLE	.db ; $10
 	TREASURE_10			db ; $10
 	TREASURE_HARP			db ; $11
 	TREASURE_12			db ; $12
@@ -101,7 +102,7 @@
 	TREASURE_SCENT_SEEDLING		db ; $4d
 	TREASURE_ZORA_SCALE		db ; $4e
 	TREASURE_TOKAY_EYEBALL		db ; $4f
-	TREASURE_EMPTY_BOTTLE		db ; $50: Unused? (similar to fairy powder)
+	TREASURE_EMPTY_BOTTLE_QUEST		db ; $50: Unused? (similar to fairy powder)
 	TREASURE_FAIRY_POWDER		db ; $51
 	TREASURE_CHEVAL_ROPE		db ; $52
 	TREASURE_MEMBERS_CARD		db ; $53: Unused but appears in the inventory if given

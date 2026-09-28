@@ -28,6 +28,7 @@
 	ITEM_BOMBCHUS			db ; 0x0d
 	ITEM_FLUTE			db ; 0x0e
 	ITEM_SHOOTER			db ; 0x0f
+	ITEM_EMPTY_BOTTLE	.db	; 0x10
 	ITEM_10				db ; 0x10
 	ITEM_HARP			db ; 0x11
 	ITEM_12				db ; 0x12

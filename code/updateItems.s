@@ -83,7 +83,7 @@ updateItems:
 	.dw itemCode0d ; 0x0d
 	.dw itemDelete ; 0x0e
 	.dw itemCode0f ; 0x0f
-	.dw itemDelete ; 0x10
+	.dw itemCode10 ;itemDelete ; 0x10
 	.dw itemDelete ; 0x11
 	.dw itemDelete ; 0x12
 	.dw itemCode13 ; 0x13
@@ -158,7 +158,7 @@ updateItemPost:
 	.dw itemCodeNilPost	; 0x0d
 	.dw itemCodeNilPost	; 0x0e
 	.dw itemCode0fPost	; 0x0f
-	.dw itemCodeNilPost	; 0x10
+	.dw itemCode10Post ; itemCodeNilPost	; 0x10
 	.dw itemCodeNilPost	; 0x11
 	.dw itemCodeNilPost	; 0x12
 	.dw itemCode13Post	; 0x13

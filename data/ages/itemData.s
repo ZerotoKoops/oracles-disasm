@@ -22,7 +22,7 @@ itemData:
 	.db $00 $2c $0d ; $0d: ITEM_BOMBCHUS
 	.db $00 $00 $00 ; $0e: ITEM_FLUTE
 	.db $00 $52 $08 ; $0f: ITEM_SHOOTER
-	.db $00 $00 $00 ; $10: ITEM_10
+	.db $00 $52 $0b;$00 $52 $02;$00 $00 $00 ; $10: ITEM_10
 	.db $00 $00 $00 ; $11: ITEM_HARP
 	.db $00 $00 $00 ; $12: ITEM_12
 	.db $00 $52 $09 ; $13: ITEM_SLINGSHOT
@@ -36,7 +36,7 @@ itemData:
 	.db $00 $00 $00 ; $1b: ITEM_1b
 	.db $00 $00 $00 ; $1c: ITEM_1c
 	.db $00 $00 $00 ; $1d: ITEM_MINECART_COLLISION
-	.db $00 $52 $08 ; $1e: ITEM_FOOLS_ORE
+	.db $00 $52 $0a ; $1e: ITEM_FOOLS_ORE
 	.db $00 $00 $00 ; $1f: ITEM_1f
 	.db $78 $12 $02 ; $20: ITEM_EMBER_SEED
 	.db $78 $14 $03 ; $21: ITEM_SCENT_SEED

@@ -478,9 +478,9 @@ shopkeeperScript_purchaseItem:
 	.dw @buy3Hearts
 	.dw @buy10Bombs
 	.dw @buyL1Shield
-	.dw @buyPage
-	.dw @buyEmptyBottle
-	.dw @buyVase
+	.dw @buyUpgradeableItem;@buyPage ; TODO:fix this
+	.dw @buyUpgradeableItem;@buyEmptyBottle ; TODO:fix this
+	.dw @buyUpgradeableItem;@buyVase ; TODO:fix this
 	.dw @buyHiddenShopHeartPiece
 	.dw @buyHiddenShopGashaSeed2
 	.dw @buyStrangeFlute
