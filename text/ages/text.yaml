@@ -6649,6 +6649,14 @@ groups:
     text: |2-
         \opt()OK \opt()No thanks\cmd8(0x0f)
 
+  - name: TX_0e2c
+    index: 0x2c
+    text: |-
+      \col(1)Empty Bottle\col(0)\stop
+       \num1 Rupees
+      \jump(TX_0e2b)
+    null_terminator: False
+
 - group: 0x0f
   data:
   - name: TX_0f00

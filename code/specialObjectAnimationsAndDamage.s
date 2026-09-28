@@ -644,7 +644,15 @@ linkApplyDamage:
 	jr nc,++
 
 ; Link's health has reached 0.
-
+	ld a,(wEmptyBottleItem)
+	cpa BOTTLE_FAIRY
+	jr z,+
+	lda $00
+	ld (wEmptyBottleItem),a
+	ld hl,wLinkHealth
+	ld (hl),$30
+	jr ++
++
 	; Replenish health if Link has a potion.
 	ld a,TREASURE_POTION
 	call checkTreasureObtained
@@ -654,7 +662,7 @@ linkApplyDamage:
 	ld hl,wLinkMaxHealth
 	ldd a,(hl)
 	ld (hl),a
-
+++
 	; Set w1Link.health to $01 (again, this doesn't represent his actual health)
 	ld a,$01
 	ld (de),a

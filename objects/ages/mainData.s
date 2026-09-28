@@ -208,7 +208,6 @@ group1Mape2ObjectData:
 group1Mape3ObjectData:
 group1Mape6ObjectData:
 group1Mape7ObjectData:
-group1MapeaObjectData:
 group1MapebObjectData:
 group1MapecObjectData:
 group1MapedObjectData:
@@ -218,7 +217,6 @@ group1Mapf0ObjectData:
 group1Mapf1ObjectData:
 group1Mapf2ObjectData:
 group1Mapf3ObjectData:
-group1Mapf9ObjectData:
 group1MapfaObjectData:
 group1MapfbObjectData:
 group1MapfcObjectData:
@@ -1255,7 +1253,7 @@ group0Map98ObjectData:
 	obj_End
 
 group0Map99ObjectData:
-	obj_Interaction INTERAC_BOY $00 $28 $58
+	obj_Interaction INTERAC_BOY $00 $28 $68
 	obj_End
 
 group0Mapa0ObjectData:
@@ -4748,9 +4746,8 @@ group5Mape1ObjectData:
 	obj_End
 
 group5Mape2ObjectData:
-	obj_Interaction $66 $0c $98 $38 $01
-	obj_Interaction $66 $0c $18 $78 $02
 	obj_Pointer group5Mape2EnemyObjectData
+	obj_Interaction INTERAC_DUNGEON_STUFF $02 $48 $68
 	obj_End
 
 group5Mape3ObjectData:
@@ -4903,4 +4900,16 @@ group0Map97ObjectData:
 
 group0Map95ObjectData:
 	obj_Interaction INTERAC_GASHA_SPOT $02 $28 $18
+	obj_End
+
+group1Mapf9ObjectData:
+	obj_Interaction INTERAC_VASU $00 $28 $50
+	obj_Interaction INTERAC_VASU $01 $38 $38
+	obj_Interaction INTERAC_VASU $06 $38 $68
+	obj_Interaction INTERAC_RING_HELP_BOOK $00 $48 $28
+	obj_Interaction INTERAC_RING_HELP_BOOK $01 $48 $78
+	obj_End
+
+group1MapeaObjectData:
+	obj_Pointer group1MapeaEnemyObjectData
 	obj_End

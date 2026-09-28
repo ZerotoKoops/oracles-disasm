@@ -28,6 +28,7 @@ chestGroup0Data:
 	.db $ff
 
 chestGroup1Data:
+	m_ChestData $53, $f0, TREASURE_OBJECT_RUPEES_04
 	m_ChestData $43, $6d, TREASURE_OBJECT_RING_27
 	.db $ff
 
@@ -108,6 +109,7 @@ chestGroup4Data:
 	.db $ff
 
 chestGroup5Data:
+	m_ChestData $46, $e2, TREASURE_OBJECT_RUPEES_07
 	m_ChestData $00, $e1, TREASURE_OBJECT_GORON_LETTER_00
 	m_ChestData $17, $13, TREASURE_OBJECT_MERMAID_SUIT_00
 	m_ChestData $25, $14, TREASURE_OBJECT_SMALL_KEY_03

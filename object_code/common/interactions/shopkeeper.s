@@ -591,24 +591,27 @@ shopkeeperCheckLinkHasItemAlready:
 
 	ld h,>wc600Block
 	ld a,b
-	cp $13
+	cp $08 ; second GASHA_SEED
 	ret z
 
 	cp $03
 	jr z,@shield
-	cp $11
+	cp $0a;$11
 	jr z,@shield
+/*
 	cp $12
 	jr z,@shield
-
-	cp $0d
+*/
+	cp $09;$0d
 	jr z,@flute
 
 	ld l,<wNumBombs
-	cp $04
+	cp $02;$04
 	jr z,+
 
 	ld l,<wLinkHealth
+	cpa $01
+	ret nz
 +
 	ldi a,(hl)
 	cp (hl)

@@ -479,7 +479,7 @@ shopkeeperScript_purchaseItem:
 	.dw @buy10Bombs
 	.dw @buyL1Shield
 	.dw @buyUpgradeableItem;@buyPage ; TODO:fix this
-	.dw @buyUpgradeableItem;@buyEmptyBottle ; TODO:fix this
+	.dw @buyEmptyBottle
 	.dw @buyUpgradeableItem;@buyVase ; TODO:fix this
 	.dw @buyHiddenShopHeartPiece
 	.dw @buyHiddenShopGashaSeed2
@@ -511,6 +511,12 @@ shopkeeperScript_purchaseItem:
 	.dw @buyHiddenShopHeartPiece
 .endif
 */
+@buyEmptyBottle:
+	showtextnonexitablelowindex <TX_0e2c
+	callscript shopkeeperConfirmPurchase
+	ormemory wBoughtShopItems1, $04
+	scriptend
+
 
 ; Ring box upgrade (ages) or satchel upgrade (seasons)
 @buyUpgradeableItem:

@@ -241,6 +241,8 @@ group5MapdfEnemyObjectData:
 	obj_EndPointer
 
 group5Mape2EnemyObjectData:
+	obj_RandomEnemy $40 ENEMY_ZOL $00
+	obj_RandomEnemy $60 ENEMY_KEESE $00
 	obj_EndPointer
 
 group5Mape1EnemyObjectData:
@@ -2561,4 +2563,9 @@ group5Mape0EnemyObjectData:
 	obj_EndPointer
 
 group0Map77EnemyObjectData:
+	obj_EndPointer
+
+group1MapeaEnemyObjectData:
+	obj_Part PART_ITEM_DROP $00 $34
+	obj_Part PART_ITEM_DROP $00 $50 $88 $00
 	obj_EndPointer

@@ -16,6 +16,7 @@ applyRoomSpecificTileChanges:
 
 	.dw tileReplacement_group5Mape8 ; $00
 	.dw tileReplacement_group5Mapf8 ; $01
+	.dw tileReplacement_group5Mape3 ; $02
 /*
 	.dw tileReplacement_group5Mapf5 ; $00
 	.dw tileReplacement_group4Map1b ; $01
@@ -153,6 +154,7 @@ roomTileChangerCodeGroup4Data:
 roomTileChangerCodeGroup5Data:
 	.db <ROOM_AGES_5e8, $00
 	.db <ROOM_AGES_5f8, $01
+	.db <ROOM_AGES_5e3, $02
 /*
 	.db $f5 $00
 	.db $38 $0a
@@ -1235,7 +1237,7 @@ tileReplacement_group5Mapc2:
 
 	ld hl,wRoomLayout+$56
 	ld a,$6d
-
+*/
 ;;
 ; Sets 4 bytes at hl to the value of a.
 set4Bytes:
@@ -1245,7 +1247,6 @@ set3Bytes:
 	ldi (hl),a
 	ld (hl),a
 	ret
-
 ;;
 ; Past cave on the way to the d6 area
 ; Has a bridge
@@ -1257,7 +1258,7 @@ tileReplacement_group5Mape3:
 	ld hl,wRoomLayout+$26
 	ld a,$6d
 	jr set3Bytes
-
+/*
 ;;
 ; Underwater, entrance to Jabu
 tileReplacement_group2Map90:
