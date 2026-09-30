@@ -499,6 +499,7 @@ bank78ChannelFallback:
 .redefine MUSIC_CHANNEL_FALLBACK bank78ChannelFallback
 
 .include "audio/common/mus/custom/riversideStation.s"
+.include "audio/common/mus/custom/majestyAndGlory.s"
 .include "audio/common/mus/custom/heyYou.s"
 .include "audio/common/mus/custom/crownCity.s"
 

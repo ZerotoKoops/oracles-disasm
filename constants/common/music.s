@@ -20,6 +20,7 @@
 
 .ifdef ROM_AGES
 	MUS_AMBI_PALACE           db ; $07
+	MUS_SANCTUARY			 .db ; $08
 	MUS_NAYRU                 db ; $08
 .else
 	MUS_UNUSED_1              db ; $07

@@ -9,7 +9,7 @@ soundPointers:
 	/* 0x05 */ m_soundPointer musRiversideStation
 	/* 0x06 */ m_soundPointer musEssence
 	/* 0x07 */ m_soundPointer musAmbiPalace
-	/* 0x08 */ m_soundPointer musNayru
+	/* 0x08 */ m_soundPointer musMajestyAndGlory
 	/* 0x09 */ m_soundPointer musGameover
 	/* 0x0a */ m_soundPointer musCrownCity
 	/* 0x0b */ m_soundPointer musLynnaVillage

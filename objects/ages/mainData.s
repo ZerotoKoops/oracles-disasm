@@ -208,7 +208,6 @@ group1Mape2ObjectData:
 group1Mape3ObjectData:
 group1Mape6ObjectData:
 group1Mape7ObjectData:
-group1MapebObjectData:
 group1MapecObjectData:
 group1MapedObjectData:
 group1MapeeObjectData:
@@ -4912,4 +4911,9 @@ group1Mapf9ObjectData:
 
 group1MapeaObjectData:
 	obj_Pointer group1MapeaEnemyObjectData
+	obj_End
+
+group1MapebObjectData:
+	obj_Interaction INTERAC_ADLAR $00 $38 $28
+	obj_Interaction INTERAC_NAYRU $00 $18 $88
 	obj_End

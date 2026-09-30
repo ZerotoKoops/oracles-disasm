@@ -622,7 +622,7 @@ tilesetData:
 	.db $15, $05, $10
 
 	; 0x57
-	.db $2f, $12
+	.db $2f, $00
 	.db UNIQUE_GFXH_NONE
 	.db GFXH_TILESET_INDOORS
 	.db PALH_TILESET_MAKU_TREE_INSIDE

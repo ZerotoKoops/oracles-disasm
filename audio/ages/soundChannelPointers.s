@@ -503,6 +503,17 @@ musRiversideStation:
 	.dw musRiversideStationChannel6
 	.db $ff
 
+musMajestyAndGlory:
+	.db $00
+	.dw musMajestyAndGloryChannel0
+	.db $01
+	.dw musMajestyAndGloryChannel1
+	.db $04
+	.dw musMajestyAndGloryChannel4
+	.db $06
+	.dw musMajestyAndGloryChannel6
+	.db $ff
+
 musAmbiPalace:
 	.db $00
 	.dw musAmbiPalaceChannel0

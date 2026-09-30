@@ -133,6 +133,7 @@ treasureObjectData01:
 	m_TreasureSubid $0a, $02, $20, $14, TREASURE_OBJECT_SHIELD_01
 	m_TreasureSubid $0a, $03, $21, $15, TREASURE_OBJECT_SHIELD_02
 	m_TreasureSubid $0a, $03, $ff, $15, TREASURE_OBJECT_SHIELD_03
+	m_TreasureSubid $38, $01, $ff, $13, TREASURE_OBJECT_SHIELD_04
 
 treasureObjectData03:
 	m_BeginTreasureSubids TREASURE_BOMBS

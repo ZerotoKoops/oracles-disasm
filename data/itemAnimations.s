@@ -420,6 +420,7 @@ item0fOamDataPointers: ; 0x1e914
 	.dw itemOamData4d1c7
 	.dw itemOamData4d1d0
 
+item10OamDataPointers:
 item0bOamDataPointers: ; 0x1e924
 item19OamDataPointers: ; 0x1e924
 item1eOamDataPointers: ; 0x1e924
@@ -505,7 +506,7 @@ item1aOamDataPointers: ; 0x1e988
 
 item09OamDataPointers: ; 0x1e992
 item0eOamDataPointers: ; 0x1e992
-item10OamDataPointers: ; 0x1e992
+;item10OamDataPointers: ; 0x1e992
 item12OamDataPointers: ; 0x1e992
 item14OamDataPointers: ; 0x1e992
 item15OamDataPointers: ; 0x1e992

@@ -187,6 +187,7 @@ tileReplacement_group5Mape8:
 	call getThisRoomFlags
 	and ROOMFLAG_80
 	ret nz
+	
 ; Place tables near stairs
 	ld de,@stairTables
 	call drawRectInRoomLayout
