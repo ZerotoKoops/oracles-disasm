@@ -496,7 +496,7 @@ interactiondc_subid15And16_setChestContents:
 
 @chestContents:
 	dwbe TREASURE_OBJECT_GASHA_SEED_01 ; Unlinked
-	dwbe TREASURE_OBJECT_RING_1e       ; Linked
+	dwbe TREASURE_OBJECT_NONE_00       ; Linked
 
 interactiondc_subid15And16_state0:
 	call getThisRoomFlags

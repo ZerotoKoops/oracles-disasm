@@ -8394,11 +8394,11 @@ symmetryNpcSubid8And9Script:
 	jumpifmemoryeq wTextNumberSubstitution, $05, @giveLevel3RingBox
 
 	; Level 2 box
-	giveitem TREASURE_OBJECT_RING_BOX_01
+	giveitem TREASURE_OBJECT_10_00
 	scriptjump ++
 
 @giveLevel3RingBox:
-	giveitem TREASURE_OBJECT_RING_BOX_02
+	giveitem TREASURE_OBJECT_10_00
 ++
 	wait 30
 	orroomflag ROOMFLAG_ITEM
@@ -8469,7 +8469,7 @@ symmetryNpcSubid6And7Script:
 @giveTuniNut:
 	showtextlowindex <TX_2d05
 	wait 30
-	giveitem TREASURE_OBJECT_TUNI_NUT_00
+	giveitem TREASURE_OBJECT_BIGGORON_SWORD_00
 	enableinput
 	scriptjump @nutNotRepaired
 

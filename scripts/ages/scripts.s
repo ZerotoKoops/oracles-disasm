@@ -8207,7 +8207,7 @@ patch_giveRepairedItem:
 	.dw @sword
 
 @tuniNut:
-	giveitem TREASURE_OBJECT_TUNI_NUT_01
+	giveitem TREASURE_OBJECT_BIGGORON_SWORD_01
 	retscript
 
 @sword:
