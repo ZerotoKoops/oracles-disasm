@@ -732,7 +732,6 @@ interactiondc_subid02:
 	call objectCheckCollidedWithLink_notDeadAndNotGrabbing
 	ret nc
 
-	ldbc RUPEEVAL_COUNT-1,$00 ; instant heart piece
 	call getItemBasedOnVar03
 	call createTreasure
 	call objectCopyPosition
