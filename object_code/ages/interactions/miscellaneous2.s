@@ -40,7 +40,7 @@ interactiondc_subid07:
 	and ROOMFLAG_ITEM
 	jp nz,interactionDelete
 
-	call getItemBasedOnVar03
+	call staticItemsReplacementsLookup
 	call createTreasure
 	call objectCopyPosition
 interactiondc_stub:
@@ -634,7 +634,7 @@ interactiondc_subid19:
 	ret z
 
 	; Tile has changed
-	call getItemBasedOnVar03
+	call staticItemsReplacementsLookup
 	call createTreasure
 	call objectCopyPosition
 	ld a,SND_SOLVEPUZZLE
@@ -654,67 +654,10 @@ interactiondc_subid1a:
 	cpa $00
 	ret nz
 
-	call getItemBasedOnVar03
+	call staticItemsReplacementsLookup
 	call createTreasure
 	call objectCopyPosition
 	jp interactionDelete
-
-getItemBasedOnVar03:
-	ld e,Interaction.var03
-	ld a,(de)
-	ld hl,itemsTable
-	rst_addAToHl
-	ld b,(hl)
-	inc hl
-	ld c,(hl)
-	ret
-
-itemsTable:
-	.db TREASURE_HEART_PIECE,$00 ; Room 005
-	.db TREASURE_HEART_PIECE,$00 ; Room 007
-	.db TREASURE_HEART_PIECE,$00 ; Room 00d
-	.db TREASURE_HEART_PIECE,$00 ; Room 032
-	.db TREASURE_HEART_PIECE,$00 ; Room 172
-	.db TREASURE_HEART_PIECE,$00 ; Room 133
-	.db TREASURE_HEART_PIECE,$00 ; Room 50a
-	.db TREASURE_HEART_PIECE,$00 ; Room 501
-	.db TREASURE_HEART_PIECE,$00 ; Room 506
-	.db TREASURE_HEART_PIECE,$00 ; Room 504
-	.db TREASURE_HEART_PIECE,$00 ; Room 038
-	.db TREASURE_HEART_PIECE,$00 ; Room 50b
-	.db TREASURE_HEART_PIECE,$00 ; Room 25e
-	.db TREASURE_HEART_PIECE,$02 ; Room 453
-	.db TREASURE_HEART_PIECE,$00 ; Room 429
-	.db TREASURE_HEART_PIECE,$02 ; Room 42a
-	.db TREASURE_HEART_PIECE,$00 ; Room 044
-	.db TREASURE_HEART_PIECE,$00 ; Room 41e
-	.db TREASURE_HEART_PIECE,$00 ; Room 509
-	.db TREASURE_HEART_PIECE,$00 ; Room 113
-	.db TREASURE_HEART_PIECE,$02 ; Room 239
-	.db TREASURE_HEART_PIECE,$00 ; Room 50d
-	.db TREASURE_HEART_PIECE,$02 ; Room 32a
-	.db TREASURE_HEART_PIECE,$00 ; Room 308
-	.db TREASURE_HEART_PIECE,$00 ; Room 507
-	.db TREASURE_HEART_PIECE,$00 ; Room 505
-	.db TREASURE_HEART_PIECE,$02 ; Room 5b2
-	.db TREASURE_HEART_PIECE,$00 ; Room 5c1
-	.db TREASURE_HEART_PIECE,$00 ; Room 5c0
-	.db TREASURE_HEART_PIECE,$00 ; Room 5b8
-	.db TREASURE_HEART_PIECE,$00 ; Room 572
-	.db TREASURE_HEART_PIECE,$00 ; Room 54c
-	.db TREASURE_HEART_PIECE,$00 ; Room 548
-	.db TREASURE_HEART_PIECE,$00 ; Room 534
-	.db TREASURE_HEART_PIECE,$00 ; Room 406
-	.db TREASURE_HEART_PIECE,$00 ; Room 3af
-	.db TREASURE_HEART_PIECE,$00 ; Room 186
-	.db TREASURE_HEART_PIECE,$00 ; Room 153
-	.db TREASURE_HEART_PIECE,$00 ; Room 138
-	.db TREASURE_HEART_PIECE,$02 ; Room 122
-	.db TREASURE_HEART_PIECE,$00 ; Room 057
-	.db TREASURE_HEART_PIECE,$02 ; Room 011
-	.db TREASURE_HEART_PIECE,$00 ; Room 427
-	.db TREASURE_HEART_PIECE,$00 ; Room 160
-	.db TREASURE_HEART_PIECE,$00 ; Room 20a
 
 interactiondc_subid02:
 	call getThisRoomFlags
@@ -732,7 +675,7 @@ interactiondc_subid02:
 	call objectCheckCollidedWithLink_notDeadAndNotGrabbing
 	ret nc
 
-	call getItemBasedOnVar03
+	call staticItemsReplacementsLookup
 	call createTreasure
 	call objectCopyPosition
 	jp interactionDelete
