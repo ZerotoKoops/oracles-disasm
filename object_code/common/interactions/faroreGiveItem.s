@@ -70,10 +70,13 @@ interactiond9_getItemID:
 	.db  TREASURE_SWORD,           $00 ; upgrade
 	dwbe TREASURE_OBJECT_HEART_CONTAINER_01
 	dwbe TREASURE_OBJECT_BOMBCHUS_01
+	dwbe TREASURE_OBJECT_RING_0c
 	.db  TREASURE_SHIELD,          $01 ; upgrade
 	.db  TREASURE_BOMB_UPGRADE,    $02 ; upgrade
+	dwbe TREASURE_OBJECT_RING_0d
 	.db  TREASURE_SATCHEL_UPGRADE, $03 ; upgrade
 	dwbe TREASURE_OBJECT_BIGGORON_SWORD_01
+	.db  TREASURE_RING_BOX,        $04 ; upgrade
 
 
 ; State 1: it's a new item, not an upgrade
@@ -265,7 +268,7 @@ interactiond9_state2:
 	jr @label_0b_135
 
 @bombUpgrade:
-	ld bc,TREASURE_OBJECT_18_00
+	ld bc,TREASURE_OBJECT_BOMB_UPGRADE_00
 	call @createTreasureAndIncSubstate
 	ld hl,wMaxBombs
 	ld a,(hl)
