@@ -312,6 +312,9 @@ m_section_free Ages_Interactions_Bank8 NAMESPACE agesInteractionsBank08
 .BANK $09 SLOT 1
 .ORG 0
 
+	.include "code/rando/static_items.s"
+
+
 m_section_free Interaction_Code_Group2 NAMESPACE commonInteractions2
 	.include "object_code/common/interactions/shopkeeper.s"
 	.include "object_code/common/interactions/shopItem.s"
