@@ -13,11 +13,15 @@ interactionCodeb3:
 	bit ROOMFLAG_BIT_ITEM,(hl)
 	jp nz,interactionDelete ; Already got harp
 
-	xor a
-	ld (wTmpcfc0.genericCutscene.state),a
-
 	call staticItemsReplacementsLookup
-	call createTreasure
+	
+	call getFreeInteractionSlot
+	ret nz
+	ld (hl),INTERAC_TREASURE
+	inc l
+	ld (hl),b
+	inc l
+	ld (hl),c
 
 	ld l,Interaction.yh
 	ld (hl),$38
