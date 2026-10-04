@@ -406,19 +406,14 @@ interaction6b_subid09:
 interaction6b_subid0a:
 interaction6b_subid0b:
 interaction6b_subid0c:
-	call checkInteractionState
-	jr nz,@state1
-
-@state0:
 	call getThisRoomFlags
 	bit ROOMFLAG_BIT_ITEM,a
 	jp nz,interactionDelete
-	ld e,Interaction.subid
-	ld a,(de)
-	sub $0a
-	inc e
-	ld (de),a
-	call interaction6b_initGraphicsAndLoadScript
+	
+	call staticItemsReplacementsLookup
+	call createTreasure
+	call objectCopyPosition
+	jp interactionDelete
 
 @state1:
 	call interactionRunScript
@@ -840,18 +835,14 @@ interaction6b_checkLinkPressedUpAtScreenEdge:
 	ret
 
 interaction6b_subid19:
-	ldbc INTERAC_TREASURE,TREASURE_AUTUMN_STONE
-@merge:
-	call checkInteractionState
-	ret nz
-
-@state0:
 	call getThisRoomFlags
 	bit ROOMFLAG_BIT_ITEM,a
 	jp nz,interactionDelete
-
-	call objectCreateInteraction
-	jp interactionIncState
+	
+	call staticItemsReplacementsLookup
+	call createTreasure
+	call objectCopyPosition
+	jp interactionDelete
 
 
 interaction6b_subid1a:
@@ -859,8 +850,7 @@ interaction6b_subid1a:
 	or a
 	ret nz
 
-	ldbc INTERAC_TREASURE,TREASURE_SPRING_STONE
-	jr interaction6b_subid19@merge
+	jp interaction6b_subid19
 
 interaction6b_scriptTable:
 	.dw mainScripts.interaction6b_stubScript

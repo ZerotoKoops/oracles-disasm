@@ -555,6 +555,11 @@ oldManLocationsTable:
 	.db TREASURE_RUPEES,RUPEEVAL_500	; Hedge Maze Old Man 2
 	.db TREASURE_RUPEES,RUPEEVAL_300	; Deeper Woods Old Man (Deeper In)
 
+	; All items past this line do not belong to each old man as they're being used for other NPC items to save time.
+	dwbe TREASURE_OBJECT_BOOK_OF_SEALS_00
+	dwbe TREASURE_OBJECT_GRAVEYARD_KEY_00
+	dwbe TREASURE_OBJECT_SEED_SATCHEL_00
+	
 ;;
 oldMan_giveRupees:
 	ld e,Interaction.var03
@@ -3105,7 +3110,7 @@ oldManScript_givesSeedSatchel:
 	showtext TX_3312
   wait 30
 	orroomflag $20
-	giveitem TREASURE_SEED_SATCHEL, $00
+	asm15 oldMan_givesTreasure
 	scriptjump @npcLoop
 
 @playerSaidYes:
@@ -3781,7 +3786,7 @@ poeScript:
   wait 20
   showtext TX_0b01
   wait 30
-  giveitem TREASURE_GRAVEYARD_KEY, $00
+  asm15 oldMan_givesTreasure
   wait 30
   showtext TX_0b02
 
@@ -8785,7 +8790,7 @@ plenSubid0Script:
 	jumpifroomflagset $40, @alreadyGotToll
 	jumpifroomflagset $20, @alreadyGotItem
 	showtext TX_3703
-	giveitem TREASURE_POTION, $01
+	asm15 oldMan_givesTreasure
 	wait 30
 	orroomflag $20
 	showtext TX_3704
@@ -8808,7 +8813,7 @@ plenSubid0Script:
 @resume:
 	enableinput
 	scriptjump @loop
-
+	
 
 ; ==================================================================================================
 ; INTERAC_GREAT_FAIRY

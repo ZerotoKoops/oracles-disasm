@@ -16,7 +16,7 @@ interactionCodeb3:
 	xor a
 	ld (wTmpcfc0.genericCutscene.state),a
 
-	ld bc,TREASURE_OBJECT_BRACELET_00
+	call staticItemsReplacementsLookup
 	call createTreasure
 
 	ld l,Interaction.yh
