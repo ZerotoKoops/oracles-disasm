@@ -63,6 +63,16 @@ spawnTreasureOnLink:
     ret
 
 ;;
+; b = treasure id
+; c = treasure subid
+spawnTreasure:
+    call createTreasure
+    ret nz
+    call objectCopyPosition
+    xor a
+    ret
+
+;;
 ; call a function hl in bank 02, preserving af. e can't be used as a
 ; parameter to that function, but it can be returned. this function only
 ; exists because banks 08 and 09 are so tight on space.

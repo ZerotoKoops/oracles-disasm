@@ -546,6 +546,18 @@ oldMan_givesTreasure:
     ld c,(hl)
     jp spawnTreasureOnLink
 
+; Same thing as oldMan_givesTreasure except the treasure spawns at the interaction position, and this function is not meant to be used on npcs.
+spawnItemFromTable:
+	ld e,Interaction.var03
+	ld a,(de)
+	ld hl,oldManLocationsTable
+	add a,a
+	rst_addAToHl
+	ldi a,(hl)
+    ld b,a
+    ld c,(hl)
+    jp spawnTreasure
+
 oldManLocationsTable:
 	.db TREASURE_RUPEES,RUPEEVAL_100	; Lake of Memories Old Man
 	.db TREASURE_RUPEES,RUPEEVAL_050	; Daichi Plain Old Man (All Seasons)
@@ -559,6 +571,17 @@ oldManLocationsTable:
 	dwbe TREASURE_OBJECT_BOOK_OF_SEALS_00
 	dwbe TREASURE_OBJECT_GRAVEYARD_KEY_00
 	dwbe TREASURE_OBJECT_SEED_SATCHEL_00
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
 	
 ;;
 oldMan_giveRupees:
