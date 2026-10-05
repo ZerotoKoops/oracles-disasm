@@ -690,7 +690,7 @@ interactionDeleteAndRetIfItemFlagSet:
 
 ;;
 spawnSmallKeyFromCeiling:
-	ldbc TREASURE_SMALL_KEY, $01
+	call staticItemsReplacementsLookup
 	call createTreasure
 	ret nz
 	call objectCopyPosition
