@@ -5,6 +5,8 @@
 ;   var3f: for some subids, ralph's animations only updates when this is 0.
 ; ==================================================================================================
 interactionCode37:
+	jp panic
+/*
 	ld e,Interaction.state
 	ld a,(de)
 	rst_jumpTable
@@ -1040,7 +1042,7 @@ ralphTurnLinkTowardSelf:
 	ld hl,w1Link.direction
 	ld (hl),b
 	jp setLinkForceStateToState08
-
+*/
 ;;
 startJump:
 	ld bc,-$1c0

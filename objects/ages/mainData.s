@@ -63,7 +63,6 @@ group0Mapc0ObjectData:
 group0Mapc2ObjectData:
 group0Mapc3ObjectData:
 group0Mapc4ObjectData:
-group0Mapc5ObjectData:
 group0Mapc6ObjectData:
 group0MapceObjectData:
 group0MapcfObjectData:
@@ -206,8 +205,6 @@ group1Mape0ObjectData:
 group1Mape1ObjectData:
 group1Mape2ObjectData:
 group1Mape3ObjectData:
-group1Mape6ObjectData:
-group1Mape7ObjectData:
 group1MapecObjectData:
 group1MapedObjectData:
 group1MapeeObjectData:
@@ -216,8 +213,6 @@ group1Mapf0ObjectData:
 group1Mapf1ObjectData:
 group1Mapf2ObjectData:
 group1Mapf3ObjectData:
-group1MapfaObjectData:
-group1MapfbObjectData:
 group1MapfcObjectData:
 group1MapfdObjectData:
 group1MapfeObjectData:
@@ -1344,6 +1339,7 @@ group0MapdaObjectData:
 
 group0MapdbObjectData:
 	obj_Pointer group0MapdbEnemyObjectData
+	obj_Interaction INTERAC_MISCELLANEOUS_1 $00
 	obj_End
 
 group0MapddObjectData:
@@ -4814,6 +4810,7 @@ group5Mapf8ObjectData:
 	obj_Interaction $c4 $02 $38 $78
 	obj_Interaction $c4 $03 $98 $28
 	obj_Interaction INTERAC_PIRATE $05 $30 $b8
+	obj_Interaction INTERAC_FARORES_MEMORY $00 $10 $38
 	obj_End
 
 group5Mapf9ObjectData:
@@ -4858,7 +4855,7 @@ group1Mape5ObjectData:
 	obj_End
 
 group1Mapf4ObjectData:
-	obj_Interaction INTERAC_MISCELLANEOUS_1 $0b $50 $78
+	obj_Interaction INTERAC_MISCELLANEOUS_1 $01 $50 $78
 	obj_Interaction INTERAC_PATCH $00 $38 $48
 	obj_End
 
@@ -4879,11 +4876,11 @@ group0Map87ObjectData:
 	obj_End
 
 group1Mapf7ObjectData:
-	obj_Interaction $00 $00 $38 $58
+	obj_Interaction INTERAC_FEMALE_VILLAGER $00 $38 $58
 	obj_End
 
 group1Mapf6ObjectData:
-	obj_Interaction $00 $00 $38 $38
+	obj_Interaction INTERAC_PLEN $00 $38 $38
 	obj_End
 
 group1Mapf8ObjectData:
@@ -4916,4 +4913,24 @@ group1MapeaObjectData:
 group1MapebObjectData:
 	obj_Interaction INTERAC_ADLAR $00 $38 $28
 	obj_Interaction INTERAC_NAYRU $00 $18 $88
+	obj_End
+
+group1Mape7ObjectData:
+	obj_Interaction INTERAC_MAMAMU_YAN $00 $28 $70
+	obj_Interaction INTERAC_MAMAMU_DOG $00 $60 $38
+	obj_End
+
+group1Mape6ObjectData:
+	obj_Interaction INTERAC_BOY $00 $58 $28
+	obj_End
+
+group1MapfbObjectData:
+	obj_Interaction INTERAC_PLAY_NAYRU_MUSIC $01
+	obj_End
+
+group1MapfaObjectData:
+	obj_Interaction INTERAC_PLAY_NAYRU_MUSIC $00
+	obj_End
+
+group0Mapc5ObjectData:
 	obj_End

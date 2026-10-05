@@ -571,7 +571,8 @@ realignUnappraisedRings:
 getNumUnappraisedRings:
 	push de
 	ld hl,wUnappraisedRings
-	ld de,$4000
+	ldde (wUnappraisedRingsEnd-wUnappraisedRings), $00
+	;ldde $40, $00
 --
 	ldi a,(hl)
 	cp $ff

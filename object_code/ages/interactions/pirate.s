@@ -32,6 +32,10 @@ interactionCodec4:
 @subid2Init:
 @subid3Init:
 @initialize:
+	lda GLOBALFLAG_PIRATES_KIDNAPPED
+	call checkGlobalFlag
+	jp nz,interactionDelete
+
 	ld a,(de)
 	ld hl,@scriptTable
 	rst_addDoubleIndex
@@ -54,15 +58,28 @@ interactionCodec4:
 	and ROOMFLAG_80
 	jp nz,interactionDelete
 
-	jr @initialize
+--
+	ld e,Interaction.subid
+	call @initialize
+-
+	lda $02
+	ld e,Interaction.oamFlagsBackup
+	ld (de),a
+	inc e ; [oamFlags]
+	ld (de),a
+	ret
 
 @subid0Init:
+	lda GLOBALFLAG_PIRATES_KIDNAPPED
+	call checkGlobalFlag
+	jp nz,interactionDelete
+	
 	call getThisRoomFlags
 	and ROOMFLAG_80
-	jr z,@initialize
-	; TODO: make him red
+	jr z,--
 	ld hl,mainScripts.pirateSubid0Script_talkedWithCaptain
-	jr @initialize_presetScript
+	call @initialize_presetScript
+	jr -
 
 @subid4Init:
 /*

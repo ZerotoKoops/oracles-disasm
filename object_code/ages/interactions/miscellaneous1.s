@@ -7,6 +7,59 @@ interactionCode6b:
 	rst_jumpTable
 	.dw interaction6b_subid00
 	.dw interaction6b_subid01
+
+interaction6b_subid00:
+	call checkInteractionState
+	jr nz,@state1
+
+	lda GLOBALFLAG_PIRATES_KIDNAPPED
+	call checkGlobalFlag
+	jp nz,interactionDelete
+
+	ld b,$00
+	ld hl,@treasures
+-
+	ldi a,(hl)
+	cpa $00
+	jr z,+
+	call checkTreasureObtained
+	jr nc,-
+	inc b
+	jr -
++
+	lda $02
+	cp b
+	jp nc,interactionDelete
+
+	ld bc,$2000
+	call setTime
+	call interactionIncState
+
+	lda GLOBALFLAG_TIME_FLOWING
+	call setGlobalFlag
+
+@state1:
+	ld a,(wTimeOfDay)
+	cpa TIME_NIGHT
+	ret nz
+
+	lda GLOBALFLAG_TIME_FLOWING
+	call unsetGlobalFlag
+
+	lda GLOBALFLAG_PIRATES_KIDNAPPED
+	call setGlobalFlag
+	jp interactionDelete
+
+
+@treasures:
+	.db TREASURE_SHIELD
+	.db TREASURE_ISLAND_CHART
+	.db TREASURE_CHEVAL_ROPE
+	.db $00
+
+/*
+	.dw interaction6b_subid00
+	.dw interaction6b_subid01
 	.dw interaction6b_subid02
 	.dw interaction6b_subid03
 	.dw interaction6b_subid04
@@ -402,6 +455,8 @@ interaction6b_subid09:
 interaction6b_subid0a:
 interaction6b_subid0b:
 interaction6b_subid0c:
+*/
+interaction6b_subid01:
 	call checkInteractionState
 	jr nz,@state1
 
@@ -411,7 +466,7 @@ interaction6b_subid0c:
 	jp nz,interactionDelete
 	ld e,Interaction.subid
 	ld a,(de)
-	sub $0a
+	sub $01;$0a
 	inc e
 	ld (de),a
 	call interaction6b_initGraphicsAndLoadScript
@@ -428,7 +483,7 @@ interaction6b_subid0c:
 	jp z,interactionAnimateAsNpc
 	ret
 
-
+/*
 ; Blocks that move over when pulling lever to get flippers
 interaction6b_subid0d:
 	call checkInteractionState
@@ -784,7 +839,7 @@ interaction6b_subid16:
 interaction6b_initGraphicsAndIncState:
 	call interactionInitGraphics
 	jp interactionIncState
-
+*/
 ;;
 interaction6b_initGraphicsAndLoadScript:
 	call interactionInitGraphics
@@ -801,6 +856,7 @@ interaction6b_loadScript:
 	call interactionSetScript
 	jp interactionIncState
 
+/*
 ;;
 ; @param[out]	zflag	nz if Link pressed up at screen edge
 interaction6b_checkLinkPressedUpAtScreenEdge:
@@ -819,8 +875,11 @@ interaction6b_checkLinkPressedUpAtScreenEdge:
 	ld a,(wKeysPressed)
 	and BTN_UP
 	ret
-
+*/
 interaction6b_scriptTable:
+	.dw mainScripts.interaction6b_stubScript
+	.dw mainScripts.interaction6b_subid0aScript
+/*
 	.dw mainScripts.interaction6b_stubScript
 	.dw mainScripts.interaction6b_stubScript
 	.dw mainScripts.interaction6b_subid02Script
@@ -838,3 +897,5 @@ interaction6b_scriptTable:
 	.dw mainScripts.interaction6b_stubScript
 	.dw mainScripts.interaction6b_stubScript
 	.dw mainScripts.interaction6b_subid10Script
+*/
+*/

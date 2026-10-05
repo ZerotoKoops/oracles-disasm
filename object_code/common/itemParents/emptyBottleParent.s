@@ -112,12 +112,12 @@ emptyBottle_state1:
 ; fall through
 
 emptyBottle_emptyBottle:
-	lda $00
-	ld (wEmptyBottleItem),a
+	call emptyBottleItem
+	jr +
 emptyBottle_deleteSelf:
-	ld hl,wStatusBarNeedsRefresh
-	set 0,(hl)
-	jp clearParentItem	
+	call emptyBottle_refreshGfx
++
+	jp clearParentItem
 
 
 emptyBottle_state2:

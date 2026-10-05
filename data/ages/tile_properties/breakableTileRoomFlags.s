@@ -29,13 +29,14 @@ tileUpdateRoomFlagsOnBreakTable:
 	.db $c2 $07
 	.db $c4 $07
 	.db $cb $07
+	.db $cc $07 ; ZTK
 	.db $d1 $07
 	.db $cf $07
 	.db $00
 
 @indoors:
 	.db $30 $00
-	.db $31 $44
+	.db $31 $01;$44 ; ZTK
 	.db $32 $02
 	.db $33 $4c
 	.db $00

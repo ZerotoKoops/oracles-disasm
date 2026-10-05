@@ -20,11 +20,12 @@
 	GLOBALFLAG_INTRO_DONE			db ; $0a: Once set, start/select are usable
 
 .ifdef ROM_AGES
+	GLOBALFLAG_TALKED_TO_CAPTAIN .db ; $0b: Set after first talking to Pirate Captain in the intro
+	GLOBALFLAG_0b				db ; $0b: Set when getting bombs from ambi
+	GLOBALFLAG_TIME_FLOWING		.db ; $0c
+	GLOBALFLAG_0c				db ; $0c: Maku tree disappeared?
 
-	GLOBALFLAG_0b				.db ; $0b: Set when getting bombs from ambi
-	GLOBALFLAG_TALKED_TO_CAPTAIN db ; $0b: Set after first talking to Pirate Captain in the intro
-	GLOBALFLAG_0c				.db ; $0c: Maku tree disappeared?
-	GLOBALFLAG_TIME_FLOWING		db ; $0c
+	GLOBALFLAG_PIRATES_KIDNAPPED	.db ; $0d
 	GLOBALFLAG_0d				db ; $0d
 	GLOBALFLAG_WON_FAIRY_HIDING_GAME	db ; $0e
 	GLOBALFLAG_D3_CRYSTALS			db ; $0f

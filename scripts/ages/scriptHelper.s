@@ -8179,6 +8179,16 @@ tingle_createGlowAroundLink:
 	ld (hl),a
 	ret
 
+tingle_checkBottleItem:
+	lda BOTTLE_FAIRY
+	call checkBottleItem 
+	ld a,$00 ; don't xor a
+	jr nc,+
+	inc a
++
+	ld e,Interaction.var3a
+	ld (de),a
+	ret
 
 ; ==================================================================================================
 ; INTERAC_TROY

@@ -121,6 +121,7 @@ standardTileSubstitutions:
 	.db $d2 $c7 ; Soil under bush
 	.db $d7 $c9 ; Soil under bush
 	.db $d2 $cb ; Soil under earth
+	.db $dc $cc ; Stairs under earth
 	.db $dc $cf ; Stairs under burnable tree
 	.db $dd $d1 ; Bombable cave door
 @bit7Indoors:

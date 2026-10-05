@@ -912,8 +912,9 @@ wWildTokayGameLevel: ; $c6ea
 	db
 
 wEmptyBottleItem:
+; $00: empty
 ; $01: fairy
-; 
+; $02: water
 	.db
 
 wMakuTreeSeedSatchelXPosition: ; $c6eb

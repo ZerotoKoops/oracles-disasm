@@ -74,6 +74,20 @@ bipinScript3:
 ; ==================================================================================================
 adlarScript:
 	initcollisions
+@npcLoop:
+	checkabutton
+	disableinput
+	showtext TX_3710
+	jumpiftextoptioneq $01,@endTalk
+	showtext TX_3711
+	wait 20
+@endTalk:
+	showtext TX_3713
+	enableinput
+	scriptjump @npcLoop
+
+
+/*
 	jumptable_objectbyte Interaction.var38
 	.dw @firstMeeting
 	.dw @nayruPossessed
@@ -104,6 +118,7 @@ adlarScript:
 	checkabutton
 	showtext TX_3713
 	scriptjump @queenBackToNormal
+*/
 
 
 ; ==================================================================================================
@@ -1729,7 +1744,23 @@ childScript_stage9_singer:
 ; ==================================================================================================
 ; INTERAC_NAYRU
 ; ==================================================================================================
+nayruScript_subid00:
+	setcollisionradii $06 $06
+	makeabuttonsensitive
+@npcLoop:
+	checkabutton
+	turntofacelink
+	asm15 setMusicVolume, $01
+	;setanimationfromangle
+	showtext TX_1d00
+	checktext
+	wait 20
+	setanimation $04
+	asm15 setMusicVolume, $03
+	scriptjump @npcLoop
 
+
+/*
 ; Subid $00: Cutscene at the beginning of game (talking to Link, then gets possessed)
 nayruScript00_part1:
 	setanimation $02
@@ -1976,12 +2007,12 @@ nayruScript11:
 
 nayruScript13:
 	loadscript scriptHelp.nayruScript13
-
+*/
 
 ; ==================================================================================================
 ; INTERAC_RALPH
 ; ==================================================================================================
-
+/*
 ; Cutscene where Nayru gets possessed
 ralphSubid00Script:
 	wait 30
@@ -2460,7 +2491,7 @@ ralphSubid11Script:
 
 ralphSubid12Script:
 	rungenericnpc TX_2a23
-
+*/
 
 ; ==================================================================================================
 ; INTERAC_PAST_GIRL
@@ -2770,7 +2801,17 @@ villagerSubid0dScript:
 ; ==================================================================================================
 ; INTERAC_FEMALE_VILLAGER
 ; ==================================================================================================
+mayorAttendant:
+	setcollisionradii $14 $06
+	makeabuttonsensitive
+@npcLoop:
+	checkabutton
+	turntofacelink
+	showtext TX_1520
+	scriptjump @npcLoop
 
+
+/*
 ; Cutscene where guy is struck by lightning in intro
 villagerGalSubid00Script:
 	wait 90
@@ -2856,7 +2897,7 @@ villagerGalSubid05Script_afterd7:
 
 villagerGalSubid05Script_twinrovaKidnappedZelda:
 	rungenericnpc TX_1518
-
+*/
 
 ; ==================================================================================================
 ; INTERAC_BOY
@@ -6860,27 +6901,27 @@ interaction6b_subid0aScript:
 	asm15 objectSetInvisible
 	writeobjectbyte Interaction.substate, $01
 	jumptable_objectbyte Interaction.var03
-	.dw @bombs
+	;.dw @bombs
 	.dw @chevalRope
-	.dw @flippers
-
+	;.dw @flippers
+/*
 @bombs:
 	asm15 scriptHelp.interaction6b_refillBombs
 	giveitem TREASURE_BOMBS, $04
 	wait 30
 	scriptend
-
+*/
 @chevalRope:
 	giveitem TREASURE_CHEVAL_ROPE, $00
 	writememory wRememberedCompanionId, $00
 	wait 30
 	scriptend
-
+/*
 @flippers:
 	giveitem TREASURE_FLIPPERS, $00
 	wait 30
 	scriptend
-
+*/
 
 ; Cutscene where the bridge to Nuun highlands extends out.
 ; This uses an alternate "scripting language", which only contains one additional opcode
@@ -9161,19 +9202,44 @@ tingleScript:
 @willBeFriend:
 	disableinput
 	showtextlowindex <TX_1e02
+	wait 10
+	showtextlowindex <TX_1e11
+	wait 20
+	asm15 scriptHelp.tingle_checkBottleItem
+	jumptable_objectbyte Interaction.var3a
+	.dw @wontTrade
+	.dw @tradeFairy
+
+@tradeFairy:
+	showtextlowindex <TX_1e12
+	jumptable_memoryaddress wSelectedTextOption
+	.dw @willTrade
+	.dw @wontTrade
+
+@wontTrade:
+	showtextlowindex <TX_1e14
+	scriptjump @endConversation
+
+@willTrade
+	showtextlowindex <TX_1e13
 	checktext
+	wait 5
+	asm15 emptyBottleItem
+	wait 5
 	giveitem TREASURE_OBJECT_ISLAND_CHART_00
 	wait 1
 	checktext
+
 	showtextlowindex <TX_1e04
 	callscript @koolooLimpah
 	wait 60
-
+/*
 	; Tell Ricky to go away?
 	writememory w1Companion.var03, $02
 	setdisabledobjectsto11
 	writememory w1Companion.state, $0a
-
+*/
+	enableinput
 	scriptjump @loop
 
 @alreadyGotChart:

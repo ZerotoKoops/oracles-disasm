@@ -169,3 +169,73 @@ loadPaletteData:
 	ld ($ff00+R_SVBK),a
 	pop de
 	ret
+
+; param bc: time to set the clock
+setTime:
+	push hl
+	ld hl,wClock
+	ld (hl),c
+	inc l
+	ld (hl),b
+	pop hl
+	ret
+
+
+compareTime:
+	call checkTime
+	cpa $00
+	ret
+
+;;
+; Checks if it is after this day and time
+; param a: Day
+; param bc: time to check
+checkDay:
+	push hl
+	ld hl,wDay
+	cp (hl)
+	pop hl
+	ret
+
+; param bc: time to check
+checkTime:
+	push hl
+	ld hl,wClock
+	jp compareHlToBc
+	pop hl
+	ret
+
+checkBottleItem:
+	ld b,a
+checkBottleItem_paramB:
+	push hl
+	ld a,(wEmptyBottleItem)
+	cp b
+	jr nz,@noItem	
+
+	lda TREASURE_EMPTY_BOTTLE
+	ld hl,wInventoryB
+	cp (hl)
+	jr z,@hasBottleEquipped
+	inc l
+	cp (hl)
+	jr z,@hasBottleEquipped
+
+@noItem:
+	scf 
+	ccf
+	jr +
+@hasBottleEquipped:
+; has item
+	scf
++
+	pop hl
+	ret
+
+emptyBottleItem:
+	lda $00
+	ld (wEmptyBottleItem),a
+emptyBottle_refreshGfx:
+	ld hl,wStatusBarNeedsRefresh
+	set 0,(hl)
+	ret

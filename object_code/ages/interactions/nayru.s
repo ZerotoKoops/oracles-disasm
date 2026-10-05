@@ -2,14 +2,57 @@
 ; INTERAC_NAYRU
 ; ==================================================================================================
 interactionCode36:
+	call checkInteractionState
+	jr z,@state0
+
+@state1:
+	call interactionRunScript
+	call interactionAnimateAsNpc
+
+@createMusicNotes:
+	ld h,d
+	ld l,Interaction.animParameter
+	ld a,(hl)
+	or a
+	ret z
+	ld (hl),$00
+	dec a
+	ld c,-6
+	jr z,+
+	ld c,8
++
+	ld b,$fc
+	jp objectCreateFloatingMusicNote
+
+
+@state0:
+	call interactionIncState
+
+	call interactionInitGraphics
+	call objectMarkSolidPosition
+	call objectSetVisiblec2
+	ld hl,mainScripts.nayruScript_subid00
+	call interactionSetScript
+	lda $04
+	call interactionSetAnimation
+	jp interactionLoadExtraGraphics
+
+
+
+
+
+
+
+/*
 	ld e,Interaction.state
 	ld a,(de)
 	rst_jumpTable
 	.dw nayruState0
 	.dw nayruState1
-
+*/
 ;;
 nayruState0:
+/*
 	ld a,$01
 	ld (de),a
 	call interactionInitGraphics
@@ -47,10 +90,11 @@ nayruState0:
 	.dw @init12
 	.dw @init13
 
+
 @init00:
 	ld a,$03
 	call setMusicVolume
-	call @loadEvilPalette
+	;call @loadEvilPalette
 
 @setSingingAnimation:
 	ld a,$04
@@ -66,7 +110,7 @@ nayruState0:
 
 	ld hl,mainScripts.nayruScript01
 	call interactionSetScript
-
+*/
 @init0e: ; This is also called from ambi subids 4 and 5 (to initialize possessed palettes)
 	ld a,$06
 	ld e,Interaction.oamFlags
@@ -76,7 +120,7 @@ nayruState0:
 	; Load the possessed version of her palette into palette 6.
 	ld a,PALH_97
 	jp loadPaletteHeader
-
+/*
 @init02:
 	ld a,($cfd0)
 	cp $03
@@ -886,3 +930,4 @@ nayruRunScriptWithConditionalAnimation:
 	call z,interactionAnimate
 	call objectPreventLinkFromPassing
 	jp objectSetPriorityRelativeToLink_withTerrainEffects
+*/

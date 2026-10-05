@@ -53,7 +53,7 @@ interactionData:
 	/* $26 */ m_InteractionData $00 $00 $00
 	/* $27 */ m_InteractionData $00 $00 $00
 	/* $28 */ m_InteractionData $46 $00 $00
-	/* $29 */ m_InteractionData $62 $12 $00
+	/* $29 */ m_InteractionData $62 $12 $10
 	/* $2a */ m_InteractionData $55 $1a $00
 	/* $2b */ m_InteractionData $47 $00 $00
 	/* $2c */ m_InteractionData $a2 $00 $20
@@ -66,7 +66,7 @@ interactionData:
 	/* $33 */ m_InteractionData $00 $00 $00
 	/* $34 */ m_InteractionData $3d $00 $60
 	/* $35 */ m_InteractionData interaction35SubidData
-	/* $36 */ m_InteractionData $26 $00 $12
+	/* $36 */ m_InteractionData $26 $00 $32
 	/* $37 */ m_InteractionData $24 $00 $12
 	/* $38 */ m_InteractionData interaction38SubidData
 	/* $39 */ m_InteractionData $4e $10 $30
@@ -499,10 +499,10 @@ interaction3aSubidData:
 	m_InteractionSubidData $5c $10 $12
 	m_InteractionSubidData $5c $10 $11
 interaction3bSubidData:
+	m_InteractionSubidData $5c $00 $22 ; Mayor's attendant
 	m_InteractionSubidData $3f $00 $22
 	m_InteractionSubidData $3f $00 $22
 	m_InteractionSubidData $3f $00 $22
-	m_InteractionSubidData $5c $00 $22
 	m_InteractionSubidData $5c $00 $22
 	m_InteractionSubidData $5c $00 $22
 	m_InteractionSubidData $5c $00 $22
@@ -631,6 +631,8 @@ interaction68SubidData:
 
 interaction6bSubidData:
 	m_InteractionSubidData $00 $00 $00
+	m_InteractionSubidData $81 $10 $32
+/*
 	m_InteractionSubidData $00 $00 $00
 	m_InteractionSubidData $00 $00 $00
 	m_InteractionSubidData $58 $00 $00
@@ -653,6 +655,7 @@ interaction6bSubidData:
 	m_InteractionSubidData $4c $1c $49
 	m_InteractionSubidData $6d $00 $64
 	m_InteractionSubidData $00 $06 $aa
+*/
 	m_InteractionSubidDataEnd
 
 interaction6dSubidData:
