@@ -765,7 +765,7 @@ interaction92SubidData:
 interaction94SubidData:
 	m_InteractionSubidData $00 $00 $00
 	m_InteractionSubidData $8e $18 $00
-	m_InteractionSubidData $7d $10 $21
+	m_InteractionSubidData $78 $0c $2b
 	m_InteractionSubidData $76 $06 $42
 	m_InteractionSubidDataEnd
 
