@@ -2730,7 +2730,7 @@ group4Map3eObjectData:
 	obj_Interaction $1e $05 $3e $00
 	obj_Interaction $12 $02 $88 $78
 	obj_Interaction $dc $11 $02 $00
-	obj_Interaction $20 $05
+	obj_Interaction $20 $03
 	obj_Pointer group4Map3eEnemyObjectData
 	obj_End
 
