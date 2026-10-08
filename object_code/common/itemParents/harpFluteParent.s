@@ -8,6 +8,7 @@ parentItemCode_harp:
 	rst_jumpTable
 	.dw @state0
 	.dw @state1
+	.dw @done
 
 @state0:
 	call checkLinkOnGround
@@ -83,8 +84,39 @@ parentItemCode_harp:
 	ld e,Item.animParameter
 	ld a,(de)
 	and c
+
+	; RANDO: Allow cancelling harp/flute songs by pressing A + B
+	push af
+	ld a,(wGameKeysPressed)
+	cpl
+	and BTN_A | BTN_B
+	jr nz,@noCancel
+	ld a,SNDCTRL_STOPSFX
+	call playSound
+	pop af
+
+	; Defined state 2 for rando which jumps to @done. Doing this instead of jumping directly to
+	; @done here, because it's better for other objects to "see" Link playing the harp for at
+	; least one frame. Prevents a bug where the game says your tune "echoes in vain" when
+	; playing tune of echoes for the first time after revealing a portal (but only if done
+	; frame-perfectly, ie. holding the other button before playing the harp).
+	ld a,$02
+	ld e,Item.state
+	ld (de),a
+
+	; That's all well and dandy but it creates another issue where pols' voices don't get killed
+	; when the animation is cancelled because those objects are disabled for an extra frame and
+	; don't see the harp being played. So, although redundant, let's re-enable those objects
+	; here in addition to in state 2.
+	xor a
+	ld (wDisabledObjects),a
+	ret
+
+@noCancel:
+	pop af
 	ret z
 
+@done:
 ; Done playing song
 
 	ld hl,w1Link.collisionType

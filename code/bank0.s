@@ -4815,6 +4815,14 @@ loseTreasure:
 	ret
 
 ;;
+; @param	a	Treasure for Link to lose (see constants/common/treasure.s)
+loseTreasureWithoutLosingFlag:
+    call loseTreasure
+    ld hl,wObtainedTreasureFlags
+    set 1,(hl)
+    ret
+
+;;
 ; @param	a	Item to check for (see constants/common/treasure.s)
 ; @param[out]	cflag	Set if you have that item
 ; @param[out]	a	The value of the treasure's "related variable" (ie. item level)
@@ -12596,7 +12604,7 @@ loadTilesetAndRoomLayout:
 	; Load the room layout and apply any dynamic changes necessary
 	call          loadRoomLayout
 
-	callfrombank0 roomTileChanges.applyAllTileSubstitutions
+	callfrombank0 roomTileChanges.applyExtraTileSubstitutions
 
 	; Copy wRoomLayout to w3RoomLayoutBuffer
 	ld a,:w3RoomLayoutBuffer
@@ -13907,5 +13915,7 @@ getSomariaBlockIndex:
 
 
 .include "code/debug.s"
+.include "code/rando/multi.s"
+.include "code/rando/util.s"
 
 .ENDS

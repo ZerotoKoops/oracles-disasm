@@ -9,6 +9,7 @@ interactionCode58:
 	.dw @subid01
 	.dw @subid02
 	.dw @subid03
+	.dw @subid04
 
 
 ; NPC who gives you the shovel. If var03 is nonzero, he's just a generic guy.
@@ -22,6 +23,9 @@ interactionCode58:
 	ld a,$04
 	call interactionSetAnimation
 @@state1:
+	ld a,$00
+	or a
+	jp z,interactionDelete
 	call interactionRunScript
 	jp c,interactionDelete
 	jp interactionAnimateAsNpc
@@ -85,6 +89,19 @@ interactionCode58:
 	call interactionAnimateBasedOnSpeed
 	jp interactionPushLinkAwayAndUpdateDrawPriority
 
+@subid04:
+	call checkInteractionState
+	jr nz,@@state1
+
+@@state0:
+	call @loadScriptAndInitGraphics
+	call interactionRunScript
+	call interactionRunScript
+@@state1:
+	call interactionRunScript
+	jp c,interactionDeleteAndUnmarkSolidPosition
+	jp npcFaceLinkAndAnimate
+
 
 @unusedFunc_6b70:
 	call interactionInitGraphics
@@ -112,3 +129,4 @@ interactionCode58:
 	.dw mainScripts.hardhatWorkerSubid01Script
 	.dw mainScripts.hardhatWorkerSubid02Script
 	.dw mainScripts.hardhatWorkerSubid03Script
+	.dw mainScripts.hardhatWorkerSubid04Script

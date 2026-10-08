@@ -201,7 +201,7 @@ dungeonScript_bossDeath:
 	setcoords $58, $78
 
 spawnHeartContainer2:
-	spawnitem TREASURE_HEART_CONTAINER, $00
+	asm15 scriptHelp.spawnBossItem
 	scriptjump enableLinkAndMenu
 
 wingDungeonScript_bossDeath:

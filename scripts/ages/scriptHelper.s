@@ -16,6 +16,104 @@ setTrigger2IfTriggers0And1Set:
 	ret
 
 ;;
+; entries (ID, subID) indexed by wDungeon Index
+bossItemTable:
+    .db TREASURE_HEART_CONTAINER,$00
+    .db TREASURE_HEART_CONTAINER,$00
+	.db $00,$00 ; Lost Labyrinth (Past) Doesn't have a boss.
+	.db TREASURE_HEART_CONTAINER,$00
+	.db TREASURE_HEART_CONTAINER,$00
+	.db $00,$00  ; Old D5 dosen't have a boss.
+	.db $00,$00 ; There are no rooms in that dungeon.
+	.db $00,$00 ; ^
+	.db $00,$00 ; ^
+	.db $00,$00 ; Maku Path (Present) Dosen't have a boss.
+	.db $00,$00 ; Ganon dosen't give you anythin upon defeat.
+	.db $00,$00 ; Lost Labyrinth (Present) Dosen't have a boss.
+	.db TREASURE_HEART_CONTAINER,$00
+
+;;
+; spawn items from bossItemTable in place of boss heart containers.
+spawnBossItem:
+    push hl
+    ld hl,bossItemTable
+    ld a,(wDungeonIndex)
+    rst_addDoubleIndex
+    ld b,(hl)
+    inc hl
+    ld c,(hl)
+    call createTreasure
+    call objectCopyPosition
+    pop hl
+    ret
+
+;;
+rosaRefill: 
+    push de
+    push hl
+    
+    ld b,TREASURE_EMBER_SEEDS
+    ld hl,wNumEmberSeeds
+    
+@refillSeedsLoop:
+    ld a,b
+    call checkTreasureObtained
+    jr nc,@nextSeed
+    ld a,(hl)           ; currently owned seeds
+    cp $20
+    jr nc,@nextSeed
+    ld (hl),$20
+    
+@nextSeed:
+    ld a,b
+    cp TREASURE_MYSTERY_SEEDS
+    jr z,@refillBombs
+    inc hl
+    inc b
+    jr @refillSeedsLoop
+    
+@refillBombs:
+    ld a,TREASURE_BOMBS
+    call checkTreasureObtained
+    jr nc,@refillBombchus
+    ld hl,wMaxBombs
+    ldd a,(hl)
+    ld (hl),a
+    
+@refillBombchus:
+    ld a,TREASURE_BOMBCHUS
+    call checkTreasureObtained
+    jr nc,@refillShield
+    ld hl,wNumBombchus
+    ld a,$10
+    ld (hl),a
+    
+@refillShield:
+    ld a,TREASURE_SHIELD
+    call checkTreasureObtained
+    jr nc,@refillHealth
+    ld a,TREASURE_SHIELD
+    ldh ($8b),a     ; put item ID in FF8B
+    ld e,$3f
+    ld hl,$46b6     ; addTreasureToInventory in bank 3F
+    call interBankCall
+    
+@refillHealth:
+    ld hl,wLinkMaxHealth
+    ldd a,(hl)
+    ld (hl),a
+    
+    ; Play a sound and update status bar to give feedback
+    ld a,SND_GETSEED
+    call playSound
+    ld a,$03
+    ld (wStatusBarNeedsRefresh),a
+    
+    pop hl
+    pop de
+    ret
+
+;;
 makeTorchesTemporarilyLightable:
 	ld c,a
 ;;
@@ -436,6 +534,55 @@ oldMan_takeRupees:
 	ld a,(hl)
 	jp removeRupeeValue
 
+; Credit to Ishigh1 for parts of the code shown below.
+oldMan_givesTreasure:
+	ld e,Interaction.var03
+	ld a,(de)
+	ld hl,oldManLocationsTable
+	add a,a
+	rst_addAToHl
+	ldi a,(hl)
+    ld b,a
+    ld c,(hl)
+    jp spawnTreasureOnLink
+
+; Same thing as oldMan_givesTreasure except the treasure spawns at the interaction position, and this function is not meant to be used on npcs.
+spawnItemFromTable:
+	ld e,Interaction.var03
+	ld a,(de)
+	ld hl,oldManLocationsTable
+	add a,a
+	rst_addAToHl
+	ldi a,(hl)
+    ld b,a
+    ld c,(hl)
+    jp spawnTreasure
+
+oldManLocationsTable:
+	.db TREASURE_RUPEES,RUPEEVAL_100	; Lake of Memories Old Man
+	.db TREASURE_RUPEES,RUPEEVAL_050	; Daichi Plain Old Man (All Seasons)
+	.db TREASURE_RUPEES,RUPEEVAL_200	; Deeper Woods Old Man (Not Deep Yet)
+	.db TREASURE_RUPEES,RUPEEVAL_150	; Hedge Maze Old Man 1
+	.db TREASURE_RUPEES,RUPEEVAL_080	; Daichi Plain Old Man (Summer Only)
+	.db TREASURE_RUPEES,RUPEEVAL_500	; Hedge Maze Old Man 2
+	.db TREASURE_RUPEES,RUPEEVAL_300	; Deeper Woods Old Man (Deeper In)
+
+	; All items past this line do not belong to each old man as they're being used for other NPC items to save time.
+	dwbe TREASURE_OBJECT_BOOK_OF_SEALS_00
+	dwbe TREASURE_OBJECT_GRAVEYARD_KEY_00
+	dwbe TREASURE_OBJECT_SEED_SATCHEL_00
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	dwbe TREASURE_OBJECT_HEART_PIECE_02
+	
 ;;
 oldMan_giveRupees:
 	ld e,Interaction.var03
@@ -448,11 +595,13 @@ danceLeader_giveRupees:
 	jp giveTreasure
 
 oldMan_rupeeValues:
-	.db RUPEEVAL_100	;subid 00, 05, 06
+	.db RUPEEVAL_100	;subid 00
 	.db RUPEEVAL_050	;subid 01
 	.db RUPEEVAL_200	;subid 02
 	.db RUPEEVAL_150	;subid 03
 	.db RUPEEVAL_080	;subid 04
+	.db RUPEEVAL_500    ;subid 05
+	.db RUPEEVAL_300    ;subid 06
 
 
 ; ==================================================================================================
@@ -2984,7 +3133,7 @@ oldManScript_givesSeedSatchel:
 	showtext TX_3312
   wait 30
 	orroomflag $20
-	giveitem TREASURE_SEED_SATCHEL, $00
+	asm15 oldMan_givesTreasure
 	scriptjump @npcLoop
 
 @playerSaidYes:
@@ -3660,7 +3809,7 @@ poeScript:
   wait 20
   showtext TX_0b01
   wait 30
-  giveitem TREASURE_GRAVEYARD_KEY, $00
+  asm15 oldMan_givesTreasure
   wait 30
   showtext TX_0b02
 
@@ -8654,52 +8803,40 @@ linkedNpc_calcLowTextIndex:
 ; INTERAC_PLEN
 ; ==================================================================================================
 plenSubid0Script:
-	jumpifglobalflagset GLOBALFLAG_FINISHEDGAME, @finishedGame
-	jumpifglobalflagset GLOBALFLAG_SAVED_NAYRU, @savedNayru
-	rungenericnpc TX_3714
-
-@savedNayru:
-	rungenericnpc TX_3715
-
-@finishedGame:
 	initcollisions
 @loop:
 	checkabutton
 	disableinput
-	jumpifglobalflagset GLOBALFLAG_DONE_PLEN_SECRET, @alreadyCompletedSecret
-
-	; He can be given a secret
-	showtext TX_3700
-	wait 30
-	jumpiftextoptioneq $00, @giveSecret
 	showtext TX_3701
-	scriptjump @resume
-
-@giveSecret:
-	askforsecret PLEN_SECRET
-	wait 30
-	jumpifmemoryeq wTextInputResult, $00, @validSecret
-	; Bad secret
-	showtext TX_3703
-	scriptjump @resume
-
-@validSecret:
-	setglobalflag GLOBALFLAG_BEGAN_PLEN_SECRET
+	showtext TX_3700
 	showtext TX_3702
+	jumpifroomflagset $40, @alreadyGotToll
+	jumpifroomflagset $20, @alreadyGotItem
+	showtext TX_3703
+	asm15 oldMan_givesTreasure
 	wait 30
-	asm15 giveRingAToLink, SPIN_RING
-	setglobalflag GLOBALFLAG_DONE_PLEN_SECRET
-	wait 30
+	orroomflag $20
 	showtext TX_3704
 	scriptjump @resume
 
-@alreadyCompletedSecret:
+@alreadyGotItem:
 	showtext TX_3705
+	showtext TX_3706
+	showtext TX_3707
+	giveitem TREASURE_RUPEES, $04
+	wait 30
+	orroomflag $40
+	showtext TX_3708
+	scriptjump @resume
+
+@alreadyGotToll:
+	showtext TX_3709
+	scriptjump @resume
 
 @resume:
 	enableinput
 	scriptjump @loop
-
+	
 
 ; ==================================================================================================
 ; INTERAC_GREAT_FAIRY
@@ -8996,7 +9133,7 @@ simpleScript_waterfallEmptyingBelow:
 	ss_wait 20
 
 	ss_settile $21, $f9
-;	ss_settile $31, $f9
+ 	ss_settile $31, $dc
 	ss_settile $41, $1b
 	ss_settile $42, $1b
 	ss_wait 20
@@ -9094,7 +9231,7 @@ simpleScript_waterfallFillingBelow:
 	ss_wait 20
 
 	ss_settile $21, $fa
-;	ss_settile $31, $fa
+ 	ss_settile $31, $fa
 	ss_settile $41, $fa
 	ss_settile $42, $fa
 	ss_wait 20

@@ -481,7 +481,6 @@ group0MapabEnemyObjectData:
 	obj_ItemDrop $00 $05 $67
 	obj_ItemDrop     $01 $68
 group0MapbcEnemyObjectData:
-group0MapccEnemyObjectData:
 	obj_RandomEnemy $20 $09 $00
 	obj_EndPointer
 
@@ -1336,7 +1335,6 @@ group4Map9eEnemyObjectData:
 group4Mapa5EnemyObjectData:
 group4Mapa9EnemyObjectData:
 group4Mapb1EnemyObjectData:
-group4MapbbEnemyObjectData:
 group4MapbcEnemyObjectData:
 	obj_EndPointer
 
@@ -2921,7 +2919,6 @@ group5MapcfAfterEventObjectData:
 	obj_EndPointer
 
 group0Map29AfterEventObjectData:
-	obj_Interaction INTERAC_MAKU_TREE $02 $40 $50
 	obj_EndPointer
 
 group0Map03AfterEventObjectData:
@@ -2957,4 +2954,11 @@ group0Mapc9EnemyObjectData:
 	obj_EndPointer
 
 group2Map7fBeforeEventObjectData:
+	obj_EndPointer
+
+group4MapbbEnemyObjectData:
+	obj_EndPointer
+
+group0MapccEnemyObjectData:
+	obj_RandomEnemy $20 $09 $00
 	obj_EndPointer

@@ -2384,6 +2384,29 @@ func_03_7244:
 	call clearMemory
 	jp hideStatusBar
 @state1:
+	; RANDO: Allow cancelling timewarp cutscenes by pressing A + B (1st part)
+	ld a,(wGameKeysPressed)
+	cpl
+	and BTN_A | BTN_B
+	or $02
+	jr nz,@@dontSkip
+	call @@func_72ec ; Delete objects
+	ld a,$03 ; Skip state 2
+	ld (wCutsceneState),a
+	ld a,SNDCTRL_STOPSFX
+	call playSound
+	; Set the palette that the timeportal "beam" will use (we're skipping the first beam so we
+	; must set this so the second beam palette doesn't get corrupted)
+	ld a,(wTilesetFlags)
+	and $80
+	ld a,$02
+	jr nz,+
+	dec a
++
+	ld (wcc50),a
+	jp @state2@cbb3_00 ; Call this to prevent breakage when warping into a wall
+
+@@dontSkip:
 	ld a,(wTmpcbb3)
 	rst_jumpTable
 	.dw @@cbb3_00
@@ -2397,7 +2420,7 @@ func_03_7244:
 --
 	call func_7431
 	call func_745c
-	jr timewarpCutscene_incCBB3
+	jp timewarpCutscene_incCBB3
 @@cbb3_01:
 	ld hl,$d400
 	jr --
@@ -2447,6 +2470,19 @@ func_03_7244:
 	jp timewarpCutscene_incState
 
 @state2:
+	; RANDO: Allow cancelling timewarp cutscenes by pressing A + B (2nd part)
+	ld a,(wTmpcbb3)
+	jr z,@@dontSkip
+	ld a,(wGameKeysPressed)
+	cpl
+	and BTN_A | BTN_B
+	jr nz,@@dontSkip
+	ld a,$03
+	ld (wCutsceneState),a
+	ld a,SNDCTRL_STOPSFX
+	jp playSound
+
+@@dontSkip:
 	ld a,(wTmpcbb3)
 	rst_jumpTable
 	.dw @@cbb3_00

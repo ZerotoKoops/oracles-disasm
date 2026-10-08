@@ -13,39 +13,17 @@ interactionCode68:
 	jr nz,@@state1
 
 @@state0:
-	call checkIsLinkedGame
+	ld a,$00
+	or a
 	jp z,interactionDelete
-
-	ld a,(wEssencesObtained)
-	bit 2,a
-	jp nz,interactionDelete
-
 	call @initGraphicsAndLoadScript
 	call objectSetVisiblec2
-	call getThisRoomFlags
-	bit 6,a
-	jr nz,@@alreadyGaveShovel
-
-	; Spawn shovel object
-	call getFreeInteractionSlot
-	ret nz
-	ld (hl),INTERAC_MISCELLANEOUS_1
-	inc l
-	ld (hl),$09
-	ld l,Interaction.relatedObj1+1
-	ld a,d
-	ld (hl),a
-	ret
-
-@@alreadyGaveShovel:
 	ld hl,mainScripts.rosa_subid00Script_alreadyGaveShovel
 	jp interactionSetScript
 
 @@state1:
 	call interactionRunScript
-	ld a,TREASURE_SHOVEL
-	call checkTreasureObtained
-	jp c,npcFaceLinkAndAnimate
+	jp npcFaceLinkAndAnimate
 	jp interactionAnimateAsNpc
 
 

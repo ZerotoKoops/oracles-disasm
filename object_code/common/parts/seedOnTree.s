@@ -160,6 +160,8 @@ partCode10:
 	call objectSetSpeedZ
 	ld l,Part.health
 	ld a,$03
+	call getThisRoomFlags
+	or $20
 	ld (hl),a
 	ld l,Part.state
 	ldi (hl),a

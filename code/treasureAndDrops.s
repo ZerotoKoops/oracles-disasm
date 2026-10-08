@@ -202,7 +202,7 @@ giveTreasure_body:
 @extraItemsToAddTable:
 	.db TREASURE_SEED_SATCHEL	TREASURE_EMBER_SEEDS		$20
 	.db TREASURE_HEART_CONTAINER	TREASURE_HEART_REFILL		$40
-	.db TREASURE_BOMB_FLOWER	TREASURE_BOMB_FLOWER_LOWER_HALF	$00
+	.db TREASURE_SLINGSHOT	TREASURE_EMBER_SEEDS	$20
 	.db TREASURE_TUNE_OF_ECHOES	TREASURE_HARP			$01
 	.db $00
 
@@ -362,7 +362,7 @@ giveTreasure_body:
 
 ; [de] += c (as bcd values), and [de+1] is the cap.
 @moded:
-	call @mode4
+	call @extendedModeD
 	ld h,d
 	ld l,e
 	inc l
@@ -372,6 +372,35 @@ giveTreasure_body:
 	ldd a,(hl)
 	ld (hl),a
 	ret
+
+; If max bombs == 0, increase max bombs even if it is a wild bomb drop
+@extendedModeD:
+    ld h,d
+    ld l,e
+    inc l
+    ld a,(hl)
+    or a
+    jr nz,@normalCase
+    ld a,$10
+    ldd (hl),a
+    jr @done
+
+; Otherwise, only increase max bombs if quantity has bit 7 set (only for "treasure" bombs, not drops)
+@normalCase:
+    bit 7,c
+    jr z,@done
+    
+@increaseMaxQuantity:
+    res 7,c
+    add a,c
+    daa
+    jr nc,@writeNewMaxValue
+    ld a,$99
+@writeNewMaxValue:
+    ldd (hl),a
+    
+@done:
+    jp @mode4
 
 ; Adds rupee value of 'c' to 2-byte bcd value at [de].
 ; Also adds to wTotalRupeesCollected if operating on wNumRupees.

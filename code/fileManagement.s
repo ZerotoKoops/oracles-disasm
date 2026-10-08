@@ -361,10 +361,10 @@ _initialFileVariables:
 	.db <wLinkHealth			$10 ; 4 hearts (gets overwritten in standard game)
 	.db <wLinkMaxHealth			$10
 .ifdef ROM_AGES
-	.db <wDeathRespawnBuffer.group		$05
-	.db <wDeathRespawnBuffer.room		$b1
+	.db <wDeathRespawnBuffer.group		$03
+	.db <wDeathRespawnBuffer.room		$08
 	.db <wDeathRespawnBuffer.y		$48
-	.db <wDeathRespawnBuffer.x		$78
+	.db <wDeathRespawnBuffer.x		$70
 	.db <wDeathRespawnBuffer.facingDir	$02
 	.db <wJabuWaterLevel			$21
 	.db <wPortalGroup			$ff

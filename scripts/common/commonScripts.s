@@ -134,13 +134,13 @@ faroreLinked:
 dropSmallKeyWhenNoEnemiesScript:
 	stopifitemflagset ; Stop if already got the key
 	checknoenemies
-	spawnitem TREASURE_SMALL_KEY, $01
+	asm15 scriptHelp.spawnItemFromTable
 	scriptend
 
 dropBossKeyWhenNoEnemiesScript:
 	stopifitemflagset ; Stop if already got the key
 	checknoenemies
-	spawnitem TREASURE_BOSS_KEY, $01
+	asm15 scriptHelp.spawnItemFromTable
 	scriptend
 
 createChestWhenNoEnemiesScript:

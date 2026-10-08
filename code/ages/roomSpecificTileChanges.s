@@ -1810,10 +1810,10 @@ tileReplacement_group0Map30:
 	ld (hl),$dc ; staircase
 	ret
 
-; bush appears here after zelda is kidnapped
+; bush appears here after a user gets the right amout of gifts (in rando context, zelda shouldn't need to get kidnapped for that to happen)
 tileReplacement_group0Map20:
-	ld a,(wGameProgress1)
-	cp 8
+	ld a,(wEssencesObtained)
+	cp 2
 	ret c
 	call getThisRoomFlags
 	and $80

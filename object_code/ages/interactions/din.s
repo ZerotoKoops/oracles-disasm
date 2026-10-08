@@ -161,9 +161,8 @@ interactionCodeaa:
 
 ;initialization
 @@state0:
-	callab agesInteractionsBank09.getGameProgress_Seasons
-	ld a,b
-	cpa $08
+	ld a,(wEssencesObtained)
+	cpa $02
 	jp nz,interactionDelete
 
 	call interactionIncState

@@ -70,43 +70,30 @@ groups:
   - name: TX_000a
     index: 0x0a
     text: |-
-      You learned the
-      \col(1)Currents Tune\col(0)!\stop
-      Play it to move
-      from the past to
-      the present!
-      Choose it when
-      you use the
-      \col(1)harp\col(0)!
+      You found a
+      \col(1)Boss Key\col(0)
+      for Summer Villa!
 
   - name: TX_000b
     index: 0x0b
     text: |-
-      You learned the
-      \col(1)Tune of Time\col(0)!\stop
-      Play it to move
-      back and forth
-      between past
-      and present!
-      Choose it when
-      you use the
-      \col(1)harp\col(0).
+      You found a
+      \col(1)Boss Key\col(0)
+      for Spirit's Grotto!
 
   - name: TX_000c
     index: 0x0c
     text: |-
-      You got the
-      \col(1)Brother Emblem\col(0)!
-      Now you are a
-      Goron, too!
+      You found a
+      \col(1)Small Key\col(0)
+      for Summer Villa!
 
   - name: TX_000d
     index: 0x0d
     text: |-
-      You got a \col(1)Scent
-      Seedling\col(0)! Maybe
-      it will produce
-      many seeds!
+      You found a
+      \col(1)Small Key\col(0)
+      for Spirit's Grotto!
 
   - name: TX_000e
     index: 0x0e
@@ -127,80 +114,44 @@ groups:
   - name: TX_0010
     index: 0x10
     text: |-
-      \pos(2)\slow()You got the
-      \col(1)Echoing Howl\col(0), an
-      Essence of Time!\stop
-      It echoes far
-      across the
-      plains to speak
-      to insolent
-      hearts.
+      You found a
+      \col(1)Small Key\col(0)
+      for Lost Labyrinth (Past)!
 
   - name: TX_0011
     index: 0x11
     text: |-
-      \pos(2)\slow()You got the
-      \col(1)Burning Flame\col(0),
-      an Essence of
-      Time!\stop
-      It reignites
-      wavering hearts
-      with a hero's
-      burning
-      passion.
+      You found a
+      \col(1)Small Key\col(0)
+      for Four Corners Cave!
 
   - name: TX_0012
     index: 0x12
     text: |-
-      \pos(2)\slow()You got the
-      \col(1)Sacred Soil\col(0), an
-      Essence of Time!\stop
-      All that lies
-      sleeping in the
-      bosom of the
-      earth will know
-      the nourishing
-      warmth of the
-      Sacred Soil.
+      You found a
+      \col(1)Small Key\col(0)
+      for Seasons Shrine!
 
   - name: TX_0013
     index: 0x13
     text: |-
-      \pos(2)\slow()You got the
-      \col(1)Bereft Peak\col(0), an
-      Essence of Time!\stop
-      It is a proud,
-      lonely spirit
-      that remains
-      stalwart, even
-      in trying times.
+      You found a
+      \col(1)Small Key\col(0)
+      for Temple of The Tokay!
 
   - name: TX_0014
     index: 0x14
     text: |-
-      \pos(2)\slow()You got the
-      \col(1)Rolling Sea\col(0), an
-      Essence of Time!\stop
-      The mystical
-      song of the sea
-      roars into a
-      crashing wave
-      that sweeps
-      heroes out into
-      adventure.
+      You found a
+      \col(1)Small Key\col(0)
+      for Lost Labyrinth (Present)!
 
   - name: TX_0015
     index: 0x15
     text: |-
-      \pos(2)\slow()You got the
-      \col(1)Falling Star\col(0), an
-      Essence of Time!\stop
-      The eternal
-      light of this
-      heavenly body
-      acts as guide
-      to the other
-      essences.
+      You found a
+      \col(1)Small Key\col(0)
+      for Crown Dungeon!
 
   - name: TX_0016
     index: 0x16
@@ -224,33 +175,20 @@ groups:
   - name: TX_0018
     index: 0x18
     text: |-
-      It's a \col(1)Dungeon
-      Map\col(0)! Press
-      SELECT to see
-      it. The darkened
-      rooms are ones
-      you haven't been
-      to yet.
+      You found the \col(1)Dungeon
+      Map\col(0)!
 
   - name: TX_0019
     index: 0x19
     text: |-
       You found the
-      \col(1)Compass\col(0)!\stop
-      Use it to track
-      your position,
-      locate chests
-      and find keys.
+      \col(1)Compass\col(0)!
 
   - name: TX_001a
     index: 0x1a
     text: |-
       You found a
-      \col(1)Small Key\col(0)!\stop
-      Use it to open a
-      locked door or
-      block in this
-      dungeon.
+      \col(1)Small Key\col(0)!
 
   - name: TX_001b
     index: 0x1b
@@ -353,19 +291,16 @@ groups:
   - name: TX_0027
     index: 0x27
     text: |-
-      You got \col(1)Roc's
-      Feather\col(0)! You
-      feel light as a
-      feather!
+      You found a
+      \col(1)Boss Key\col(0)
+      for Lost Labyrinth (Past)
 
   - name: TX_0028
     index: 0x28
     text: |-
-      You got the \col(1)Long
-      Switch\col(0)! Switch
-      places with
-      objects from a
-      distance.
+      You found a
+      \col(1)Boss Key\col(0)
+      for Four Corners Cave
 
   - name: TX_0029
     index: 0x29
@@ -425,11 +360,9 @@ groups:
   - name: TX_002e
     index: 0x2e
     text: |-
-      You got the
-      \col(1)Seed Shooter\col(0)!\stop
-      Pick your \col(1)seeds\col(0),
-      fire, then watch
-      them ricochet.
+      You found a
+      \col(1)Boss Key\col(0)
+      for Temple of The Tokay!
 
   - name: TX_002f
     index: 0x2f
@@ -442,11 +375,9 @@ groups:
   - name: TX_0030
     index: 0x30
     text: |-
-      You got the
-      \col(1)Switch Hook\col(0)!
-      Shoot at an
-      object to switch
-      places with it.
+      You found a
+      \col(1)Boss Key\col(0)
+      for Seasons Shrine!
 
   - name: TX_0031
     index: 0x31
@@ -468,17 +399,16 @@ groups:
   - name: TX_0033
     index: 0x33
     text: |-
-      You got a \col(1)Huge
-      Maku Seed\col(0)! This
-      should penetrate
-      evil forces!
+      You found the
+      \col(1)Compass\col(0)
+      for Summer Villa!
 
   - name: TX_0034
     index: 0x34
     text: |-
-      You got a bigger
-      \col(1)Ring Box\col(0)! It can
-      hold more \col(1)rings\col(0)!
+      You found the
+      \col(1)Compass\col(0)
+      for Spirit's Grotto!
 
   - name: TX_0035
     index: 0x35
@@ -490,62 +420,50 @@ groups:
   - name: TX_0036
     index: 0x36
     text: |-
-      You got a
-      \col(1)Mermaid Suit\col(0)!
-      Now you can swim
-      in deep waters.
-      Press \col(0x84)\item(0x00)\col(0) to swim,
-      \bbtn to dive and
-      \abtn to use items.
+      You found the
+      \col(1)Compass\col(0)
+      for Lost Labyrinth (Past)!
 
   - name: TX_0037
     index: 0x37
     text: |-
-      You got the
-      \col(1)Tuni Nut\col(0)!
+      You found the
+      \col(1)Compass\col(0)
+      for Four Corners Cave!
 
   - name: TX_0038
     index: 0x38
     text: |-
-      You got \col(1)Ricky's
-      Flute\col(0)! \col(3)Ricky\col(0)
-      will come to
-      your aid when
-      you play it.
+      You found the
+      \col(1)Compass\col(0)
+      for Seasons Shrine!
 
   - name: TX_0039
     index: 0x39
     text: |-
-      You got
-      \col(1)Dimitri's Flute\col(0)!
-      \col(3)Dimitri\col(0) will
-      come to your aid
-      when you play
-      it.
+      You found the
+      \col(1)Compass\col(0)
+      for Temple of The Tokay!
 
   - name: TX_003a
     index: 0x3a
     text: |-
-      You got \col(1)Moosh's
-      Flute\col(0)! \col(3)Moosh\col(0)
-      will come to
-      your aid when
-      you play it!
+      You found the
+      \col(1)Compass\col(0)
+      for Lost Labyrinth (Present)
 
   - name: TX_003b
     index: 0x3b
     text: |-
-      You got a
-      \col(1)Strange Flute\col(0)!
-      It sure looks
-      rare!
+      You found the
+      \col(1)Compass\col(0)
+      for Crown Dungeon
 
   - name: TX_003c
     index: 0x3c
     text: |-
-      You got a \col(1)Bomb
-      Flower\col(0)! Handle
-      it with care!!!
+      You found the \col(1)Dungeon
+      Map\col(0) for Summer Villa!
 
   - name: TX_003d
     index: 0x3d
@@ -556,34 +474,35 @@ groups:
   - name: TX_003e
     index: 0x3e
     text: |-
-      You got
-      \col(1)Rock Brisket\col(0)!
+      You found the \col(1)Dungeon
+      Map\col(0) for Spirit's Grotto!
 
   - name: TX_003f
     index: 0x3f
     text: |-
-      You got the
-      \col(1)Goron Vase\col(0)!
+      You found the \col(1)Dungeon
+      Map\col(0) for Lost 
+      Labyrinth (Past)!
 
   - name: TX_0040
     index: 0x40
     text: |-
-      You got
-      \col(1)Goronade\col(0)! One
-      quick gulp will
-      keep you awake.
+      You found the \col(1)Dungeon
+      Map\col(0) for Four Corners
+      Cave!
 
   - name: TX_0041
     index: 0x41
     text: |-
-      You got
-      \col(1)Lava Juice\col(0)!
+      You found the \col(1)Dungeon
+      Map\col(0) for Seasons Shrine!
 
   - name: TX_0042
     index: 0x42
     text: |-
-      You got the
-      \col(1)Mermaid Key\col(0)!
+      You found the \col(1)Dungeon
+      Map\col(0) for Temple of The
+      Tokay!
 
   - name: TX_0043
     index: 0x43
@@ -599,9 +518,9 @@ groups:
   - name: TX_0045
     index: 0x45
     text: |-
-      You got a
-      town shop
-      \col(1)Member's Card\col(0)!
+      You found the \col(1)Dungeon
+      Map\col(0) for Lost 
+      Labyrinth (Present)
 
   - name: TX_0046
     index: 0x46
@@ -636,8 +555,8 @@ groups:
   - name: TX_004a
     index: 0x4a
     text: |-
-      You got a \col(1)Letter
-      of Introduction\col(0)!
+      You found the \col(1)Dungeon
+      Map\col(0) for Crown Dungeon!
 
   - name: TX_004b
     index: 0x4b
@@ -1519,8 +1438,7 @@ groups:
   - name: TX_0120
     index: 0x20
     text: |-
-      \Link, please
-      save \col(3)Nayru\col(0)!
+      Come see me if you need a refill!
 
   - name: TX_0121
     index: 0x21
@@ -7090,100 +7008,70 @@ groups:
   - name: TX_1000
     index: 0x00
     text: |-
-      We're supposed
-      to finish
-      tomorrow, but
-      we're way behind
-      schedule! We'll
-      never make it!
+      Welcome to the Gifts of Kinomi
+      Archipelago Randomizer.\stop
+      Did you 
+      read the FAQ?
+      \opt()Yes \opt()No
 
   - name: TX_1001
     index: 0x01
     text: |-
-      Huh? A diggin'
-      tool? That's the
-      spirit, sonny!
-      Here! You can
-      have this
-      \col(1)Shovel\col(0)! Can you
-      use the \col(1)Shovel\col(0)
-      to move that
-      dirt outta the
-      way?
+      Oh, I suggest you read 
+      the FAQ first. 
+      \opt()Ok \opt()Where?
 
   - name: TX_1002
     index: 0x02
     text: |-
-      We're workin'
-      hard on this
-      tower! Help us
-      out!
+      It is linked in
+      the setup. If
+      you don't have
+      it check
+      tinyurl.com/
+      kinomiSetup 
 
   - name: TX_1003
     index: 0x03
     text: |-
-      This is the
-      entry to the
-      tower being
-      built to the
-      heavens by the
-      order of
-      \col(3)Queen Ambi\col(0).
+      How do you refill your satchel and shield
+      \opt() Shop \opt() Rosa
 
   - name: TX_1004
     index: 0x04
     text: |-
-      It's not like
-      \col(3)Queen Ambi\col(0) to
-      drive us so
-      hard. We're so
-      busy we don't
-      have time to
-      sleep!
+      Wrong. Please check the FAQ, you will get stuck otherwise.
 
   - name: TX_1005
     index: 0x05
     text: |-
-      \pos(0)At first, this
-      tower was being
-      built to guide
-      Queen Ambi's
-      love safely back
-      from the sea.
-      But ever since
-      Nayru came, the
-      sun sits high in
-      the sky as if
-      time itself has
-      stopped.
-      It's not like
-      Queen Ambi to
-      push us so hard.
-      In the village,
-      they've started
-      calling it the
-      Black Tower.
+      Right! You can get out of here by warping.
 
   - name: TX_1006
     index: 0x06
     text: |-
-      You can look
-      around, but the
-      construction has
-      some areas
-      closed. If you
-      hang around too
-      much, though,
-      you might get
-      yelled at.
+      Just warp to
+      the start,
+      you can do it
+      everywhere
 
   - name: TX_1007
     index: 0x07
     text: |-
-      Why build such a
-      huge thing..?
-      It's just work,
-      work, work!
+      Please take
+      what's in that
+      chest as a thank
+      you for finding me.\stop I know that 
+      you may be struggling 
+      to find all the checks 
+      in this randomizer.\stop 
+      Trust me, I know how 
+      you feel. I felt the 
+      same way when I first 
+      played this randomizer.\stop
+      I hope you can 
+      find the courage to keep 
+      going and finish the game.
 
   - name:
     - TX_1008
@@ -7225,11 +7113,10 @@ groups:
   - name: TX_100c
     index: 0x0c
     text: |-
-      Busy, busy,
-      busy! If I don't
-      hurry, the
-      guards will come
-      check on me!
+      I have been pacing around trying to figure out which stair leads to which place.
+      Man this randomizer does sure get tricky sometimes. From where I came in, I am pretty sure that the stair on my left
+      leads to Crown Dungeon while the one on my right leads to the remains of Moonlit Grotto.
+      I am not sure if that's correct, but you may take them for yourself to find out.
 
   - name: TX_100d
     index: 0x0d
@@ -9723,13 +9610,8 @@ groups:
   - name: TX_1c12
     index: 0x12
     text: |-
-      Actually, the
-      theme of my
-      trip is "the
-      independent
-      woman," so you
-      have to wait for
-      another date.
+      Hi \Link, I am so happy to see you again, especially for the birthday of the Oracles!
+      Come see me again if you need a refill!
 
   - name: TX_1c13
     index: 0x13
@@ -14773,7 +14655,8 @@ groups:
   - name: TX_2e01
     index: 0x01
     text: |-
-      \Link's Cottage
+      You need 2 gifts to beat ganon and start the party.\stop
+      You need 8 slates in order to beat the Temple of The Tokay boss.
 
   - name: TX_2e02
     index: 0x02
@@ -15042,6 +14925,11 @@ groups:
       and it will reform as long as you are not underneath it!\stop
 
       Toss it on buttons, push it into holes, and see what happens!
+  - name: TX_2e25
+    index: 0x25
+    text: |- 
+      I hope you are enjoying the randomizer so far. Please report any 
+      bugs at the Wind Fishes' Breeze discord server if you saw any.
 
 - group: 0x2f
   data:
@@ -18977,41 +18865,54 @@ groups:
   - name: TX_3700
     index: 0x00
     text: |-
-      I am \col(3)Plen\col(0), the
-      mayor here in
-      \col(3)Lynna City\col(0).\stop
-      Did you need me
-      for something?
-        \opt()Yes \opt()No
+      You know, I rolled that pot into place myself. Tested it and everything, stood right there, nodded, thought \col(1)yep, that'll do it.\col(0) And you just... walked past it. Like it was nothing.
 
   - name: TX_3701
     index: 0x01
-    text: |-
-      I see...
+    text: >-
+      H-hey! How did you get back here? I put a POT there!
 
   - name: TX_3702
     index: 0x02
     text: |-
-      It's from the
-      oddly dressed
-      out-of-towner.
-      Thank you for
-      your kindness.
-      Please accept
-      this.
+      I don't even want to know how. Nobody's gotten back here uninvited before, not once, and I've been stocking this library for three years.
 
   - name: TX_3703
     index: 0x03
     text: |-
-      What's that?
+      ...You know what, fine. You clearly want something back here bad enough to out-stubborn a boulder. Here, take it. Least I can do is make sure you didn't sneak past a pot for nothing.
+
+  - name: TX_3704
+    index: 0x04
+    text: >-
+      Just don't tell anyone how you got it, and have a great rest of your randomizer run.
+
+  - name: TX_3705
+    index: 0x05
+    text: >-
+      ...Hang on. You've already got one of these.
+
+  - name: TX_3706
+    index: 0x06
+    text: >-
+      Course you do. Figures a rock wasn't gonna stop someone who's already got half of everything worth having.
+
+  - name: TX_3707
+    index: 0x07
+    text: >-
+      Here. Call it a toll for the rock. You didn't out-stubborn a boulder for nothing.
+
+  - name: TX_3708
+    index: 0x08
+    text: >-
+      That money should help you on your way. Now please scram before my manager fires me for giving money to people I don't know.
+
+  - name: TX_3709
+    index: 0x09
+    text: >-
+      ...Right. Already gave you the toll. I just don't want to be fired by my manager, so don't go expecting seconds.
 
   - name:
-    - TX_3704
-    - TX_3705
-    - TX_3706
-    - TX_3707
-    - TX_3708
-    - TX_3709
     - TX_370a
     - TX_370b
     - TX_370c
@@ -19019,12 +18920,6 @@ groups:
     - TX_370e
     - TX_370f
     index:
-    - 0x04
-    - 0x05
-    - 0x06
-    - 0x07
-    - 0x08
-    - 0x09
     - 0x0a
     - 0x0b
     - 0x0c

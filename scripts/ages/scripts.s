@@ -498,6 +498,23 @@ veranFaceCutsceneScript:
 ; INTERAC_OLD_MAN_WITH_RUPEES
 ; ==================================================================================================
 
+oldManScript_givesTreasure:
+	initcollisions
+	jumpifroomflagset $40, @alreadyGaveTreasure
+	checkabutton
+	disableinput
+	showtextlowindex <TX_3318
+	asm15 scriptHelp.oldMan_givesTreasure
+	wait 32
+	checkrupeedisplayupdated
+	orroomflag $40
+	enableinput
+
+@alreadyGaveTreasure:
+	checkabutton
+	showtextlowindex <TX_3319
+	scriptjump @alreadyGaveTreasure
+	
 oldManScript_givesRupees:
 	initcollisions
 	jumpifroomflagset $40, @alreadyGaveMoney
@@ -4765,6 +4782,7 @@ impaNpcScript_lookingAtPassage:
 	writeobjectbyte Interaction.direction, $ff
 	showloadedtext
 	setanimation $00
+	asm15 scriptHelp.rosaRefill
 	scriptjump @npcLoop
 
 ; ==================================================================================================
@@ -5011,18 +5029,25 @@ hardhatWorkerSubid00Script:
 	.dw @doesntGiveShovel
 
 @givesShovel:
-	jumpifroomflagset $20, @alreadyGaveShovel
-	showtextlowindex <TX_1001
-	wait 30
-	giveitem TREASURE_SHOVEL, $00
-	wait 30
+	showtextlowindex <TX_1002
+	scriptjump @enableInput
 
 @alreadyGaveShovel:
-	showtextlowindex <TX_1002
+	showtextlowindex <TX_1001
+	jumpiftextoptioneq, $01, @givesShovel
 	scriptjump @enableInput
 
 @doesntGiveShovel:
 	showtextlowindex <TX_1000
+	jumpiftextoptioneq, $01, @alreadyGaveShovel
+	showtextlowindex <TX_1003
+	jumpiftextoptioneq, $00, @questionWrong
+	showtextlowindex <TX_1005
+	scriptjump @enableInput
+
+@questionWrong:
+	showtextlowindex <TX_1004
+	scriptjump @enableInput
 
 @enableInput:
 	setanimation $04
@@ -5058,6 +5083,9 @@ hardhatWorkerSubid02Script:
 hardhatWorkerSubid03Script:
 	loadscript scriptHelp.hardhatWorkerSubid03Script
 
+; Generic NPC.
+hardhatWorkerSubid04Script:
+	rungenericnpclowindex <TX_1007
 
 ; The object moves for [var3c] frames, and its direction is stored in [var3e]. When
 ; [var3c] hits 0, this returns. The object can also be talked to by Link while doing this.
@@ -5703,7 +5731,7 @@ goronDance_giveRewardForPerfectGame:
 	jumpifitemobtained TREASURE_BLUE_PEARL, +
 	scriptjump goronDance_giveRedPearl
 +
-	giveitem TREASURE_BOMBCHUS, $00
+	asm15 scriptHelp.giveRupees, RUPEEVAL_100
 	;giveitem TREASURE_GASHA_SEED, $00
 	retscript
 @bronze:
@@ -6823,7 +6851,8 @@ rosa_subid00Script_alreadyGaveShovel:
 	initcollisions
 @npcLoop:
 	checkabutton
-	showtextlowindex <TX_1c12
+	showtextlowindex <TX_1c12  
+	asm15 scriptHelp.rosaRefill
 	scriptjump @npcLoop
 
 

@@ -379,7 +379,7 @@ tilesetData: ; 4:4f9c
 	.db $20 $05 $10
 
 ; Tileset 0x35
-	.db $23 $08
+	.db $2d $08
 	.db $00
 	.db $60
 	.db $4d

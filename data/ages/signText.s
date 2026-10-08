@@ -30,6 +30,7 @@ signTextGroup0Data:
 	.db $48, <ROOM_AGES_086, <TX_2e16 ; Winter roof
 	.db $48, <ROOM_AGES_087, <TX_2e17 ; Spring roof
 	.db $26, <ROOM_AGES_033, <TX_2e1a ; hint about bombable wall
+	.db $35, $2a, <TX_2e25
 	.db $00
 
 signTextGroup1Data:

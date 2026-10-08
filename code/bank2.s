@@ -340,6 +340,7 @@ fileSelectMode1:
 @back:
 	ld a,UNCMP_GFXH_08
 	call loadUncompressedGfxHeader
+	call drawRandoFileSelectString ; RANDO: Draw info string
 	jp decFileSelectMode2
 
 @leftOrRight:
@@ -676,6 +677,7 @@ fileSelectMode4:
 ;;
 ; Returns z-flag unset if something was selected.
 fileSelectUpdateInput:
+	call checkChangeRandoVars
 	ld a,(wKeysJustPressed)
 	ld c,a
 	ld hl,wFileSelect.cursorPos
@@ -2040,7 +2042,8 @@ fileSelectDrawHeartsAndDeathCounter:
 +++
 	; Load the tile map that was just drawn on
 	ld a,UNCMP_GFXH_08
-	jp loadUncompressedGfxHeader
+	call loadUncompressedGfxHeader
+	jp drawRandoFileSelectString ; RANDO: Draw info string
 
 ;;
 ; Draws the cursor on the main file select and "new game/secret/link" screen
@@ -3095,11 +3098,50 @@ menuStateFadeIntoMenu:
 	or a
 	ret nz
 
-	call @openMenu
+	call @checkWarpToStart
 	ld hl,wMenuLoadState
 	inc (hl)
 	jp menuSpecificCode
 
+;;
+; Checks if link can warp to start after pressing start + select + (b or a)
+@checkWarpToStart:
+    ld a,(wKeysPressed)
+    and BTN_B | BTN_A
+    cp BTN_B | BTN_A
+    jr nz,@done
+    
+    ld a,$00
+    set 7,a
+    ld (wWarpDestGroup),a
+    ld a,$14        ; Starting room ID
+    ld (wWarpDestRoom),a
+    ld a,$44         ; Position in starting room
+    ld (wWarpDestPos),a
+    ld a,$05                        ; TRANSITION_DEST_FALL
+    ld (wWarpTransition),a
+    ld a,$03
+    ld (wWarpTransition2),a
+    ld a,$ff
+    ld (wDisabledObjects),a
+    
+    ld a,SND_TELEPORT
+    call playSound
+    
+    ld a,$03
+    call setMusicVolume
+    call clearStaticObjects
+    
+    ld a,$d0
+    ld (wLinkObjectIndex),a
+    
+    ld a,$03
+    ld (wMenuLoadState),a
+    pop af      ; pop return addr from stack
+    ret
+    
+    @done:
+    jp @openMenu
 ;;
 ; Loads menu graphics and stuff
 @openMenu:
@@ -11616,5 +11658,7 @@ runFakeReset:
 	ld hl,wMenuLoadState
 	inc (hl)
 	jp fadeoutToWhite
+
+.include "code/rando/fileSelect.s"
 
 .ENDS

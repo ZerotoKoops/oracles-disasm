@@ -870,7 +870,7 @@ warpTransition6:
 	call itemIncSubstate
 
 	ld l,SpecialObject.counter1
-	ld (hl),$1e
+	ld (hl),$01 ; RANDO: Removed half-second delay when timewarping in
 	ld l,SpecialObject.direction
 	ld (hl),DIR_DOWN
 
@@ -2720,7 +2720,7 @@ linkState10:
 	jr nz,++
 
 	; Return if Link interacts with an object
-	call linkInteractWithAButtonSensitiveObjects
+	call checkNetItemBuffer
 	ret c
 
 	; Deal with push blocks, chests, signs, etc. and return if he opened a chest, read

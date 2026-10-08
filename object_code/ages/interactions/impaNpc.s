@@ -15,6 +15,9 @@ impaNpc_subid00:
 	jr z,@state0
 
 @state1:
+	ld a,$00
+	or a
+	jp z,interactionDelete
 	call interactionRunScript
 	ld e,Interaction.var03
 	ld a,(de)
@@ -27,13 +30,6 @@ impaNpc_subid00:
 	jp interactionAnimateAsNpc
 
 @state0:
-	; Set the tile leading to nayru's basement to behave like stairs
-	ld hl,wRoomLayout+$22
-	ld (hl),TILEINDEX_INDOOR_DOWNSTAIRCASE
-
-	call getImpaNpcState
-	bit 7,b
-	jp nz,interactionDelete
 
 	call checkIsLinkedGame
 	jr z,+
@@ -95,14 +91,10 @@ impaNpc_determineTextAndPositionInHouse:
 
 @val00:
 @val09:
-	ld bc,$3838
-	ld a,<TX_0120
-	jr @setTextAndPosition
-
 @val01:
 @val0a:
-	ld bc,$4828
-	ld a,<TX_0121
+	ld bc,$2868
+	ld a,<TX_0120
 	call @setTextAndPosition
 	ld (de),a
 	ld hl,mainScripts.impaNpcScript_lookingAtPassage

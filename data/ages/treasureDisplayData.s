@@ -90,9 +90,9 @@ treasureDisplayData_standard:
 	.db $00				$00 $00 $00 $00 $ff, <TX_0900 ; TREASURE_10 (0x10)
 	.db TREASURE_HARP		$00 $00 $00 $00 $05, <TX_0941 ; (filler) TREASURE_HARP (0x11)
 	.db $00				$00 $00 $00 $00 $ff, <TX_0900 ; TREASURE_12 (0x12)
-	.db $00				$07 $00 $07 $00 $ff, <TX_0900 ; TREASURE_SLINGSHOT (0x13)
+	.db TREASURE_SLINGSHOT				$07 $00 $07 $00 $ff, <TX_0900 ; TREASURE_SLINGSHOT (0x13)
 	.db $00				$00 $00 $00 $00 $ff, <TX_0900 ; TREASURE_14 (0x14)
-	.db $00				$9b $04 $00 $00 $ff, <TX_092a ; TREASURE_SHOVEL (0x15)
+	.db TREASURE_SHOVEL				$9b $04 $00 $00 $ff, <TX_092a ; TREASURE_SHOVEL (0x15)
 	.db TREASURE_BRACELET		$99 $05 $00 $00 $00, <TX_092b ; (filler) TREASURE_BRACELET (0x16)
 	.db TREASURE_FEATHER		$96 $04 $00 $00 $ff, <TX_092c ; TREASURE_FEATHER (0x17)	unused
 	.db $00				$00 $03 $00 $00 $ff, <TX_0900 ; TREASURE_18 (0x18)

@@ -46,9 +46,6 @@ shopItemState0:
 	ld a,(de)
 	cp $04
 	jr nz,++
-	ld a,TREASURE_BOMBS
-	call checkTreasureObtained
-	jp nc,shopItemPopStackAndDeleteSelf
 	jr @checkFlutePurchasable
 ++
 .else
@@ -604,11 +601,11 @@ shopItemTreasureToGive:
 ;   b2: Item to sell if the first one is unavailable (or $ff to sell nothing)
 ;   b3: Value to add to x position if the first item was sold out
 shopItemReplacementTable:
-	/* $00 */ .db <wBoughtShopItems1  $01 $02 $00 ; sell 2nd satchel
-	/* $01 */ .db <wBoughtShopItems2  $08 $0d $04
+	/* $00 */ .db <wBoughtShopItems1  $00 $ff $00 ; sell 2nd satchel
+	/* $01 */ .db <wBoughtShopItems2  $08 $ff $00
 	/* $02 */ .db <wBoughtShopItems1  $02 $ff $00
-	/* $03 */ .db <wShieldLevel       $00 $ff $00
-	/* $04 */ .db <wBoughtShopItems1  $00 $ff $00
+	/* $03 */ .db <wBoughtShopItems2  $02 $ff $00
+	/* $04 */ .db <wBoughtShopItems2  $03 $ff $00
 	/* $05 */ .db <wBoughtShopItems1  $00 $ff $00
 	/* $06 */ .db <wBoughtShopItems1  $04 $08 $00 ; slingshot
 	/* $07 */ .db <wBoughtShopItems2  $00 $09 $18 ; $10 $09 $18
@@ -619,13 +616,13 @@ shopItemReplacementTable:
 	/* $0c */ .db <wBoughtShopItems1  $00 $ff $00
 	/* $0d */ .db <wBoughtShopItems2  $00 $ff $00
 	/* $0e */ .db <wBoughtShopItems2  $01 $ff $00
-	/* $0f */ .db <wSwordLevel		  $00 $ff $00
-	/* $10 */ .db <wSwordLevel		  $00 $ff $00
-	/* $11 */ .db <wShieldLevel       $00 $ff $00
-	/* $12 */ .db <wShieldLevel       $00 $ff $00
-	/* $13 */ .db <wBoughtShopItems1  $20 $03 $00
+	/* $0f */ .db <wBoughtShopItems2  $20 $ff $00
+	/* $10 */ .db <wBoughtShopItems2  $10 $ff $00
+	/* $11 */ .db <wBoughtShopItems2  $60 $ff $00
+	/* $12 */ .db <wBoughtShopItems2  $80 $ff $00
+	/* $13 */ .db <wBoughtShopItems1  $00 $03 $00
 .ifdef ROM_AGES
-	/* $14 */ .db <wBoughtShopItems1  $01 $02 $00
+	/* $14 */ .db <wBoughtShopItems1  $01 $ff $00
 	/* $15 */ .db <wBoughtShopItems1  $40 $ff $00
 .endif
 

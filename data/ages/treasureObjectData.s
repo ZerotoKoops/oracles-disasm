@@ -17,12 +17,12 @@ treasureObjectData:
 	/* $0b */ m_TreasureSubid   $00, $00, $ff, $00, TREASURE_OBJECT_SWITCH_HOOK_CHAIN_00
 	/* $0c */ m_TreasurePointer treasureObjectData0c
 	/* $0d */ m_TreasurePointer treasureObjectData0d
-	/* $0e */ m_TreasurePointer treasureObjectData0e
+	/* $0e */ m_TreasurePointer $0000
 	/* $0f */ m_TreasureSubid   $38, $01, $2e, $21, TREASURE_OBJECT_SHOOTER_00
 	/* $10 */ m_TreasureSubid   $00, $00, $ff, $00, TREASURE_OBJECT_10_00
 	/* $11 */ m_TreasurePointer treasureObjectData11
 	/* $12 */ m_TreasureSubid   $00, $00, $ff, $00, TREASURE_OBJECT_12_00
-	/* $13 */ m_TreasurePointer $0000
+	/* $13 */ m_TreasurePointer treasureObjectData13
 	/* $14 */ m_TreasureSubid   $00, $00, $ff, $00, TREASURE_OBJECT_14_00
 	/* $15 */ m_TreasurePointer treasureObjectData15
 	/* $16 */ m_TreasurePointer treasureObjectData16
@@ -156,16 +156,14 @@ treasureObjectData0d:
 	m_TreasureSubid $30, $10, $32, $24, TREASURE_OBJECT_BOMBCHUS_01
 	m_TreasureSubid $02, $10, $32, $24, TREASURE_OBJECT_BOMBCHUS_02
 
-treasureObjectData0e:
-	m_BeginTreasureSubids TREASURE_FLUTE
-	m_TreasureSubid $0a, $0b, $3b, $23, TREASURE_OBJECT_FLUTE_00
-	m_TreasureSubid $0a, $0c, $3b, $23, TREASURE_OBJECT_FLUTE_01
-	m_TreasureSubid $0a, $0d, $3b, $23, TREASURE_OBJECT_FLUTE_02
-
 treasureObjectData11:
 	m_BeginTreasureSubids TREASURE_HARP
 	m_TreasureSubid $0a, $00, $71, $68, TREASURE_OBJECT_HARP_00
 	m_TreasureSubid $0a, $01, $78, $68, TREASURE_OBJECT_HARP_01
+
+treasureObjectData13:
+	m_BeginTreasureSubids TREASURE_SLINGSHOT
+	m_TreasureSubid $38, $01, $2e, $7d, TREASURE_OBJECT_SLINGSHOT_00
 
 treasureObjectData15:
 	m_BeginTreasureSubids TREASURE_SHOVEL

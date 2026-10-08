@@ -239,7 +239,7 @@ likelike_stateB:
 	jr nc,++
 
 	ld a,TREASURE_SHIELD
-	call loseTreasure
+	call loseTreasureWithoutLosingFlag
 	ld bc,TX_510b
 	call showText
 ++

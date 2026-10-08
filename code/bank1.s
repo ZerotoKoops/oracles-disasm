@@ -3871,7 +3871,7 @@ func_5c18:
 	call initializeRoom
 	call checkDisplayEraOrSeasonInfo
 	call checkDarkenRoomAndClearPaletteFadeState
-	call fadeinFromWhiteToRoom
+	call fastFadeinFromWhiteToRoom
 	call checkPlayRoomMusic
 	xor a
 	ld (wCutsceneIndex),a
@@ -4234,7 +4234,7 @@ triggerFadeoutTransition:
 +
 	ld a,CUTSCENE_05
 	ld (wCutsceneIndex),a
-	call fadeoutToWhite
+	call fastFadeoutToWhite
 	ret
 
 ;;

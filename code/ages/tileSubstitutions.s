@@ -245,3 +245,4 @@ replaceJabuTilesIfUnderwater:
 	.db $00
 
 .include "code/commonTileSubstitutions.s"
+.include "code/rando/tileSubstitutions.s"

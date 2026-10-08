@@ -540,7 +540,7 @@ interactionCode60:
 	inc c
 ++
 	ld a,b
-	call giveTreasure
+	call handleGetItem
 	ld b,a
 
 	ld e,Interaction.var32
@@ -551,11 +551,10 @@ interactionCode60:
 	ld a,b
 	call playSound
 +
-	ld e,Interaction.var35
+	call bypassKeydropsTextbox
 	ld a,(de)
 	cp $ff
 	jr z,@@skipText
-
 
 	cpa <TX_00_REDPEARL ;Red pearl
 	ld l,a
@@ -637,4 +636,5 @@ interactionCode60:
 	xor a
 	ret
 
+.include "code/rando/item_events.s"
 .ends

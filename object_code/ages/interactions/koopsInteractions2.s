@@ -243,19 +243,14 @@ _state1:
 	ldi (hl),a
 	ld (hl),a
 
-	ld b,>TX_0081
-	ld c,<TX_0081
-	call showText
-
 	call getThisRoomFlags
 	set 5,(hl)
 
 	ld a,MUS_ESSENCE
 	call playSound
 
-	ld c,$07
-	ld a,TREASURE_ROD_OF_SEASONS
-	call giveTreasure
+	ld bc,TREASURE_OBJECT_HEART_PIECE_00
+	call spawnTreasureOnLink
 
 	jp darkenRoom
 
